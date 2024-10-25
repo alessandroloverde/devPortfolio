@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@nuxt/content": "^2.13.4",
-    "nuxt": "^3.13.2",
-    "vue": "latest",
-    "vue-router": "latest"
+    "nuxt": "^3.13.2"
   }
 }
