@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Content :document="castoro" />
     <ContentDoc />
+
+    <Content :document="castoro" />
 
   </div>
 </template>
