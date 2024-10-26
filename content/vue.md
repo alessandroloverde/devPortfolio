@@ -13,3 +13,5 @@ I ensure seamless user experiences through dynamic data binding, efficient routi
 Vue’s reactivity system ensures the UI stays in sync with underlying data, whether using ref() for primitives or reactive() for complex objects. I leverage this system to create dynamic interfaces that respond instantly to user input without manual DOM manipulation. 
 
 Understanding the nuances of both methods, I apply them based on the specific data requirements, ensuring efficient, scalable and  maintainable code.
+
+![Vue logo](/img/logos/vuejs-original.svg)

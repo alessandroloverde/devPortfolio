@@ -3,14 +3,13 @@
       <Navigation />
   </header>
   <div>
-    <Content :document="castoro" />
+    <Content :document="skill_vue" />
     <ContentDoc />
-    <h2>Mannaggia al castoro</h2>
   </div>
 </template>
 
 <script setup>
-  const { data: castoro } = await useAsyncData(() => queryContent('/castoro').findOne())
+  const { data: skill_vue } = await useAsyncData(() => queryContent('vue').findOne())
 
-  console.log("castoro", castoro.value)
+  console.log("castoro", skill_vue.value)
 </script>
