@@ -1,4 +1,7 @@
 <template>
+  <header>
+      <Navigation />
+  </header>
   <div>
     <Content :document="castoro" />
     <ContentDoc />

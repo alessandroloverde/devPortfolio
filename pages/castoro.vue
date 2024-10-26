@@ -1,12 +1,13 @@
 <template>
+  <header>
+      <Navigation />
+  </header>
   <div>
     <ContentDoc />
-
     <Content :document="castoro" />
-
   </div>
 </template>
 
 <script setup>
-  const { data: castoro } = await useAsyncData(() => queryContent('/castoro').findOne())
+  const { data: castoro } = await useAsyncData(() => queryContent('castoro').findOne())
 </script>

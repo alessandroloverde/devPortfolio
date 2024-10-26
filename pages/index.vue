@@ -1,5 +1,8 @@
 <template>
   <div>
+    <header>
+      <Navigation />
+    </header>
     <ContentDoc />
     <Content  :document="topo" />
   </div>
