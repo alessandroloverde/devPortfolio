@@ -1,17 +1,13 @@
 <template>
   <div>
-    <header>
-      <Navigation />
-    </header>
-    <ContentDoc />
-    <Content  :document="topo" />
+    <h1>Home Page, no dynamic data</h1>
+    <p>check the content routes</p>
+    <a href="/portfolio/castoro">castoro</a>
+    <br />
+    <a href="/portfolio/me">me</a>
+    <br />
+    <a href="/portfolio/gianni">gianni</a>
+    <br />
+    <a href="/portfolio/vue">vue</a>
   </div>
 </template>
-
-<script setup>
-  const { data: topo, error } = await useAsyncData(() => queryContent('index').findOne())
-
-  if (error) {
-    console.error('porca madonna:', error)
-  }
-</script>
