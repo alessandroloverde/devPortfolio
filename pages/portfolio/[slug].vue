@@ -1,7 +1,15 @@
 <script setup lang="ts">
-await useAsyncData("portfolio", () => queryContent("portfolio").findOne());
+const route = useRoute();
+
+const { data } = await useAsyncData("portfolio", () =>
+  queryContent(`portfolio/${route.params.slug}`).findOne()
+);
 </script>
 
 <template>
-  <ContentDoc />
+  <article v-if="data">
+    <h1>{{ data.title }}</h1>
+    <p>{{ data.description }}</p>
+    <pre>{{ data }}</pre>
+  </article>
 </template>
