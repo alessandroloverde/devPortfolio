@@ -7,6 +7,9 @@ const { data } = await useAsyncData("portfolio", () =>
 </script>
 
 <template>
+  <header>
+    <Navigation />
+  </header>
   <article v-if="data">
     <h1>{{ data.title }}</h1>
     <p>{{ data.description }}</p>
