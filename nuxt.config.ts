@@ -10,4 +10,7 @@ export default defineNuxtConfig({
       "Bodoni Moda": [400, 500, 600, 700, 800, 900],
     },
   },
+  css: [
+    '~/public/styles/main.scss',
+  ],
 });
