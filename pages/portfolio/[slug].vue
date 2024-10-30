@@ -13,10 +13,14 @@ console.log("data", data.value)
     <Navigation />
   </header>
   <article v-if="data">
-    <h1>{{ data.title }}</h1>
-    <p>{{ data.description }}</p>
-    <hr>
-    <ContentDoc />
-  
+    <ul>
+      <li v-for="feature of data.features">
+        <h5>{{  feature.intro }}</h5>
+        <h2>{{ feature.name }}</h2>
+        <p>{{ feature.description }}</p>
+        <img :src="feature.image" v-if="feature.image">
+      </li>
+    </ul>
   </article>
+  <!-- <ContentDoc unwrap="p"/> -->
 </template>
