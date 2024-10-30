@@ -15,7 +15,7 @@ console.log("data", data.value)
   <article v-if="data">
     <ul>
       <li v-for="feature of data.features">
-        <h5>{{  feature.intro }}</h5>
+        <h6>{{  feature.intro }}</h6>
         <h2>{{ feature.name }}</h2>
         <p>{{ feature.description }}</p>
         <img :src="feature.image" v-if="feature.image">

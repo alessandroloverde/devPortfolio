@@ -14,3 +14,26 @@ $washedGrey: #efe7e7;
 $mainBkgColor: $darkGrey;
 $boxBkgColor: $medGrey;
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/** ––– Fonts –––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@mixin BodoniModa($weight: 400, $style: "normal") {
+   @if ($style !="normal"and $style !="italic") {
+      @error "Invalid style value: #{$style}. It must be either 'normal' or 'italic'.";
+   }
+
+   font-family: "Bodoni Moda", serif;
+   font-optical-sizing: auto;
+   font-weight: $weight;
+   font-style: $style;
+}
+ 
+@mixin Barlow($weight: 400, $style: "normal") {
+   @if ($style !="normal"and $style !="italic") {
+      @error "Invalid style value: #{$style}. It must be either 'normal' or 'italic'.";
+   }     
+
+   font-family: "Barlow", sans-serif;
+   font-weight: $weight;
+   font-style: $style;
+}
+/** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */

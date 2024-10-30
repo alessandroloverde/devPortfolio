@@ -1,4 +1,4 @@
-h1,
+/* h1,
 h2,
 h3 {
   color: rgb(176, 35, 169);
@@ -11,4 +11,29 @@ p {
   font-family: "Barlow", sans-serif;
   font-weight: 400;
 
+} */
+
+h6 {
+  @include Barlow;
+
+  font-size: 2.4rem;
+  color: $lightGrey;
+  letter-spacing: 0.0125em;
+  line-height: 1.35;
+
+  &::first-letter {
+    text-transform: uppercase;
+    color: $washedGrey;
+    font-weight: 500;
+    font-size: 2em;
+    line-height: 0;
+  }
+}
+p {
+  @include Barlow;
+
+  font-size: 2rem;
+  color: $lightGrey;
+  letter-spacing: 0.0125em;
+  line-height: 1.35;
 }
