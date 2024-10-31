@@ -1,6 +1,6 @@
 <template>
    <!-- TODO: develop the component further so that it can handle nested navigation -->
-   <nav>
+   <nav class="nav">
       <ContentNavigation v-slot="{ navigation }">
       <ul>
          <li><NuxtLink :to="navigation[0]._path">{{ navigation[0].title }}</NuxtLink></li>

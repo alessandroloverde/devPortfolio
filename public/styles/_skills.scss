@@ -1,0 +1,76 @@
+.nav {
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+
+    li {
+      font-size: 2rem;
+      padding: 1rem 2rem;
+
+      a {
+        color: $vividOrange;
+        text-decoration: none;}
+    }
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+}
+
+main {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  margin-left: 50%;
+}
+
+.skill {
+  &--info {
+    display: flex;
+    outline: 1px solid lime;
+    padding: 30px;
+
+    aside { width: 30% }
+    div { 
+      width: 70%;
+      padding-left: 30px;
+
+      h1 { 
+        @include BodoniModa;
+
+        font-size: 10rem;
+        color: $washedGrey;
+        margin: 0;
+        display: inline-block;
+        
+        &::after {
+          content: "";
+          width: 100%;
+          height: 1px;
+          display: block;
+          background-color: $vividOrange;
+        }
+      }
+      h4 {
+        @include Barlow(500);
+
+        font-size: 3.5rem;
+        color: $lightGrey;
+
+        i {
+          font-style: normal;
+          color: $vueGreen;
+        }
+      }
+    }
+  }
+}
