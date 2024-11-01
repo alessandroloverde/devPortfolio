@@ -1,17 +1,4 @@
-/* h1,
-h2,
-h3 {
-  color: rgb(176, 35, 169);
-  font-family: "Bodoni Moda", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
 
-}
-p {
-  font-family: "Barlow", sans-serif;
-  font-weight: 400;
-
-} */
 
 h6 {
   @include Barlow;

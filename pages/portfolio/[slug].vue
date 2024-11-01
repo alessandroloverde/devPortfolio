@@ -11,28 +11,31 @@ console.log("data", data.value)
 <template>
   <header>
     <Navigation />
-    <div class="skill--info">
+    <div class="skill-info">
         <aside>
           <img :src="data?.logo" v-if="data?.logo" class="responsiveImg">
         </aside>
-        <div>
-          <h1>{{ data?.title }}</h1>
-          <h4><span>since</span><i>{{ data?.experience }}</i> years</h4>
+        <div class="skill-info--content">
+          <div>
+            <h1>{{ data?.title }}</h1>
+            <h4 v-if="data?.experience"><span>since</span><i>{{ data?.experience }}</i> years</h4>
+          </div>
+
         </div>
     </div>
   </header>
 
   <main>
-    <article v-if="data">
-    <ul>
-      <li v-for="feature of data.features">
-        <h6>{{ feature.intro }}</h6>
-        <h2>{{ feature.name }}</h2>
-        <p>{{ feature.description }}</p>
-        <img :src="feature.image" v-if="feature.image" class="responsiveImg">
-      </li>
-    </ul>
-  </article>
+    <article v-if="data" class="skill-features">
+      <ul>
+        <li v-for="feature of data.features">
+          <h6 v-if="feature.intro">{{ feature.intro }}</h6>
+          <h2 v-else>{{ feature.name }}</h2>
+          <p>{{ feature.description }}</p>
+          <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image">
+        </li>
+      </ul>
+    </article>
   </main>
   <!-- <ContentDoc unwrap="p"/> -->
 </template>

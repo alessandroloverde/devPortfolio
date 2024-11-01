@@ -15,9 +15,10 @@ $mainBkgColor: $darkGrey;
 $boxBkgColor: $medGrey;
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+
 /** ––– Fonts –––––––––––––––––––––––––––––––––––––––––––––––––––––– */
-@mixin BodoniModa($weight: 400, $style: "normal") {
-   @if ($style !="normal"and $style !="italic") {
+@mixin BodoniModa($weight: 400, $style: normal) {
+   @if ($style !=normal and $style !=italic) {
       @error "Invalid style value: #{$style}. It must be either 'normal' or 'italic'.";
    }
 
@@ -27,8 +28,8 @@ $boxBkgColor: $medGrey;
    font-style: $style;
 }
  
-@mixin Barlow($weight: 400, $style: "normal") {
-   @if ($style !="normal"and $style !="italic") {
+@mixin Barlow($weight: 400, $style: normal) {
+   @if ($style !=normal and $style !=italic) {
       @error "Invalid style value: #{$style}. It must be either 'normal' or 'italic'.";
    }     
 
