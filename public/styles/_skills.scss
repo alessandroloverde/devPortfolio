@@ -36,6 +36,7 @@ main {
 .skill {
   &-info {
     display: flex;
+    flex-wrap: wrap;
     padding: 30px;
 
     aside { width: 30% }
@@ -79,6 +80,8 @@ main {
         i {
           font-style: normal;
           color: $vueGreen;
+          font-size: 75%;
+          font-weight: 600;
         }
         span {
           @include BodoniModa($style: italic);
@@ -92,16 +95,30 @@ main {
     }
   }
 
-  &-features {
-    margin: 3.2rem;
-    padding: 3.2rem;
-    border-radius: 2.4rem;
-    background-color: $boxBkgColor;
 
-    & > ul { 
-      margin: 0; 
-      padding: 0;
+  &-features {
+    margin: 0;
+    padding: 0;
+
+    $medGrey: oklch(27.5% 0.0185 294.32);
+
+    section.section {
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 6.4rem;
+      background-color: $medGrey;
+    
+      @for $i from 0 through 6 {
+        // Calculate a darker shade for each step
+        $lightness: 27.5% - ($i * 1%);
+        $darkened-color: "oklch(#{$lightness} 0.0185 294.32)";
+    
+        &:nth-of-type(#{$i}) { background-color: unquote($darkened-color) }
+      }
     }
+    
+    
     &--image.responsiveImg {
       $imgMargin: 3.2rem;
 
@@ -140,3 +157,5 @@ main {
     }
   }
 }
+
+.highlighted { background-color: rgb(11, 147, 11) }
