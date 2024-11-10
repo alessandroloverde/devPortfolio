@@ -6,26 +6,37 @@ const { data } = await useAsyncData("portfolio", () =>
 );
 
 //console.log("data", data.value)
+let selectedIndex = ref(0);
+let targetIndex = ref(0);
+
 
 import { onMounted } from 'vue';
+
+/**
+ * *: assign/remove highlighted class on scroll
+ * TODO: bring the section into view on click
+ * TODO: clicking on the current section should do nothing (alert for testing)
+ * todo: add scroll back behavior
+ * TODO: (optional) add scroll animation
+ */
 
 onMounted(() => {
   const sections = document.querySelectorAll('.section');
   const references = document.querySelectorAll('.reference');
 
-  // Set up the Intersection Observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // Get the index of the currently intersecting section
-      const index = [...sections].indexOf(entry.target);
+      const index = [...sections].indexOf(entry.target) -1; // The -1 must compensate the slice(1) of the template
 
       if (index !== -1) {
         if (entry.isIntersecting) {
-          // Add the class to both the section and the corresponding reference
+          selectedIndex.value = index +1
+
           entry.target.classList.add('visible');
           references[index].classList.add('highlighted');
         } else {
-          // Remove the class when the section is out of view
+          selectedIndex.value = index
+
           entry.target.classList.remove('visible');
           references[index].classList.remove('highlighted');
         }
@@ -37,9 +48,30 @@ onMounted(() => {
   sections.forEach(section => {
     observer.observe(section);
   });
+
+
+/*   references.forEach((reference, index) => {
+    reference.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const targetSection = sections[index + 1];
+
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      sections.forEach((section, sectionIndex) => {
+        if (sectionIndex < index + 1) {
+          (section as HTMLElement).style.transform = 'translateY(-100%)';
+          (section as HTMLElement).style.transform = 'translateY(0)';
+        }
+      });
+
+    });
+  }); */
+
 });
-
-
 
 </script>
 
@@ -57,9 +89,15 @@ onMounted(() => {
           </div>
         </div>
         <div class="skill-info--toBeDefined">
-          <ul>
-            <li v-for="feature of data?.features" class="reference">
-              <p>{{ feature.name }}</p>
+          <h2 style="color: red;">Index of selected sections: {{ selectedIndex }}</h2>
+          <h2 style="color: lime;">Index of clicked section: {{ targetIndex }}</h2>
+          <ul class="referenceUL">
+            <li v-for="(feature, index) of data?.features.slice(1)" :key="index +1" class="reference">
+              <!-- <p><a :href="'#topo-' +(index +1)">{{ feature.name }}</a></p> -->
+              <div class="reference--number">
+                <AnimatedNumber />
+              </div>
+              <h3>{{ feature.name }}</h3>
             </li>
           </ul>
         </div>
@@ -68,7 +106,7 @@ onMounted(() => {
 
   <main>
     <article v-if="data" class="skill-features">
-      <section v-for="feature of data.features" class="section">
+      <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)">
         <h6 v-if="feature.intro">{{ feature.intro }}</h6>
         <h2 v-else>{{ feature.name }}</h2>
         <p>{{ feature.description }}</p>

@@ -108,6 +108,8 @@ main {
       top: 0;
       padding: 6.4rem;
       background-color: $medGrey;
+      transition: transform 0.5s;
+
     
       @for $i from 0 through 6 {
         // Calculate a darker shade for each step
@@ -139,11 +141,11 @@ main {
         height: 1em;
         background-color: $vividOrange;
         -webkit-mask-image: url('../img/icons/fi-rr-code-simple.svg');
-        mask-image: url('../img/icons/fi-rr-code-simple.svg');
+                mask-image: url('../img/icons/fi-rr-code-simple.svg');
         -webkit-mask-size: contain;
-        mask-size: contain;
+                mask-size: contain;
         -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
         vertical-align: bottom;
       }
       &:after {
@@ -157,5 +159,57 @@ main {
     }
   }
 }
+ul.referenceUL {
+  //counter-reset: item;
+  margin-top: 5em;
+  
+  a {
+    text-decoration: none;
+    color: $washedGrey;
 
-.highlighted { background-color: rgb(11, 147, 11) }
+    &:hover {
+      color: $limeGreen;
+    }
+  }
+  .reference { 
+    display: flex;
+    align-items: center;
+
+    &--number {
+      display: inline-block;
+      width: 80px;
+      margin-right: 1em;
+    }
+  }
+/*   li::before {
+    @include Barlow(500);
+
+    display: inline-block;
+    content: "0" counter(item) ;
+    counter-increment: item;
+    color: $vueGreen;
+    font-size: 2rem;
+    line-height: 1.35;
+    margin-right: 0.5em;
+  } */
+  h3 {
+    @include Barlow(500);
+
+    font-size: 3.6rem;
+    color: $lightGrey;
+    line-height: 9rem;
+  }
+}
+
+
+.highlighted {
+  display: flex;
+
+/*   &::before {
+    content: "✓";
+    font-size: 2rem;
+    color: red !important;
+    display: inline-block;
+    margin-right: 0.5em;
+  } */
+}
