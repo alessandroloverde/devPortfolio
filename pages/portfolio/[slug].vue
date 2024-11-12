@@ -93,9 +93,8 @@ onMounted(() => {
           <h2 style="color: lime;">Index of clicked section: {{ targetIndex }}</h2>
           <ul class="referenceUL">
             <li v-for="(feature, index) of data?.features.slice(1)" :key="index +1" class="reference">
-              <!-- <p><a :href="'#topo-' +(index +1)">{{ feature.name }}</a></p> -->
               <div class="reference--number">
-                <AnimatedNumber />
+                <AnimatedNumber :numberIndex="index + 1" />
               </div>
               <h3>{{ feature.name }}</h3>
             </li>
