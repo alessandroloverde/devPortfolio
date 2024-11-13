@@ -99,6 +99,10 @@ main {
   &-features {
     margin: 0;
     padding: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 
     $medGrey: oklch(27.5% 0.0185 294.32);
 
@@ -109,7 +113,8 @@ main {
       padding: 6.4rem;
       background-color: $medGrey;
       transition: transform 0.5s;
-
+      scroll-snap-align: start;
+      
     
       @for $i from 0 through 6 {
         // Calculate a darker shade for each step
@@ -183,23 +188,12 @@ ul.referenceUL {
       padding: 1.25em 1.25em 1.25em 0;
     }
   }
-/*   li::before {
-    @include Barlow(500);
 
-    display: inline-block;
-    content: "0" counter(item) ;
-    counter-increment: item;
-    color: $vueGreen;
-    font-size: 2rem;
-    line-height: 1.35;
-    margin-right: 0.5em;
-  } */
   h3 {
     @include Barlow(500);
 
     font-size: 3.6rem;
     color: $lightGrey;
-    line-height: 9rem;
   }
 }
 
@@ -207,16 +201,20 @@ ul.referenceUL {
 .highlighted {
   display: flex;
 
-/*   &::before {
-    content: "✓";
-    font-size: 2rem;
-    color: red !important;
-    display: inline-block;
-    margin-right: 0.5em;
-  } */
+  h3 {
+    background-color: $vividOrange;
+    color: $mainBkgColor !important;
+    padding: 0.2em 0.5em;
+  }
 }
 
 svg {
   height: 100%;
   max-width: 100%;
+}
+
+.shuffle-text {
+  display: inline-block;
+  transition: all 0.3s ease-in-out; /* Optional styling */
+  color: bisque;
 }

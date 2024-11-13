@@ -20,22 +20,24 @@ import { onMounted } from 'vue';
  * TODO: (optional) add scroll animation
  */
 
-onMounted(() => {
+
+
+ onMounted(() => {
   const sections = document.querySelectorAll('.section');
   const references = document.querySelectorAll('.reference');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const index = [...sections].indexOf(entry.target) -1; // The -1 must compensate the slice(1) of the template
+      const index = [...sections].indexOf(entry.target) - 1; // The -1 must compensate for the slice(1) of the template
 
       if (index !== -1) {
         if (entry.isIntersecting) {
-          selectedIndex.value = index +1
+          selectedIndex.value = index + 1;
 
           entry.target.classList.add('visible');
           references[index].classList.add('highlighted');
         } else {
-          selectedIndex.value = index
+          selectedIndex.value = index;
 
           entry.target.classList.remove('visible');
           references[index].classList.remove('highlighted');
@@ -48,31 +50,7 @@ onMounted(() => {
   sections.forEach(section => {
     observer.observe(section);
   });
-
-
-/*   references.forEach((reference, index) => {
-    reference.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const targetSection = sections[index + 1];
-
-      targetSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-
-      sections.forEach((section, sectionIndex) => {
-        if (sectionIndex < index + 1) {
-          (section as HTMLElement).style.transform = 'translateY(-100%)';
-          (section as HTMLElement).style.transform = 'translateY(0)';
-        }
-      });
-
-    });
-  }); */
-
 });
-
 </script>
 
 <template>
@@ -96,7 +74,7 @@ onMounted(() => {
               <div class="reference--number">
                 <AnimatedNumber :numberIndex="index + 1" />
               </div>
-              <h3>{{ feature.name }}</h3>
+              <h3 class="shuffle-text">{{ feature.name }}</h3>
             </li>
           </ul>
         </div>

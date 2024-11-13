@@ -9,15 +9,16 @@
   stroke-dasharray: 677.7525024414062px;
   fill: transparent;
   -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
-                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.6s;
           transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
-                fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+                fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.6s;
 }
 
 .highlighted {
   .svg-elem-1 {
     stroke-dashoffset: 0;
     fill: #41b883;
+    fill: transparent;
   }
 }
 
@@ -27,9 +28,9 @@ svg .svg-elem-2 {
   stroke-dasharray: 692.8136596679688px;
   fill: transparent;
   -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
-                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.7s;
           transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
-                fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+                fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.7s;
 }
 
 .highlighted {
