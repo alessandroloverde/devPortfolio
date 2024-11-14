@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import svgLoader from 'vite-svg-loader';
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/content", "@nuxtjs/google-fonts"],
@@ -13,4 +15,7 @@ export default defineNuxtConfig({
   css: [
     '~/public/styles/main.scss',
   ],
+  vite: {
+    plugins: [svgLoader()],
+  },
 });

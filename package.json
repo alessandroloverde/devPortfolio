@@ -15,6 +15,7 @@
     "nuxt": "^3.13.2"
   },
   "devDependencies": {
-    "sass-embedded": "^1.80.4"
+    "sass-embedded": "^1.80.4",
+    "vite-svg-loader": "^5.1.0"
   }
 }

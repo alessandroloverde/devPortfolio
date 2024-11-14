@@ -7,6 +7,7 @@
    let selectedIndex = ref(0)
 
    import { onMounted } from "vue"
+   import SVGarrowDown from "~/public/img/icons/fi-rr-angle-down.svg"
 
    onMounted(() => {
       const sections = document.querySelectorAll(".section")
@@ -78,7 +79,7 @@
             <p>{{ feature.description }}</p>
             <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
             <div class="scroll-down">
-              <img src="/public/img/icons/fi-rr-angle-down.svg" >
+               <SVGarrowDown />
             </div>
          </section>
       </article>

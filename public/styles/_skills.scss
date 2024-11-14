@@ -115,13 +115,32 @@ main {
       transition: transform 0.5s;
       scroll-snap-align: start;
       
-    
       @for $i from 0 through 6 {
         // Calculate a darker shade for each step
         $lightness: 27.5% - ($i * 1%);
         $darkened-color: "oklch(#{$lightness} 0.0185 294.32)";
     
         &:nth-of-type(#{$i}) { background-color: unquote($darkened-color) }
+      }
+
+      .scroll-down {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        bottom: 0;
+        --svg-color: #a6fc52; /* Define the color for the SVG path */
+      
+        & img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      &:last-child {
+        scroll-snap-type: none;
+      
+        .scroll-down {
+          transform: rotate(180deg);
+        }
       }
     }
     
@@ -205,6 +224,8 @@ ul.referenceUL {
     background-color: $vividOrange;
     color: $mainBkgColor !important;
     padding: 0.2em 0.5em;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
   }
 }
 
@@ -213,8 +234,5 @@ svg {
   max-width: 100%;
 }
 
-.shuffle-text {
-  display: inline-block;
-  transition: all 0.3s ease-in-out; /* Optional styling */
-  color: bisque;
-}
+
+
