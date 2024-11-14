@@ -1,95 +1,87 @@
 <script setup lang="ts">
-const route = useRoute();
+   const route = useRoute()
 
-const { data } = await useAsyncData("portfolio", () =>
-  queryContent(`portfolio/${route.params.slug}`).findOne()
-);
+   const { data } = await useAsyncData("portfolio", () => queryContent(`portfolio/${route.params.slug}`).findOne())
 
-//console.log("data", data.value)
-let selectedIndex = ref(0);
-let targetIndex = ref(0);
+   //console.log("data", data.value)
+   let selectedIndex = ref(0)
 
+   import { onMounted } from "vue"
 
-import { onMounted } from 'vue';
+   onMounted(() => {
+      const sections = document.querySelectorAll(".section")
+      const references = document.querySelectorAll(".reference")
 
-/**
- * *: assign/remove highlighted class on scroll
- * TODO: bring the section into view on click
- * TODO: clicking on the current section should do nothing (alert for testing)
- * todo: add scroll back behavior
- * TODO: (optional) add scroll animation
- */
+      const observer = new IntersectionObserver(
+         (entries) => {
+            entries.forEach((entry) => {
+               const index = [...sections].indexOf(entry.target) - 1 // The -1 must compensate for the slice(1) of the template
 
+               if (index !== -1) {
+                  if (entry.isIntersecting) {
+                     selectedIndex.value = index + 1
 
+                     entry.target.classList.add("visible")
+                     references[index].classList.add("highlighted")
+                  } else {
+                     selectedIndex.value = index
 
- onMounted(() => {
-  const sections = document.querySelectorAll('.section');
-  const references = document.querySelectorAll('.reference');
+                     entry.target.classList.remove("visible")
+                     references[index].classList.remove("highlighted")
+                  }
+               }
+            })
+         },
+         { threshold: 0.1 }
+      )
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const index = [...sections].indexOf(entry.target) - 1; // The -1 must compensate for the slice(1) of the template
-
-      if (index !== -1) {
-        if (entry.isIntersecting) {
-          selectedIndex.value = index + 1;
-
-          entry.target.classList.add('visible');
-          references[index].classList.add('highlighted');
-        } else {
-          selectedIndex.value = index;
-
-          entry.target.classList.remove('visible');
-          references[index].classList.remove('highlighted');
-        }
-      }
-    });
-  }, { threshold: 0.1 });
-
-  // Observe each section
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-});
+      // Observe each section
+      sections.forEach((section) => {
+         observer.observe(section)
+      })
+   })
 </script>
 
 <template>
-  <header>
-    <Navigation />
-    <div class="skill-info">
-        <aside>
-          <img :src="data?.logo" v-if="data?.logo" class="responsiveImg">
-        </aside>
-        <div class="skill-info--content">
-          <div>
-            <h1>{{ data?.title }}</h1>
-            <h4 v-if="data?.experience"><span>since</span><i>{{ data?.experience }}</i> years</h4>
-          </div>
-        </div>
-        <div class="skill-info--toBeDefined">
-          <h2 style="color: red;">Index of selected sections: {{ selectedIndex }}</h2>
-          <h2 style="color: lime;">Index of clicked section: {{ targetIndex }}</h2>
-          <ul class="referenceUL">
-            <li v-for="(feature, index) of data?.features.slice(1)" :key="index +1" class="reference">
-              <div class="reference--number">
-                <AnimatedNumber :numberIndex="index + 1" />
-              </div>
-              <h3 class="shuffle-text">{{ feature.name }}</h3>
-            </li>
-          </ul>
-        </div>
-    </div>
-  </header>
+   <header>
+      <Navigation />
+      <div class="skill-info">
+         <aside>
+            <img :src="data?.logo" v-if="data?.logo" class="responsiveImg" />
+         </aside>
+         <div class="skill-info--content">
+            <div>
+               <h1>{{ data?.title }}</h1>
+               <h4 v-if="data?.experience">
+                  <span>since</span><i>{{ data?.experience }}</i> years
+               </h4>
+            </div>
+         </div>
+         <div class="skill-info--toBeDefined">
+            <ul class="referenceUL">
+               <li v-for="(feature, index) of data?.features.slice(1)" :key="index + 1" class="reference">
+                  <div class="reference--number">
+                     <AnimatedNumber :numberIndex="index + 1" />
+                  </div>
+                  <h3 class="shuffle-text">{{ feature.name }}</h3>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </header>
 
-  <main>
-    <article v-if="data" class="skill-features">
-      <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)">
-        <h6 v-if="feature.intro">{{ feature.intro }}</h6>
-        <h2 v-else>{{ feature.name }}</h2>
-        <p>{{ feature.description }}</p>
-        <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image">
-      </section>
-    </article>
-  </main>
-  <!-- <ContentDoc unwrap="p"/> -->
+   <main>
+      <article v-if="data" class="skill-features">
+         <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)">
+            <h6 v-if="feature.intro">{{ feature.intro }}</h6>
+            <h2 v-else>{{ feature.name }}</h2>
+            <p>{{ feature.description }}</p>
+            <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
+            <div class="scroll-down">
+              <img src="/public/img/icons/fi-rr-angle-down.svg" >
+            </div>
+         </section>
+      </article>
+   </main>
+   <!-- <ContentDoc unwrap="p"/> -->
 </template>
