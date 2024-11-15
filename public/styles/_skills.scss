@@ -31,6 +31,7 @@ main {
   width: 50%;
   height: 100%;
   margin-left: 50%;
+  overflow: hidden;
 }
 
 .skill {
@@ -114,20 +115,13 @@ main {
       background-color: $medGrey;
       transition: transform 0.5s;
       scroll-snap-align: start;
-      
-      @for $i from 0 through 6 {
-        // Calculate a darker shade for each step
-        $lightness: 27.5% - ($i * 1%);
-        $darkened-color: "oklch(#{$lightness} 0.0185 294.32)";
-    
-        &:nth-of-type(#{$i}) { background-color: unquote($darkened-color) }
-      }
 
       .scroll-down {
         width: 100px;
         height: 100px;
         position: absolute;
         bottom: 0;
+        left: 2em;
         --svg-color: #a6fc52; /* Define the color for the SVG path */
       
         & img {
@@ -144,12 +138,12 @@ main {
       }
     }
     
-    
     &--image.responsiveImg {
       $imgMargin: 3.2rem;
 
       margin: $imgMargin;
       width: calc(100% - (2 * #{$imgMargin}));
+      border-radius: 1rem;
     }
     h2 {
       @include BodoniModa;
@@ -213,6 +207,7 @@ ul.referenceUL {
 
     font-size: 3.6rem;
     color: $lightGrey;
+    transition: all 0.3s ease-in-out;
   }
 }
 

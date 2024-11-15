@@ -181,6 +181,7 @@ body {
    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
    background-color: $mainBkgColor;
    scroll-behavior: smooth;
+   overflow: hidden; // *** Must be set not to interfere with the scrolling of main
 
    -webkit-hyphens: auto;
        -ms-hyphens: auto;
