@@ -107,6 +107,12 @@ main {
 
     $medGrey: oklch(27.5% 0.0185 294.32);
 
+    &--imageWrapper {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      margin-top: 3.2rem;
+    }
     section.section {
       height: 100vh;
       position: sticky;
@@ -114,7 +120,10 @@ main {
       padding: 6.4rem;
       background-color: $medGrey;
       transition: transform 0.5s;
+      border-top: 1px solid $limeGreen;
       scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
 
       .scroll-down {
         width: 100px;
@@ -141,9 +150,9 @@ main {
     &--image.responsiveImg {
       $imgMargin: 3.2rem;
 
-      margin: $imgMargin;
-      width: calc(100% - (2 * #{$imgMargin}));
+      width: auto;
       border-radius: 1rem;
+      object-fit: contain
     }
     h2 {
       @include BodoniModa;

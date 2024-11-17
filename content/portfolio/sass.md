@@ -4,33 +4,20 @@ description: "Descrizione per la pagina skills => SASS"
 logo: "/img/logos/sass-logo.svg"
 experience: 10
 features:
-  - intro: "Starting with Vue 2 and transitioning to Vue 3, I’ve gained a deep understanding of Vue.js and its evolving ecosystem. My focus is on building performant, modular applications, leveraging Vue's reactivity and component-based architecture. I ensure seamless user experiences through dynamic data binding, efficient routing, and reusable components. With a strong foundation in integrating Vue with various tech stacks, I develop scalable, maintainable solutions that align with both user and business needs."
-  - name: "Reactive Data Binding"
-    description: "Vue’s reactivity system ensures the UI stays in sync with underlying data, whether using ref() for primitives or reactive() for complex objects. I leverage this system to create dynamic interfaces that respond instantly to user input without manual DOM manipulation. Understanding the nuances of both methods, I apply them based on the specific data requirements, ensuring efficient, scalable and  maintainable code."
-    image: "/img/codeSample-1.jpg"
-  - name: "Component System"
-    description: "Vue’s component architecture allows for highly modular code. I use props for one-way data binding, ensuring proper type validation and $emit to trigger custom events for parent-child communication. I often leverage scoped slots for flexible content distribution and provide/inject when managing deeper component hierarchies. This method ensures components remain decoupled, maintainable, and scalable."
-  - name: "Directives"
-    description: "Vue's directives, such as v-bind, v-if, and v-for, enable efficient DOM manipulation without manual updates. I use v-bind to handle dynamic attributes and v-if for optimizing conditional rendering by minimizing unnecessary re-renders. For large data sets, v-for is key in handling efficient rendering of lists. Additionally, I've developed custom directives to encapsulate complex DOM interactions, enhancing code reusability and clarity."
-  - name: "Computed properties"
-    description: "Computed properties allow for efficient, cached calculations based on reactive data. I use computed properties to handle complex logic that depends on reactive state, ensuring the UI updates efficiently without unnecessary recalculations. By using them alongside watchers, I maintain clean and optimized code and enhanced responsiveness."
-  - name: "Lyfecycles"
-    description: "Vue's lifecycle hooks provide full control over component behavior during its creation, update, and destruction phases. I frequently use hooks like mounted() to trigger actions after DOM rendering, beforeUpdate() for optimization, and beforeUnmount() for cleanup tasks."
+  - intro: "I am an experienced developer with a deep understanding of SASS (Syntactically Awesome Style Sheets). My expertise spans a range of advanced techniques that enhance the efficiency and maintainability of stylesheets. Below, I highlight five key areas where my proficiency in SASS has made a significant impact on my development work."
+  - name: "Advanced Functions"
+    description: "I like SASS very much; I think it has lots of wonderful possibilities, if you scratch the surface a bit. Mastering funtions not only allows you to keep your code DRY and well-organized but it gives big room for creativity and, why not... fun"
+    image: "/img/snippets/sass-functions.jpg"
+  - name: "Advanced Mixins"
+    description: "I leverage SASS mixins to simplify and automate responsive design. In the code example my mixin for generating responsive column offsets, allows for automatic creation of classes for various breakpoints. This approach significantly reduces repetitive code and makes the layout system adaptable to different devices."
+    image: "/img/snippets/sass-mixins.jpg"
+  - name: "Variables for Theme Management"
+    description: "I leverage SASS variables to manage colors, fonts, and spacing, making it easy to adjust themes and maintain consistency across a project. My experience includes setting up dark and light themes for applications using variables, allowing for quick adjustments with minimal effort."
+    image: "/img/snippets/sass-themeManagement.jpg"
+  - name: "SVG Animations"
+    description: "Surely there are some very good libraries around for animating SVGs but if you want to hand-craft them for a better control and less headaches with your existing codebase, SASS is surely a must for handling interval-staggering and color morph without bloating and cluttering your code"
+    image: "/img/snippets/sass-svgAnimations.jpg"
+  - name: "Responsive Design and Media Queries"
+    description: "I excel in creating flexible, responsive layouts by leveraging SASS Mixins to handle media queries seamlessly. Not only the code becomes more compact but also much easier to navigate and being understood by fellow developers"
+    image: "/img/snippets/sass-responsiveDesign.jpg"
 ---
-
-<!-- <h2 class="TestClass SecondTestClass">Vue 3 nad Nuxt</h2>
-
-<p>Starting with Vue 2 and transitioning to Vue 3, I’ve gained a deep understanding of Vue.js and its evolving ecosystem. My focus is on building performant, modular applications, leveraging Vue's **reactivity** and component-based architecture.
-<br>
-I ensure seamless user experiences through dynamic data binding, efficient routing, and reusable components. With a strong foundation in integrating Vue with various tech stacks, I develop scalable, maintainable solutions that align with both user and business needs.</p>
-
-<h2 id="TestID">Reactive Data Binding</h2>
-<p>Vue’s reactivity system ensures the UI stays in sync with underlying data, whether using ref() for primitives or reactive() for complex objects. I leverage this system to create dynamic interfaces that respond instantly to user input without manual DOM manipulation. 
-
-Understanding the nuances of both methods, I apply them based on the specific data requirements, ensuring efficient, scalable and  maintainable code.</p>
-
-Hello [World]{style="color: green;" .custom-class #custom-id}!
-
-
-
-<img src="/img/logos/vuejs-original.svg" alt="Vue logo" class=""> -->

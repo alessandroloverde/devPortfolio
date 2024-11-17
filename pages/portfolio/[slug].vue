@@ -77,7 +77,9 @@
             <h6 v-if="feature.intro">{{ feature.intro }}</h6>
             <h2 v-else>{{ feature.name }}</h2>
             <p>{{ feature.description }}</p>
-            <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
+            <div class="skill-features--imageWrapper">
+               <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
+            </div>
             <div class="scroll-down">
                <SVGarrowDown />
             </div>
