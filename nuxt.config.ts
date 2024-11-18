@@ -4,7 +4,7 @@ import svgLoader from 'vite-svg-loader';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/content", "@nuxtjs/google-fonts"],
-  ssr: true,
+  ssr: false,
   compatibilityDate: "2024-10-25",
   googleFonts: {
     families: {
