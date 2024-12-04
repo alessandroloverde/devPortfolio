@@ -1,3 +1,3 @@
 <template>
-  <h1>Nothing to see here, check the content router</h1>
+  <h1>H1 hard-coded</h1>
 </template>

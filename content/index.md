@@ -7,6 +7,6 @@ navigation:
 ---
 
 
-# Index
+# Alessandro Lo Verde
 
-This is the Home Page
+## Frontend Developer for web interfaces
