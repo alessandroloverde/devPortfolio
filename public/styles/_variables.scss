@@ -7,6 +7,7 @@ $limeGreen: #a6fc52;
 $vueGreen: #41b883;
 $vividOrange: #fd5b37;
 $darkGrey: #1f1f25;
+$deepBlack: #060105;
 /* $medGrey: #282630; */
 $medGrey: oklch(27.5% 0.0185 294.32);
 $lightGrey: #b8b8b8;
@@ -38,4 +39,9 @@ $boxBkgColor: $medGrey;
    font-weight: $weight;
    font-style: $style;
 }
+/** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/** ––– Parameters ––––––––––––––––––––––––––––––––––––––––––––––––– */
+$standardMargin: 1.6rem;
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */

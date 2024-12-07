@@ -18,4 +18,11 @@ export default defineNuxtConfig({
   vite: {
     plugins: [svgLoader()],
   },
+  content: {
+    markdown: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+      anchorLinks: false, // Disable heading anchors
+    },
+  },
 });
