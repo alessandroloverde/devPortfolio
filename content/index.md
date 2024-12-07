@@ -7,6 +7,7 @@ navigation:
 ---
 
 
-# Alessandro Lo Verde
+# Alessandro <br><span>Lo Verde</span>
 
-## Frontend Developer for web interfaces
+## {<span>Frontend</span>} Developer<br>for web interfaces
+

@@ -17,22 +17,25 @@
   }
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  height: 100%;
-  position: fixed;
-  left: 0;
+#skills {
+  header {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+  }
+  
+  main {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    margin-left: 50%;
+    overflow: hidden;
+  }
 }
 
-main {
-  display: flex;
-  width: 50%;
-  height: 100%;
-  margin-left: 50%;
-  overflow: hidden;
-}
 
 .skill {
   &-info {

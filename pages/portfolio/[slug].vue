@@ -44,47 +44,49 @@
 </script>
 
 <template>
-   <header>
-      <Navigation />
-      <div class="skill-info">
-         <aside>
-            <img :src="data?.logo" v-if="data?.logo" class="responsiveImg" />
-         </aside>
-         <div class="skill-info--content">
-            <div>
-               <h1>{{ data?.title }}</h1>
-               <h4 v-if="data?.experience">
-                  <span>since</span><i>{{ data?.experience }}</i> years
-               </h4>
+   <div id="skills">
+      <header>
+         <Navigation />
+         <div class="skill-info">
+            <aside>
+               <img :src="data?.logo" v-if="data?.logo" class="responsiveImg" />
+            </aside>
+            <div class="skill-info--content">
+               <div>
+                  <h1>{{ data?.title }}</h1>
+                  <h4 v-if="data?.experience">
+                     <span>since</span><i>{{ data?.experience }}</i> years
+                  </h4>
+               </div>
+            </div>
+            <div class="skill-info--toBeDefined">
+               <ul class="referenceUL">
+                  <li v-for="(feature, index) of data?.features.slice(1)" :key="index + 1" class="reference">
+                     <div class="reference--number">
+                        <AnimatedNumber :numberIndex="index + 1" />
+                     </div>
+                     <h3 class="shuffle-text">{{ feature.name }}</h3>
+                  </li>
+               </ul>
             </div>
          </div>
-         <div class="skill-info--toBeDefined">
-            <ul class="referenceUL">
-               <li v-for="(feature, index) of data?.features.slice(1)" :key="index + 1" class="reference">
-                  <div class="reference--number">
-                     <AnimatedNumber :numberIndex="index + 1" />
-                  </div>
-                  <h3 class="shuffle-text">{{ feature.name }}</h3>
-               </li>
-            </ul>
-         </div>
-      </div>
-   </header>
+      </header>
 
-   <main>
-      <article v-if="data" class="skill-features">
-         <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)">
-            <h6 v-if="feature.intro">{{ feature.intro }}</h6>
-            <h2 v-else>{{ feature.name }}</h2>
-            <p>{{ feature.description }}</p>
-            <div class="skill-features--imageWrapper">
-               <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
-            </div>
-            <div class="scroll-down">
-               <SVGarrowDown />
-            </div>
-         </section>
-      </article>
-   </main>
+      <main>
+         <article v-if="data" class="skill-features">
+            <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)">
+               <h6 v-if="feature.intro">{{ feature.intro }}</h6>
+               <h2 v-else>{{ feature.name }}</h2>
+               <p>{{ feature.description }}</p>
+               <div class="skill-features--imageWrapper">
+                  <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
+               </div>
+               <div class="scroll-down">
+                  <SVGarrowDown />
+               </div>
+            </section>
+         </article>
+      </main>
+   </div>
    <!-- <ContentDoc unwrap="p"/> -->
 </template>

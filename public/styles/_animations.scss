@@ -41,3 +41,15 @@ svg .svg-elem-2 {
 }
 
 
+
+
+/** ––– Home - Cursor –––––––––––––––––––––––––––––––––––––––––––––– */
+@keyframes cursor-blink {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: $vueGreen;
+  }
+}
+/** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
