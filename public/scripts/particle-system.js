@@ -16,9 +16,9 @@ export function initializeParticleSystem(canvasId) {
   });
 
   const particles = [];
-  const PARTICLE_COUNT = 300;
-  const MAX_DIST = 80;
-  const MOUSE_RADIUS = canvas.width * 0.15;
+  const PARTICLE_COUNT = 500;
+  const MAX_DIST = 70;
+  const MOUSE_RADIUS = canvas.width * 0.1;
   const COLORS = ["rgba(15, 115, 144, 0.7)", "rgba(220, 15, 37, 0.7)"];
 
   const mouse = { x: null, y: null };
