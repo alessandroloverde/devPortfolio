@@ -18,11 +18,17 @@
 </template>
 
 <script setup>
-  import { onMounted } from "vue";
+  import { onMounted, onUnmounted } from "vue";
   import { initializeParticleSystem } from "../public/scripts/particle-system.js";
 
+  let cleanupParticles;
+
   onMounted(() => {
-    initializeParticleSystem("heroCanvas");
+    cleanupParticles = initializeParticleSystem("heroCanvas");
+  });
+
+  onUnmounted(() => {
+    if (cleanupParticles) cleanupParticles();
   });
 </script>
 
@@ -35,6 +41,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    pointer-events: none;
   }
 
   canvas {

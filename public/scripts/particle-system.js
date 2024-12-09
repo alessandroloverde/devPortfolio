@@ -6,33 +6,34 @@ export function initializeParticleSystem(canvasId) {
   }
 
   const ctx = canvas.getContext("2d");
+  let animationFrameId;
 
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 
-  window.addEventListener("resize", () => {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  });
-
   const particles = [];
-  const PARTICLE_COUNT = 500;
-  const MAX_DIST = 70;
-  const MOUSE_RADIUS = canvas.width * 0.1;
+  const PARTICLE_COUNT = 300;
+  const MAX_DIST = 80;
+  const MOUSE_RADIUS = canvas.width * 0.15;
   const COLORS = ["rgba(15, 115, 144, 0.7)", "rgba(220, 15, 37, 0.7)"];
 
   const mouse = { x: null, y: null };
 
-  canvas.addEventListener("mousemove", (e) => {
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  function handleMouseMove(e) {
     const rect = canvas.getBoundingClientRect();
     mouse.x = e.clientX - rect.left;
     mouse.y = e.clientY - rect.top;
-  });
+  }
 
-  canvas.addEventListener("mouseleave", () => {
+  function handleMouseLeave() {
     mouse.x = null;
     mouse.y = null;
-  });
+  }
 
   class Particle {
     constructor() {
@@ -107,9 +108,23 @@ export function initializeParticleSystem(canvasId) {
     });
 
     drawMesh();
-    requestAnimationFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
   }
 
+  // Initialize
   createParticles();
   animate();
+
+  // Add event listeners
+  window.addEventListener("resize", resizeCanvas);
+  canvas.addEventListener("mousemove", handleMouseMove);
+  canvas.addEventListener("mouseleave", handleMouseLeave);
+
+  // Cleanup function
+  return () => {
+    cancelAnimationFrame(animationFrameId);
+    window.removeEventListener("resize", resizeCanvas);
+    canvas.removeEventListener("mousemove", handleMouseMove);
+    canvas.removeEventListener("mouseleave", handleMouseLeave);
+  };
 }

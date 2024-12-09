@@ -22,6 +22,8 @@
   &--content {
     width: 50%;
     padding: $standardMargin;
+    display: flex;
+    align-items: center;
 
     h1 {
       @include Barlow(500);
@@ -44,10 +46,10 @@
 
       font-size: 6.25rem;
       letter-spacing: -1px;
-      color: $lightGrey;
+      color: $vueGreen;
 
       & > span {
-        color: $vueGreen;
+        color: $vividOrange;
       }
 
       &::after {

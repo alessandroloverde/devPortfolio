@@ -7,7 +7,9 @@ navigation:
 ---
 
 
-# Alessandro <br><span>Lo Verde</span>
+<!-- # Alessandro <br><span>Lo Verde</span> -->
+![a title](/img/alessandroLoVerde.svg)
+## <span>Frontend</span> Developer<br>for web interfaces
 
-## {<span>Frontend</span>} Developer<br>for web interfaces
+
 
