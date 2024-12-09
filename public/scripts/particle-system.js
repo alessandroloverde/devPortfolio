@@ -12,16 +12,16 @@ export function initializeParticleSystem(canvasId) {
   canvas.height = canvas.offsetHeight;
 
   const particles = [];
-  const PARTICLE_COUNT = 300;
-  const MAX_DIST = 80;
-  const MOUSE_RADIUS = canvas.width * 0.15;
+  const PARTICLE_COUNT = 350;
+  const MAX_DIST = 70;
+  const MOUSE_RADIUS = canvas.width * 0.1;
   const COLORS = ["rgba(15, 115, 144, 0.7)", "rgba(220, 15, 37, 0.7)"];
 
   const mouse = { x: null, y: null };
 
   function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    canvas.width = canvas.offsetWidth * 0.8; // Lower resolution
+    canvas.height = canvas.offsetHeight * 0.8; // Lower resolution    
   }
 
   function handleMouseMove(e) {
@@ -56,7 +56,7 @@ export function initializeParticleSystem(canvasId) {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 6;
       ctx.shadowColor = this.color;
       ctx.fillStyle = this.color;
       ctx.fill();
@@ -101,15 +101,19 @@ export function initializeParticleSystem(canvasId) {
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+  
     particles.forEach((particle) => {
       particle.update();
       particle.draw();
     });
-
+  
     drawMesh();
-    animationFrameId = requestAnimationFrame(animate);
+  
+    setTimeout(() => {
+      requestAnimationFrame(animate);
+    }, 1000 / 30); // Limit to 30 FPS
   }
+  
 
   // Initialize
   createParticles();
