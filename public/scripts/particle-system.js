@@ -126,6 +126,7 @@ export function initializeParticleSystem(canvasId) {
 
   // Cleanup function
   return () => {
+    alert('cancel')
     cancelAnimationFrame(animationFrameId);
     window.removeEventListener("resize", resizeCanvas);
     canvas.removeEventListener("mousemove", handleMouseMove);

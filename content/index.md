@@ -8,7 +8,8 @@ navigation:
 
 
 <!-- # Alessandro <br><span>Lo Verde</span> -->
-![a title](/img/alessandroLoVerde.svg)
+<!-- ![a title](/img/alessandroLoVerde.svg) -->
+<AlessandroLoVerdeLogo></AlessandroLoVerdeLogo>
 ## <span>Frontend</span> Developer<br>for web interfaces
 
 
