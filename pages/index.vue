@@ -18,19 +18,20 @@
 </template>
 
 <script setup>
-  import { onMounted, onUnmounted } from "vue";
+  import { onMounted, onBeforeUnmount } from 'vue';
   import { initializeParticleSystem } from "../public/scripts/particle-system.js";
 
-  let cleanupParticles;
+  let cleanupParticleSystem;
 
   onMounted(() => {
-    cleanupParticles = initializeParticleSystem("heroCanvas");
+    cleanupParticleSystem = initializeParticleSystem('heroCanvas');
   });
 
-  onUnmounted(() => {
-    if (cleanupParticles) cleanupParticles();
+  onBeforeUnmount(() => {
+    if (cleanupParticleSystem) cleanupParticleSystem();
   });
 </script>
+
 
 <style scoped>
   .hero {

@@ -2,7 +2,7 @@ export function initializeParticleSystem(canvasId) {
   const canvas = document.getElementById(canvasId);
   if (!canvas) {
     console.error("Canvas element not found");
-    return;
+    return null;
   }
 
   const ctx = canvas.getContext("2d");
@@ -20,8 +20,8 @@ export function initializeParticleSystem(canvasId) {
   const mouse = { x: null, y: null };
 
   function resizeCanvas() {
-    canvas.width = canvas.offsetWidth * 0.8; // Lower resolution
-    canvas.height = canvas.offsetHeight * 0.8; // Lower resolution    
+    canvas.width = canvas.offsetWidth * 0.8;
+    canvas.height = canvas.offsetHeight * 0.8;
   }
 
   function handleMouseMove(e) {
@@ -101,19 +101,16 @@ export function initializeParticleSystem(canvasId) {
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+
     particles.forEach((particle) => {
       particle.update();
       particle.draw();
     });
-  
+
     drawMesh();
-  
-    setTimeout(() => {
-      requestAnimationFrame(animate);
-    }, 1000 / 30); // Limit to 30 FPS
+
+    animationFrameId = requestAnimationFrame(animate);
   }
-  
 
   // Initialize
   createParticles();
@@ -126,10 +123,10 @@ export function initializeParticleSystem(canvasId) {
 
   // Cleanup function
   return () => {
-    alert('cancel')
     cancelAnimationFrame(animationFrameId);
     window.removeEventListener("resize", resizeCanvas);
     canvas.removeEventListener("mousemove", handleMouseMove);
     canvas.removeEventListener("mouseleave", handleMouseLeave);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
 }
