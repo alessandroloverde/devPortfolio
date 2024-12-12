@@ -52,16 +52,6 @@
       & > span {
         color: $vividOrange;
       }
-
-      &::after {
-        content: "";
-        height: 5px;
-        background-color: $vueGreen;
-        display: inline-block;
-        width: 5%;
-        margin-left: 0.2em;
-        animation: cursor-blink 1.5s step-end infinite;
-      }
     }
   }
 }
