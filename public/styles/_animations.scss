@@ -93,28 +93,35 @@ svg .svg-elem-2 {
 
 
 /** ––– Home - SVG logo –––––––––––––––––––––––––––––––––––––––––––– */
-  $paths: (
-    504.8827209472656px,
-    344.9638671875px,
-    533.4547119140625px,
-    546.2145385742188px,
-    546.2147216796875px,
-    504.8797912597656px,
-    603.34033203125px,
-    558.7443237304688px,
-    573.4409790039062px,
-    524.1692504882812px,
-    486.79974365234375px,
-    717.8742065429688px,
-    615.7418823242188px,
-    738.6614379882812px,
-    785.0479125976562px,
-    762.751708984375px,
-    738.65673828125px
-  );
-  $strokeStagger: 0.12s;
-  $fillStagger: 0.1s;
+$paths: (
+  504.8827209472656px,
+  344.9638671875px,
+  533.4547119140625px,
+  546.2145385742188px,
+  546.2147216796875px,
+  504.8797912597656px,
+  603.34033203125px,
+  558.7443237304688px,
+  573.4409790039062px,
+  524.1692504882812px,
+  486.79974365234375px,
+  717.8742065429688px,
+  615.7418823242188px,
+  738.6614379882812px,
+  785.0479125976562px,
+  762.751708984375px,
+  738.65673828125px
+);
+$strokeStagger: 0.12s;
+$fillStagger: 0.1s;
+$totalPaths: length($paths);
+$totalStrokeDuration: 1s + ($strokeStagger * ($totalPaths - 1));
+$totalFillDuration: 0.7s + 0.8s + ($fillStagger * ($totalPaths - 1));
+$totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
 
+@debug $totalStrokeDuration; // Total stroke duration
+@debug $totalFillDuration;   // Total fill duration
+@debug $totalAnimationDuration; // Total animation duration
 
 
 @each $path in $paths {
