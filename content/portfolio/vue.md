@@ -17,7 +17,7 @@ features:
   - name: "Computed properties"
     description: "Computed properties allow for efficient, cached calculations based on reactive data. I use computed properties to handle complex logic that depends on reactive state, ensuring the UI updates efficiently without unnecessary recalculations. By using them alongside watchers, I maintain clean and optimized code and enhanced responsiveness."
     image: "/img/snippets/vue-ComputedProperties.jpg"
-  - name: "Lyfecycles"
+  - name: "Lifecycles"
     description: "Vue's lifecycle hooks provide full control over component behavior during its creation, update, and destruction phases. I frequently use hooks like mounted() to trigger actions after DOM rendering, beforeUpdate() for optimization, and beforeUnmount() for cleanup tasks."
     image: "/img/snippets/vue-Lifecycles.jpg"
 ---

@@ -7,7 +7,20 @@ navigation:
 ---
 
 
-# Alessandro <br><span>Lo Verde</span>
+<!-- # Alessandro <br><span>Lo Verde</span> -->
+<!-- ![a title](/img/alessandroLoVerde.svg) -->
+<AlessandroLoVerdeLogo></AlessandroLoVerdeLogo>
+<h2>
+  <span class="cursor-container">
+    <span class="cursor typewriter-animation-1"><span class="vividColor">Frontend</span> Developer</span>
+  </span>
+  <br>
+  <span class="cursor-container">
+    <span class="cursor typewriter-animation-2">for web interfaces</span>
+  </span>
+</h2>
 
-## {<span>Frontend</span>} Developer<br>for web interfaces
+
+
+
 

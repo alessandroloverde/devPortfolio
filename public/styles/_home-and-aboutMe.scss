@@ -5,6 +5,7 @@
 
   header {
     position: absolute;
+    z-index: 10;
   }
 
   &--container {
@@ -22,6 +23,8 @@
   &--content {
     width: 50%;
     padding: $standardMargin;
+    display: flex;
+    align-items: center;
 
     h1 {
       @include Barlow(500);
@@ -44,35 +47,11 @@
 
       font-size: 6.25rem;
       letter-spacing: -1px;
-      color: $lightGrey;
+      color: $accentcolor;
 
-      & > span {
-        color: $vueGreen;
-      }
-
-      &::after {
-        content: "";
-        height: 5px;
-        background-color: $vueGreen;
-        display: inline-block;
-        width: 5%;
-        margin-left: 0.2em;
-        animation: cursor-blink 1.5s step-end infinite;
+      & span.vividColor {
+        color: $vividColor;
       }
     }
   }
-}
-
-
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-}
-
-canvas {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
 }
