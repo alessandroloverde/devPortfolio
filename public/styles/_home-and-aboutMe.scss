@@ -47,10 +47,10 @@
 
       font-size: 6.25rem;
       letter-spacing: -1px;
-      color: $vueGreen;
+      color: $accentcolor;
 
-      & > span {
-        color: $vividOrange;
+      & span.vividColor {
+        color: $vividColor;
       }
     }
   }

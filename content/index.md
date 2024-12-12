@@ -12,7 +12,7 @@ navigation:
 <AlessandroLoVerdeLogo></AlessandroLoVerdeLogo>
 <h2>
   <span class="cursor-container">
-    <span class="cursor typewriter-animation-1">Frontend Developer</span>
+    <span class="cursor typewriter-animation-1"><span class="vividColor">Frontend</span> Developer</span>
   </span>
   <br>
   <span class="cursor-container">
