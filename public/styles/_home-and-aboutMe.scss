@@ -1,5 +1,4 @@
 .homePage {
-  outline: 2px solid red;
   background-color: $deepBlack;
   height: 100vh;
 
@@ -16,8 +15,9 @@
   &--background {
     width: 50%;
     background-image: url("../img/Bkg-Alessandro.jpg");
-    background-size: cover;
-    background-position: top right;
+    background-size: 80%;
+    background-position: center left;
+    background-repeat: no-repeat;
   }
 
   &--content {
@@ -53,5 +53,19 @@
         color: $vividColor;
       }
     }
+  }
+
+  &--arrow {
+    cursor: pointer;
+    mask-image: url(/public/img/icons/fi-rr-angle-down.svg);
+    -webkit-mask-image: url(/public/img/icons/fi-rr-angle-down.svg);
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    background-color: $limeGreen;
+    width: 16rem;
+    height: 16rem;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
   }
 }

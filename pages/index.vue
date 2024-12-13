@@ -8,6 +8,8 @@
         <section class="homePage--background"></section>
         <section class="homePage--content">
           <ContentDoc></ContentDoc>
+          <div class="homePage--arrow" :ref="arrow" @click="handleArrowClick"></div>
+
           <div class="hero">
             <canvas id="heroCanvas"></canvas>
           </div>
@@ -22,6 +24,11 @@
   import { initializeParticleSystem } from "../public/scripts/particle-system.js";
 
   let cleanupParticleSystem;
+  let arrow = ref(null);
+
+  const handleArrowClick = () => {
+      alert('arrow clicked');
+    };
 
   onMounted(() => {
     cleanupParticleSystem = initializeParticleSystem('heroCanvas');
