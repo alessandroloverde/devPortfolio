@@ -8,18 +8,13 @@ export function initializeParticleSystem(canvasId) {
   const ctx = canvas.getContext("2d");
   let animationFrameId;
 
-  const PARTICLE_COUNT = 150; // Number of interactive particles
-  const BACKGROUND_PARTICLES = 50; // Number of background particles
-  const MAX_DIST = 150; // Maximum distance for connections
-  const MOUSE_RADIUS = 200; // Interaction radius for mouse
-  const ATTRACTION_STRENGTH = 0.05; // Strength of attraction or repulsion
-  const COLORS = ["rgba(15, 115, 144, 1)", "rgba(220, 15, 37, 1)"];
+  const PARTICLE_COUNT = 400; // Increased particle count
+  const MAX_DIST = 150; // Maximum distance for connections within cluster
+  const MOUSE_RADIUS = 200; // Radius of influence around the mouse (500px diameter)
+  const BLUE_COLOR = "rgba(15, 115, 144, 1)"; // Blue color for cluster
+  const RED_COLOR = "rgba(220, 15, 37, 1)"; // Red color for non-cluster particles
   const particles = [];
-  const backgroundParticles = [];
-  const mouse = { x: null, y: null };
-
-  // Interaction mode: "attract" or "repel"
-  const interactionMode = "repel"; // Change to "attract" for attraction effect
+  const mouse = { x: null, y: null, active: false };
 
   function resizeCanvas() {
     canvas.width = canvas.offsetWidth;
@@ -33,51 +28,33 @@ export function initializeParticleSystem(canvasId) {
 
     mouse.x = (e.clientX - rect.left) * scaleX;
     mouse.y = (e.clientY - rect.top) * scaleY;
+    mouse.active = true;
   }
 
   function handleMouseLeave() {
     mouse.x = null;
     mouse.y = null;
+    mouse.active = false;
   }
 
   class Particle {
-    constructor(isBackground = false) {
+    constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = isBackground ? (Math.random() - 0.5) * 0.2 : (Math.random() - 0.5) * 1.2; // Subtle movement for background
-      this.vy = isBackground ? (Math.random() - 0.5) * 0.2 : (Math.random() - 0.5) * 1.2;
-      this.size = isBackground ? Math.random() * 1 + 0.2 : Math.random() * 2 + 1;
-      this.color = isBackground ? "rgba(255, 255, 255, 0.2)" : COLORS[Math.floor(Math.random() * COLORS.length)];
-      this.isBackground = isBackground;
+      this.vx = (Math.random() - 0.5) * 0.5; // Gentle velocity
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.size = Math.random() * 1.5 + 0.5;
+      this.color = Math.random() > 0.5 ? RED_COLOR : BLUE_COLOR; // Assign red or blue
     }
 
     update() {
-      // Background movement
+      // Subtle movement
       this.x += this.vx;
       this.y += this.vy;
 
-      // Bounce back on edges
+      // Bounce off edges
       if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
       if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-      // Interaction (only for interactive particles)
-      if (!this.isBackground && mouse.x !== null && mouse.y !== null) {
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < MOUSE_RADIUS) {
-          const force = interactionMode === "attract" ? 1 : -1; // Attraction or repulsion
-          const strength = force * ATTRACTION_STRENGTH * (1 - distance / MOUSE_RADIUS);
-
-          this.vx += strength * dx;
-          this.vy += strength * dy;
-        }
-
-        // Apply friction to slow velocity
-        this.vx *= 0.98;
-        this.vy *= 0.98;
-      }
     }
 
     draw() {
@@ -93,54 +70,66 @@ export function initializeParticleSystem(canvasId) {
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push(new Particle());
     }
-    for (let i = 0; i < BACKGROUND_PARTICLES; i++) {
-      backgroundParticles.push(new Particle(true));
-    }
   }
 
-  function drawMesh() {
-    particles.forEach((particle, i) => {
-      for (let j = i + 1; j < particles.length; j++) {
-        const otherParticle = particles[j];
-        const dx = particle.x - otherParticle.x;
-        const dy = particle.y - otherParticle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+  function drawCluster() {
+    if (!mouse.active || !mouse.x || !mouse.y) return;
 
-        if (distance < MAX_DIST) {
-          const opacity = 1 - distance / MAX_DIST;
-          ctx.beginPath();
-          ctx.moveTo(particle.x, particle.y);
-          ctx.lineTo(otherParticle.x, otherParticle.y);
-          ctx.strokeStyle = `rgba(15, 115, 144, ${opacity})`;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-          ctx.closePath();
+    particles.forEach((particle, i) => {
+      // Check distance from mouse
+      const dx = particle.x - mouse.x;
+      const dy = particle.y - mouse.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < MOUSE_RADIUS) {
+        // Enhance particle glow and enforce blue color
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size * 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = BLUE_COLOR; // Override color to blue
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = BLUE_COLOR; // Glow in blue
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
+
+        // Connect particles within the cluster
+        for (let j = i + 1; j < particles.length; j++) {
+          const otherParticle = particles[j];
+          const otherDx = otherParticle.x - particle.x;
+          const otherDy = otherParticle.y - particle.y;
+          const otherDistance = Math.sqrt(otherDx * otherDx + otherDy * otherDy);
+
+          if (otherDistance < MAX_DIST) {
+            const opacity = 0.8 * (1 - otherDistance / MAX_DIST) + 0.2; // Ensure minimum opacity
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
+            ctx.strokeStyle = BLUE_COLOR.replace("1)", `${opacity})`); // Dynamic opacity
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+            ctx.closePath();
+          }
         }
       }
-    });
-  }
-
-  function drawBackgroundParticles() {
-    backgroundParticles.forEach((particle) => {
-      particle.update(); // Background particles now move
-      particle.draw();
     });
   }
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw and update background particles
-    drawBackgroundParticles();
-
-    // Update and draw interactive particles
+    // Update particles
     particles.forEach((particle) => {
       particle.update();
+    });
+
+    // Draw particles
+    particles.forEach((particle) => {
       particle.draw();
     });
 
-    // Draw mesh connections
-    drawMesh();
+    // Draw cluster effect around mouse
+    drawCluster();
 
     animationFrameId = requestAnimationFrame(animate);
   }
@@ -149,10 +138,12 @@ export function initializeParticleSystem(canvasId) {
   createParticles();
   animate();
 
+  // Event listeners
   window.addEventListener("resize", resizeCanvas);
   canvas.addEventListener("mousemove", handleMouseMove);
   canvas.addEventListener("mouseleave", handleMouseLeave);
 
+  // Cleanup function
   return () => {
     cancelAnimationFrame(animationFrameId);
     window.removeEventListener("resize", resizeCanvas);
