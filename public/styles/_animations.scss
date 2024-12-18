@@ -42,7 +42,7 @@ svg .svg-elem-2 {
 
 
 /** ––– Home - Typewriter effect ––––––––––––––––––––––––––––––––––– */
-/* .cursor-container {
+.cursor-container {
   display: inline-block;
   position: relative;
 }
@@ -55,19 +55,20 @@ svg .svg-elem-2 {
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
-  visibility: hidden; 
+  visibility: hidden; /* Initially hidden for all cursors */
 }
 
 .typewriter-animation-1 {
   animation: 
-    showCursor 0s linear 3.1s forwards, 
+    showCursor 0s linear 3.1s forwards, /* Make visible before animation starts */
+    typewriter 2.5s steps(20) 3.1s 1 normal both, 
     blinkingCursor 500ms steps(20) 3.1s normal, 
     hideCursor 0s linear 5.6s forwards;
 }
 
 .typewriter-animation-2 {
   animation: 
-    showCursor 0s linear 5.6s forwards, 
+    showCursor 0s linear 5.6s forwards, /* Make visible before animation starts */
     typewriter 2.5s steps(20) 5.6s 1 normal both, 
     blinkingCursor 500ms steps(20) 5.6s infinite;
 }
@@ -88,7 +89,7 @@ svg .svg-elem-2 {
 @keyframes showCursor {
   from { visibility: hidden; }
   to { visibility: visible; }
-} */
+}
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 
