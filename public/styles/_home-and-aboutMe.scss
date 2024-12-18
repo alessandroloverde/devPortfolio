@@ -1,3 +1,48 @@
+@use "sass:list";
+@use "sass:map";
+
+$breakpoints: (
+  375: 35,
+  390: 36.5,
+  414: 39,
+  430: 41,
+  1280: 63,
+  1440: 72,
+  1600: 80,
+  1720: 87
+);
+
+@mixin responsive-font($property) {
+  $keys: map-keys($breakpoints);
+
+  @each $breakpoint, $size in $breakpoints {
+    $next-index: index($keys, $breakpoint) + 1;
+
+    // Check if there is a next breakpoint
+    @if $next-index <= length($keys) {
+      $next-breakpoint: nth($keys, $next-index);
+      $next-size: map-get($breakpoints, $next-breakpoint);
+
+      @media (min-width: #{$breakpoint}px) and (max-width: #{$next-breakpoint}px) {
+        #{$property}: calc(
+          #{$size}px + (#{$next-size} - #{$size}) * ((100vw - #{$breakpoint}px) / (#{$next-breakpoint} - #{$breakpoint}))
+        );
+      }
+    }
+  }
+
+  // Clamp below the smallest breakpoint
+  @media (max-width: #{nth($keys, 1)}px) {
+    #{$property}: #{map-get($breakpoints, nth($keys, 1))}px;
+  }
+
+  // Clamp above the largest breakpoint
+  @media (min-width: #{nth($keys, length($keys))}px) {
+    #{$property}: #{map-get($breakpoints, nth($keys, length($keys)))}px;
+  }
+}
+
+
 .homePage {
   background-color: $deepBlack;
   height: 100vh;
@@ -30,10 +75,10 @@
       width: 100%;
       max-width: 800px;
       display: flex;
-      justify-content: flex-start; /* Aligns the text horizontally */
-      align-items: center; /* Aligns the text vertically */
+      justify-content: flex-start;
+      align-items: center;
       flex-wrap: wrap;
-      outline: 1px solid slateblue;
+      //outline: 1px solid slateblue;
     } 
     h1 {
       @include Barlow(500);
@@ -54,12 +99,9 @@
     h2 {
       @include BodoniModa(500);
 
-      //font-size: 6.25rem;
-      font-size: clamp(
-        35px, /* Minimum font size for smallest viewport (375px) */
-        calc(0.026vw * 100 + 23.2px), /* Adjusted formula for dynamic scaling */
-        87px /* Maximum font size for largest viewport (1440px and above) */
-      );
+      /* font-size: clamp( 35px, calc(0.026vw * 100 + 23.2px),87px ); */
+      @include responsive-font(font-size);
+
       white-space: nowrap;
       letter-spacing: -1px;
       color: $accentcolor;
