@@ -98,17 +98,15 @@ $breakpoints: (
 
     h2 {
       @include BodoniModa(500);
-
-      /* font-size: clamp( 35px, calc(0.026vw * 100 + 23.2px),87px ); */
       @include responsive-font(font-size);
 
       white-space: nowrap;
       letter-spacing: -1px;
+      line-height: 0.85;
       color: $accentcolor;
+      margin-top: 0.5em;
 
-      & span.vividColor {
-        color: $vividColor;
-      }
+      & span.vividColor { color: $vividColor }
     }
   }
 
