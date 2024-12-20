@@ -1,0 +1,70 @@
+@use "sass:map";
+
+// Breakpoints and Gap Settings
+$breakpoints: (
+    mobile: 640px,
+    tablet: 768px,
+    desktop: 1024px
+);
+
+$gap-settings: (
+    mobile: 1rem,
+    tablet: 1.5rem,
+    desktop: 2rem
+);
+
+// General Flex Container Mixin
+@mixin flex-container($breakpoint-gap: 1rem) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $breakpoint-gap; // Unified gap application
+}
+
+// Flex Column Mixin
+@mixin flex-column($span: 1, $columns: 12, $gap: 0, $items-per-row: $columns / $span) {
+    $percentage: 100% / $columns;
+    $total-gaps-per-row: $items-per-row - 1; // Total number of gaps in a row
+    $gap-correction: $gap * $total-gaps-per-row / $items-per-row; // Full gap distributed across items
+    $width: calc((#{$percentage * $span}) - #{$gap-correction}); // Corrected width for the spanned columns
+    flex: 0 0 #{$width};
+    max-width: #{$width};
+}
+
+// Responsive Flex Mixin for Gaps
+@mixin flex-responsive-gaps($gap-settings, $breakpoints-map) {
+    @each $breakpoint, $gap in $gap-settings {
+        @if map.has-key($breakpoints-map, $breakpoint) {
+            @media (min-width: map.get($breakpoints-map, $breakpoint)) {
+                gap: $gap; // Ensure consistent gap
+            }
+        }
+    }
+}
+
+// Applying the mixins
+.container {
+    width: 100%; // Full width container
+    @include flex-container(map.get($gap-settings, mobile)); // Default to mobile gap
+    @include flex-responsive-gaps($gap-settings, $breakpoints);
+}
+
+// Utility Classes for Item Spans
+@mixin generate-item-classes($max: 12, $gap: 0) {
+    @for $span from 1 through $max {
+        @for $columns from $span through $max {
+            $items-per-row: $columns / $span; // Dynamically calculate items per row
+            .item-#{$span}-#{$columns} {
+                @include flex-column($span, $columns, $gap, $items-per-row);
+            }
+        }
+    }
+}
+
+// Generate Classes
+@include generate-item-classes(12, map.get($gap-settings, desktop)); // Use desktop gap by default
+
+// Generic Item Styling
+[class^="item"] {
+    background-color: bisque;
+    outline: 2px solid rgba(255, 183, 77, 1); // Example color
+}

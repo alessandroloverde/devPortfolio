@@ -9,7 +9,6 @@
         <section class="homePage--content">
           <ContentDoc></ContentDoc>
           <div class="homePage--arrow" :ref="arrow" @click="handleArrowClick"></div>
-
           <div class="hero">
             <canvas id="heroCanvas"></canvas>
           </div>
@@ -17,8 +16,26 @@
       </div>
     </main>
   </div>
-</template>
 
+  <div class="aboutPage">
+    <div class="container">
+      <div class="item-3-12">
+        <h2>Col-1</h2>
+      </div>
+      <div class="item-3-12">
+        <h2>Col-2</h2>
+      </div>
+      <div class="item-3-12">
+        <h2>Col-3</h2>
+      </div>
+      <div class="item-3-12">
+        <h2>Col-4</h2>
+      </div>
+    </div>
+  </div>
+
+</template>
+  
 <script setup>
   import { onMounted, onBeforeUnmount } from 'vue';
   import { initializeParticleSystem } from "../public/scripts/particle-system.js";
