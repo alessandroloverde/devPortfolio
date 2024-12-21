@@ -5,32 +5,36 @@
     </header>
     <main>
       <div class="homePage--container">
+        <div class="hero">
+            <canvas id="heroCanvas"></canvas>
+          </div>
         <section class="homePage--background"></section>
         <section class="homePage--content">
           <ContentDoc></ContentDoc>
-          <div class="homePage--arrow" :ref="arrow" @click="handleArrowClick"></div>
-          <div class="hero">
-            <canvas id="heroCanvas"></canvas>
-          </div>
+
+          <a href="#aboutPage">
+            <div class="homePage--arrow" :ref="arrow" ><a href="#aboutPage"></a></div>
+          </a>
+
+
         </section>
       </div>
     </main>
   </div>
 
-  <div class="aboutPage">
+  <div id="aboutPage">
     <div class="container">
-      <div class="item-3-12">
-        <h2>Col-1</h2>
-      </div>
-      <div class="item-3-12">
-        <h2>Col-2</h2>
-      </div>
-      <div class="item-3-12">
-        <h2>Col-3</h2>
-      </div>
-      <div class="item-3-12">
-        <h2>Col-4</h2>
-      </div>
+      <section class="item-12-12">
+        <h4>Introduction</h4>
+        <h2>A bit of me and myself</h2>
+      </section>
+      <section class="item-6-12">
+        <p>Col-1</p>
+        <ContentDoc path="/about"></ContentDoc>
+      </section>
+      <section class="item-6-12">
+        <p>Col-2</p>
+      </section>
     </div>
   </div>
 

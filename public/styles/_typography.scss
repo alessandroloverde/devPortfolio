@@ -8,8 +8,36 @@ h6,
 p {
   margin: 0;
 }
-h6 {
+h2 {
+  @include BodoniModa;
+
+  font-size: 7.2rem;
+  color: $washedGrey;
+  letter-spacing: 0.0125em;
+  line-height: 1;
+}
+h4 {
   @include Barlow;
+  
+  font-size: 3rem;
+  color: $vividOrange;
+  letter-spacing: 0.0125em;
+  line-height: 1;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    background-color: $vueGreen;
+    width: 0.75em;
+    height: 0.75em;
+    margin-right: 0.5em;
+  }
+}
+h6 {
+  @include Barlow(500);
 
   font-size: 2.4rem;
   color: $lightGrey;

@@ -4,9 +4,8 @@
 $breakpoints: (
     mobile: 640px,
     tablet: 768px,
-    desktop: 1024px
+    desktop: 1152px
 );
-
 $gap-settings: (
     mobile: 1rem,
     tablet: 1.5rem,
@@ -26,6 +25,7 @@ $gap-settings: (
     $total-gaps-per-row: $items-per-row - 1; // Total number of gaps in a row
     $gap-correction: $gap * $total-gaps-per-row / $items-per-row; // Full gap distributed across items
     $width: calc((#{$percentage * $span}) - #{$gap-correction}); // Corrected width for the spanned columns
+
     flex: 0 0 #{$width};
     max-width: #{$width};
 }
@@ -43,7 +43,14 @@ $gap-settings: (
 
 // Applying the mixins
 .container {
-    width: 100%; // Full width container
+    width: 100%; 
+    max-width: none; 
+    margin:auto;
+
+    @media screen and (min-width: map.get($breakpoints, desktop)) {
+        max-width: 1440px; 
+    }
+
     @include flex-container(map.get($gap-settings, mobile)); // Default to mobile gap
     @include flex-responsive-gaps($gap-settings, $breakpoints);
 }
@@ -53,6 +60,7 @@ $gap-settings: (
     @for $span from 1 through $max {
         @for $columns from $span through $max {
             $items-per-row: $columns / $span; // Dynamically calculate items per row
+
             .item-#{$span}-#{$columns} {
                 @include flex-column($span, $columns, $gap, $items-per-row);
             }
@@ -65,6 +73,5 @@ $gap-settings: (
 
 // Generic Item Styling
 [class^="item"] {
-    background-color: bisque;
-    outline: 2px solid rgba(255, 183, 77, 1); // Example color
+    //outline: 1px solid rgba(255, 183, 77, 1); // Example color
 }
