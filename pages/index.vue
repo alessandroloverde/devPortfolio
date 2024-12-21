@@ -31,7 +31,12 @@
         <ContentDoc path="/about"></ContentDoc>
       </section>
       <section class="item-4-12">
-        <p>Col-2</p>
+        <div class="image-list">
+          <div v-for="image in images" :key="image.path" class="">
+            <img :src="image.path" :alt="image.title" />
+            <p><i>{{ image.title }}</i></p>
+          </div>
+        </div>
       </section>
     </div>
   </div>
@@ -41,6 +46,12 @@
 <script setup>
   import { onMounted, onBeforeUnmount } from 'vue';
   import { initializeParticleSystem } from "../public/scripts/particle-system.js";
+  
+  const { data: aboutContent } = await useAsyncData('aboutContent', () =>
+    queryContent('/about').findOne()
+  );
+
+  const images = aboutContent.value?.images || [];
 
   let cleanupParticleSystem;
 
