@@ -11,12 +11,11 @@
         <section class="homePage--background"></section>
         <section class="homePage--content">
           <ContentDoc></ContentDoc>
-
           <a href="#aboutPage">
-            <div class="homePage--arrow" :ref="arrow" ><a href="#aboutPage"></a></div>
+            <div class="homePage--arrow" >
+              <a href="#aboutPage"></a>
+            </div>
           </a>
-
-
         </section>
       </div>
     </main>
@@ -28,11 +27,10 @@
         <h4>Introduction</h4>
         <h2>A bit of me and myself</h2>
       </section>
-      <section class="item-6-12">
-        <p>Col-1</p>
+      <section class="item-8-12">
         <ContentDoc path="/about"></ContentDoc>
       </section>
-      <section class="item-6-12">
+      <section class="item-4-12">
         <p>Col-2</p>
       </section>
     </div>
@@ -45,11 +43,6 @@
   import { initializeParticleSystem } from "../public/scripts/particle-system.js";
 
   let cleanupParticleSystem;
-  let arrow = ref(null);
-
-  const handleArrowClick = () => {
-      alert('arrow clicked');
-    };
 
   onMounted(() => {
     cleanupParticleSystem = initializeParticleSystem('heroCanvas');

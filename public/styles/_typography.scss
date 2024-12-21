@@ -5,9 +5,8 @@ h3,
 h4,
 h5, 
 h6,
-p {
-  margin: 0;
-}
+p { margin: 0 }
+
 h2 {
   @include BodoniModa;
 
@@ -55,8 +54,13 @@ h6 {
 p {
   @include Barlow;
 
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: $lightGrey;
   letter-spacing: 0.0125em;
   line-height: 1.35;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  
+  & + p { margin-top: calc($standardMargin * 2) }
+
 }

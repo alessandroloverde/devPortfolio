@@ -2,6 +2,13 @@
 import svgLoader from 'vite-svg-loader';
 
 export default defineNuxtConfig({
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en'
+      }
+    }
+  },
   devtools: { enabled: true },
   modules: ["@nuxt/content", "@nuxtjs/google-fonts"],
   ssr: false,
