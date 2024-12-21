@@ -126,6 +126,23 @@ $breakpoints: (
   }
 }
 
+#aboutPage {
+  background-image: linear-gradient(180deg, $deepBlack, $darkGrey);
+
+  h2 {
+    @include BodoniModa(500);
+
+    color: $washedGrey;
+  }
+  h4 { 
+    margin-top: calc($standardMargin * 4);
+    margin-bottom: $standardMargin; 
+  }
+  p { text-align: justify }
+}
+
+
+
 @media screen and (max-width: 600px) {
   .homePage {
     header { display: none } // Check it out later when the Skills page is ready
@@ -150,19 +167,5 @@ $breakpoints: (
       left: 50%;
       transform: translateX(-50%);
     }
-  }
-}
-
-#aboutPage {
-  background-image: linear-gradient(180deg, $deepBlack, $darkGrey);
-
-  h2 {
-    @include BodoniModa(500);
-
-    color: $washedGrey;
-  }
-  h4 { 
-    margin-top: calc($standardMargin * 4);
-    margin-bottom: $standardMargin; 
   }
 }

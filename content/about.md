@@ -1,6 +1,18 @@
 ---
 title: "About"
 description: "Descrizione per la pagina About"
+images: [
+   {   
+      title: "me with MacBook",
+      path: "img/about--meWithMacbook.jpg"
+   },
+      {   
+      title: "Sharon Den Adel",
+      path: "img/SharonDenAdel.jpg"
+   }
+]
+
+
 ---
 
 My journey began quite long ago, as a Web Designer, where I witnessed the evolution from static websites to modern, dynamic, and responsive web apps. This solid foundation in design has given me a deep understanding of UI, UX, and design principles, which I now seamlessly integrate into my dev workflow to create intuitive, user-friendly interfaces.
@@ -13,5 +25,5 @@ I thrive in collaborative, international teams and have worked with tools like G
 
 Passionate about the web, I am constantly exploring new technologies, optimizing workflows, and focusing on creating impactful user experiences. Whether optimizing performance or designing intuitive UIs, I bring a blend of design expertise and technical skill to every project I work on.
 
-![my image](/assets/img/about--meWithMacbook.jpg)
+<!-- ![my image](img/about--meWithMacbook.jpg) -->
 
