@@ -24,21 +24,27 @@ $breakpoints: (
       $next-size: map-get($breakpoints, $next-breakpoint);
 
       @media (min-width: #{$breakpoint}px) and (max-width: #{$next-breakpoint}px) {
-        #{$property}: calc(
-          #{$size}px + (#{$next-size} - #{$size}) * ((100vw - #{$breakpoint}px) / (#{$next-breakpoint} - #{$breakpoint}))
-        );
+        & {
+          #{$property}: calc(
+            #{$size}px + (#{$next-size} - #{$size}) * ((100vw - #{$breakpoint}px) / (#{$next-breakpoint} - #{$breakpoint}))
+          );
+        }
       }
     }
   }
 
   // Clamp below the smallest breakpoint
   @media (max-width: #{nth($keys, 1)}px) {
-    #{$property}: #{map-get($breakpoints, nth($keys, 1))}px;
+    & {
+      #{$property}: #{map-get($breakpoints, nth($keys, 1))}px;
+    }
   }
 
   // Clamp above the largest breakpoint
   @media (min-width: #{nth($keys, length($keys))}px) {
-    #{$property}: #{map-get($breakpoints, nth($keys, length($keys)))}px;
+    & {
+      #{$property}: #{map-get($breakpoints, nth($keys, length($keys)))}px;
+    }
   }
 }
 
@@ -126,7 +132,7 @@ $breakpoints: (
   }
 }
 
-#aboutPage {
+.aboutPage {
   background-image: linear-gradient(180deg, $deepBlack, $darkGrey);
 
   h2 {
@@ -139,6 +145,26 @@ $breakpoints: (
     margin-bottom: $standardMargin; 
   }
   p { text-align: justify }
+
+  &--image {
+    border-radius: 16px;
+    background-image: linear-gradient(
+      13deg,
+      hsl(349deg 59% 60%) 0%,
+      hsl(1deg 60% 65%) 25%,
+      hsl(12deg 63% 66%) 50%,
+      hsl(21deg 62% 67%) 75%,
+      hsl(28deg 58% 70%) 100%
+    );
+    padding: 4rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(256, 256, 256, 1);
+
+    & > img { 
+      opacity: 0.75;
+      filter: drop-shadow(0px 0px 6px black)
+    }
+  }
 }
 
 

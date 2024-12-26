@@ -12,11 +12,11 @@ $gap-settings: (
     desktop: 2rem
 );
 
-// General Flex Container Mixin
+
 @mixin flex-container($breakpoint-gap: 1rem) {
     display: flex;
     flex-wrap: wrap;
-    gap: $breakpoint-gap; // Unified gap application
+    column-gap: $breakpoint-gap; // Unified gap application
 }
 
 // Flex Column Mixin
@@ -35,24 +35,10 @@ $gap-settings: (
     @each $breakpoint, $gap in $gap-settings {
         @if map.has-key($breakpoints-map, $breakpoint) {
             @media (min-width: map.get($breakpoints-map, $breakpoint)) {
-                gap: $gap; // Ensure consistent gap
+                column-gap: $gap; // Ensure consistent gap
             }
         }
     }
-}
-
-// Applying the mixins
-.container {
-    width: 100%; 
-    max-width: none; 
-    margin:auto;
-
-    @media screen and (min-width: map.get($breakpoints, desktop)) {
-        max-width: 1440px; 
-    }
-
-    @include flex-container(map.get($gap-settings, mobile)); // Default to mobile gap
-    @include flex-responsive-gaps($gap-settings, $breakpoints);
 }
 
 // Utility Classes for Item Spans
@@ -71,7 +57,21 @@ $gap-settings: (
 // Generate Classes
 @include generate-item-classes(12, map.get($gap-settings, desktop)); // Use desktop gap by default
 
-// Generic Item Styling
+
+// Applying the mixins
+.container {
+    width: 100%; 
+    max-width: none; 
+    margin:auto;
+
+    @media screen and (min-width: map.get($breakpoints, desktop)) {
+        max-width: 1440px; 
+    }
+
+    @include flex-container(map.get($gap-settings, mobile)); // Default to mobile gap
+    @include flex-responsive-gaps($gap-settings, $breakpoints);
+}
+
 [class^="item"] {
     //outline: 1px solid rgba(255, 183, 77, 1); // Example color
 }
