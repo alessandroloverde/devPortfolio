@@ -46,4 +46,7 @@ $vividColor: $vividOrange;
 
 /** ––– Parameters ––––––––––––––––––––––––––––––––––––––––––––––––– */
 $standardMargin: 1.6rem;
+$standardMargin-X2: calc($standardMargin * 2);
+$standardMargin-X3: calc($standardMargin * 3);
+$standardMargin-X4: calc($standardMargin * 4);
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */

@@ -73,7 +73,7 @@ $breakpoints: (
 
   &--content {
     width: 50%;
-    padding: $standardMargin * 2;
+    padding: $standardMargin-X2;
     display: flex;
     align-items: center;
 
@@ -127,7 +127,7 @@ $breakpoints: (
     height: 12rem;
     position: absolute;
     bottom: $standardMargin;
-    left: calc(50% + ($standardMargin * 2));
+    left: calc(50% + $standardMargin-X2);
     z-index: 10;
   }
 }
@@ -135,15 +135,20 @@ $breakpoints: (
 .aboutPage {
   background-image: linear-gradient(180deg, $deepBlack, $darkGrey);
 
-  h2 {
-    @include BodoniModa(500);
+  &--headline {
+    margin-bottom: $standardMargin;
 
-    color: $washedGrey;
+    h2 {
+      @include BodoniModa(500);
+  
+      color: $washedGrey;
+    }
+    h4 { 
+      margin-top: $standardMargin-X4;
+      margin-bottom: $standardMargin; 
+    }
   }
-  h4 { 
-    margin-top: calc($standardMargin * 4);
-    margin-bottom: $standardMargin; 
-  }
+
   p { text-align: justify }
 
   &--image {

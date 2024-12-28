@@ -61,6 +61,6 @@ p {
   hyphens: auto;
   overflow-wrap: break-word;
   
-  & + p { margin-top: calc($standardMargin * 2) }
+  & + p { margin-top: $standardMargin-X2 }
 
 }
