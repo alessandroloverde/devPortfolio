@@ -23,7 +23,7 @@
 
   <div id="aboutPage" class="aboutPage">
     <div class="container">
-      <section class="item-12-12">
+      <section class="aboutPage--headline item-12-12">
         <h4>Introduction</h4>
         <h2>A bit of me and myself</h2>
       </section>
@@ -56,7 +56,6 @@
   import castoroJSON from "../public/img/castoroJSON.json";
   import cricetoJSON from "../public/img/cricetoJSON.json";
   import topoJSON from "../public/img/topoJSON.json";
-
 
   
   const { data: aboutContent } = await useAsyncData('aboutContent', () =>

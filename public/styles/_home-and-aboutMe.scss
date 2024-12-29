@@ -136,12 +136,27 @@ $breakpoints: (
   background-image: linear-gradient(180deg, $deepBlack, $darkGrey);
 
   &--headline {
-    margin-bottom: $standardMargin;
+    margin-bottom: $standardMargin-X4;
 
     h2 {
       @include BodoniModa(500);
   
       color: $washedGrey;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 0.35em;
+        width: 40%;
+        background-color: $vividColor;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
     }
     h4 { 
       margin-top: $standardMargin-X4;

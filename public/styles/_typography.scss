@@ -62,5 +62,9 @@ p {
   overflow-wrap: break-word;
   
   & + p { margin-top: $standardMargin-X2 }
+  & > strong { 
+    color: $limeGreen;
+    font-weight: 500; 
+  }
 
 }
