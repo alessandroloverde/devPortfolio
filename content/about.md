@@ -17,7 +17,7 @@ My journey began quite long ago, as a Web Designer, where I witnessed the evolut
 
 My current tech stack includes **Vue.js**, JavaScript **(ES6)**, **TypeScript**, and **SASS**. I have extensive experience with Nuxt.js for building robust, server-side rendered applications and use Jest for unit testing to ensure my code is reliable and of high quality.
 
-<!-- SPLIT -->
+<span class="MD-separator"></span>
 
 Thanks to my background in Web Design, I have a strong grasp on **Responsive Design** and **Cross-browser Compatibility**, ensuring web applications are accessible and function seamlessly across all devices and platforms. I take pride in following **WCAG 2.1** accessibility guidelines to create inclusive experiences for all users.
 
