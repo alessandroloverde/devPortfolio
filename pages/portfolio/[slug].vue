@@ -1,13 +1,14 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+   import { onMounted, ref } from "vue"
+   import SVGarrowDown from "~/public/img/icons/fi-rr-angle-down.svg"
+   import { queryContent, useAsyncData } from '#imports';
+   import { useRoute } from 'vue-router'
+
    const route = useRoute()
-
    const { data } = await useAsyncData("portfolio", () => queryContent(`portfolio/${route.params.slug}`).findOne())
-
    //console.log("data", data.value)
    let selectedIndex = ref(0)
-
-   import { onMounted } from "vue"
-   import SVGarrowDown from "~/public/img/icons/fi-rr-angle-down.svg"
 
    onMounted(() => {
       const sections = document.querySelectorAll(".section")
@@ -74,7 +75,7 @@
 
       <main>
          <article v-if="data" class="skill-features">
-            <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)">
+            <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)" :key="feature.name">
                <h6 v-if="feature.intro">{{ feature.intro }}</h6>
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
