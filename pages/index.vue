@@ -32,7 +32,7 @@
             <div v-html="renderedContent.beforeSeparator"></div>
          </section>
          <section class="item-5-12">
-<!--    <div v-for="image in images" :key="image.path" class="aboutPage--image">
+            <!--    <div v-for="image in images" :key="image.path" class="aboutPage--image">
           <img :src="image.path" :alt="image.title" />
           <p><i>{{ image.title }}</i></p>
         </div> -->
@@ -48,7 +48,6 @@
                @segmentStart="segmentStart"
                @stopped="stopped"
             />
-
          </section>
          <section class="item-12-12">
             <hr />
@@ -66,7 +65,7 @@
                @segmentStart="segmentStart"
                @stopped="stopped"
             />
-         </section> 
+         </section>
          <section class="item-7-12">
             <div v-html="renderedContent.afterSeparator"></div>
          </section>
@@ -77,12 +76,13 @@
 <script setup>
    import { onMounted, onBeforeUnmount, computed } from "vue"
    import { initializeParticleSystem } from "../public/scripts/particle-system.js"
-   import { queryContent, useAsyncData } from '#imports';
+   import { queryContent, useAsyncData } from "#imports"
    import castoroJSON from "../public/img/castoroJSON.json"
    import cricetoJSON from "../public/img/cricetoJSON.json"
-   import topoJSON from "../public/img/topoJSON.json"
 
    const { data: aboutContent } = await useAsyncData("aboutContent", () => queryContent("/about").findOne())
+
+   console.log("aboutContent", aboutContent.value)
 
    // eslint-disable-next-line @typescript-eslint/no-unused-vars
    const images = aboutContent.value?.images || []
@@ -90,48 +90,48 @@
    let cleanupParticleSystem
 
    const renderedContent = computed(() => {
-  const children = aboutContent.value?.body?.children || [];
-  const beforeSeparator = [];
-  const afterSeparator = [];
-  let isSeparatorFound = false;
+      const children = aboutContent.value?.body?.children || []
+      const beforeSeparator = []
+      const afterSeparator = []
+      let isSeparatorFound = false
 
-  for (const child of children) {
-    if (!isSeparatorFound && child.tag === "p") {
-      const containsSeparator = (function searchChildren(nodes) {
-        for (const node of nodes) {
-          if (node.tag === "span") {
-            return true;
-          } else if (node.children) {
-            if (searchChildren(node.children)) {
-              return true;
+      for (const child of children) {
+         if (!isSeparatorFound && child.tag === "p") {
+            const containsSeparator = (function searchChildren(nodes) {
+               for (const node of nodes) {
+                  if (node.tag === "span") {
+                     return true
+                  } else if (node.children) {
+                     if (searchChildren(node.children)) {
+                        return true
+                     }
+                  }
+               }
+               return false
+            })(child.children)
+
+            if (containsSeparator) {
+               isSeparatorFound = true
+               continue
             }
-          }
-        }
-        return false;
-      })(child.children);
+         }
 
-      if (containsSeparator) {
-        isSeparatorFound = true;
-        continue;
+         if (!isSeparatorFound) {
+            beforeSeparator.push(child)
+         } else {
+            afterSeparator.push(child)
+         }
       }
-    }
 
-    if (!isSeparatorFound) {
-      beforeSeparator.push(child);
-    } else {
-      afterSeparator.push(child);
-    }
-  }
-
-  return {
-    beforeSeparator: renderToHtml(beforeSeparator),
-    afterSeparator: renderToHtml(afterSeparator),
-  };
-});
-
+      return {
+         beforeSeparator: renderToHtml(beforeSeparator),
+         afterSeparator: renderToHtml(afterSeparator),
+      }
+   })
 
    const renderToHtml = (nodes) => {
-      return nodes.map((node) => {
+      return nodes
+         .map((node) => {
             if (node.type === "text") return node.value
             if (node.type === "element") {
                const children = node.children ? renderToHtml(node.children) : ""
@@ -139,7 +139,8 @@
                return `<${node.tag}>${children}</${node.tag}>`
             }
             return ""
-         }).join("")
+         })
+         .join("")
    }
 
    onMounted(() => {
