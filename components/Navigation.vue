@@ -1,24 +1,24 @@
 <template>
-   <!-- TODO: develop the component further so that it can handle nested navigation -->
    <nav class="nav">
       <ContentNavigation v-slot="{ navigation }">
-      <ul>
-         <li><NuxtLink :to="navigation[0]._path">{{ navigation[0].title }}</NuxtLink></li>
          <ul>
-            <li v-for="link of navigation[1].children" :key="link._path">
+            <li v-for="link in getPortfolioPaths(navigation)" :key="link._path">
                <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
             </li>
          </ul>
-      </ul>
       </ContentNavigation>
    </nav>
- </template>
-<script setup>
-   /**
-    * TODO: Comments are for reference and further development; remove before deployment
-    */
+</template>
 
-   /* import { fetchContentNavigation } from '#imports' */
-   //const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
-   //console.log('Navigation:', navigation.value)
+<script setup>
+const getPortfolioPaths = (navigation) => {
+   if (!navigation || !Array.isArray(navigation)) return [];
+
+   const portfolioItem = navigation.find(item => item._path === "/portfolio");
+   const homePageItem = navigation.find(item => item.title === "Home");
+   const homeItem = homePageItem ? [homePageItem] : [];
+   const portfolioChildren = portfolioItem?.children || [];
+
+   return [...homeItem, ...portfolioChildren];
+};
 </script>
