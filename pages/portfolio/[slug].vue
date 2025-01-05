@@ -6,7 +6,7 @@
    import { useRoute } from 'vue-router'
 
    const route = useRoute()
-   const { data } = await useAsyncData("portfolio", () => queryContent(`../portfolio/${route.params.slug}`).findOne())
+   const { data } = await useAsyncData("portfolio", () => queryContent(`/portfolio/${route.params.slug}`).findOne())
    console.log("data", data.value)
    let selectedIndex = ref(0)
 
