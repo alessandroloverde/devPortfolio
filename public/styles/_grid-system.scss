@@ -1,5 +1,6 @@
-@use "sass:map";
 @use 'variables' as *;
+@use "sass:map";
+@use "sass:math";
 
 
 $breakpoints: (
@@ -21,9 +22,9 @@ $gap-settings: (
 }
 
 @mixin flex-column($span: 1, $columns: 12, $gap: 0, $items-per-row: $columns / $span) {
-    $percentage: 100% / $columns;
+    $percentage: math.div(100%, $columns);
     $total-gaps-per-row: $items-per-row - 1; // Total number of gaps in a row
-    $gap-correction: $gap * $total-gaps-per-row / $items-per-row; // Full gap distributed across items
+    $gap-correction: $gap * math.div($total-gaps-per-row, $items-per-row); // Full gap distributed across items
     $width: calc((#{$percentage * $span}) - #{$gap-correction}); // Corrected width for the spanned columns
 
     & {
@@ -46,7 +47,7 @@ $gap-settings: (
 @mixin generate-item-classes($max: 12, $gap: 0) {
     @for $span from 1 through $max {
         @for $columns from $span through $max {
-            $items-per-row: $columns / $span; // Dynamically calculate items per row
+            $items-per-row: math.div($columns, $span); // Dynamically calculate items per row
 
             .item-#{$span}-#{$columns} {
                 @include flex-column($span, $columns, $gap, $items-per-row);
