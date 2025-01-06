@@ -1,7 +1,9 @@
+@use "variables" as *;
 @use "sass:list";
 @use "sass:map";
 
-$breakpoints: (
+
+$fontBreakpoints: (
   375: 35,
   390: 36.5,
   414: 39,
@@ -13,15 +15,15 @@ $breakpoints: (
 );
 
 @mixin responsive-font($property) {
-  $keys: map-keys($breakpoints);
+  $keys: map-keys($fontBreakpoints);
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $fontBreakpoints {
     $next-index: index($keys, $breakpoint) + 1;
 
     // Check if there is a next breakpoint
     @if $next-index <= length($keys) {
       $next-breakpoint: nth($keys, $next-index);
-      $next-size: map-get($breakpoints, $next-breakpoint);
+      $next-size: map-get($fontBreakpoints, $next-breakpoint);
 
       @media (min-width: #{$breakpoint}px) and (max-width: #{$next-breakpoint}px) {
         & {
@@ -36,14 +38,14 @@ $breakpoints: (
   // Clamp below the smallest breakpoint
   @media (max-width: #{nth($keys, 1)}px) {
     & {
-      #{$property}: #{map-get($breakpoints, nth($keys, 1))}px;
+      #{$property}: #{map-get($fontBreakpoints, nth($keys, 1))}px;
     }
   }
 
   // Clamp above the largest breakpoint
   @media (min-width: #{nth($keys, length($keys))}px) {
     & {
-      #{$property}: #{map-get($breakpoints, nth($keys, length($keys)))}px;
+      #{$property}: #{map-get($fontBreakpoints, nth($keys, length($keys)))}px;
     }
   }
 }

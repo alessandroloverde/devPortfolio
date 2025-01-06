@@ -136,7 +136,7 @@
 </template>
 
 <script setup lang="ts">
-   import { defineProps } from 'vue';
+   /* import { defineProps } from 'vue'; */ // Deprecated in Vue 3.2
 
    const props = defineProps<{
       numberIndex: number;

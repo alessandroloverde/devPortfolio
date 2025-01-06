@@ -9,7 +9,7 @@ export default defineNuxtConfig({
       }
     }
   },
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: ["@nuxt/content", "@nuxtjs/google-fonts"],
   ssr: false,
   compatibilityDate: "2024-10-25",
@@ -24,6 +24,14 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [svgLoader()],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "sass:math";`,
+          quietDeps: true
+        }
+      }
+    }
   },
   content: {
     markdown: {
