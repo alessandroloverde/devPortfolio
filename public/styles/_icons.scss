@@ -1,0 +1,38 @@
+@use 'variables' as *;
+
+$icons: (
+    'arrow-down': url(/public/img/icons/fi-rr-angle-down.svg),
+    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
+    'symbol-layers': url(/public/img/icons/fi-rr-layers.svg),
+    'symbol-layer-minus': url(/public/img/icons/fi-rr-layer-minus.svg),
+    'symbol-layer-plus': url(/public/img/icons/fi-rr-layer-plus.svg),
+    'symbol-lockpad': url(/public/img/icons/fi-rr-lock.svg),
+    'symbol-code-popup': url(/public/img/ifi-rr-message-code.svg),
+/*     'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
+    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
+    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
+    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
+    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg), */
+);
+
+
+@each $key, $value in $icons {
+    i.inlineIcon--#{$key} {
+        font-style: normal;
+        font-weight: normal !important;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        &::before {
+            content: "";
+            background-image: $value;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            line-height: 1;
+        }
+    }
+}

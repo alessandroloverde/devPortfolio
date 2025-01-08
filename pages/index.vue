@@ -22,7 +22,7 @@
    </div>
 
    <div id="aboutPage" class="aboutPage">
-      <div class="container">
+      <div class="container aboutPage--firstPart">
          <section class="aboutPage--headline item-12-12">
             <h4>Introduction</h4>
             <h2>A bit of me and myself</h2>
@@ -31,27 +31,28 @@
             <!-- <ContentDoc path="/about"></ContentDoc> -->
             <div v-html="renderedContent.beforeSeparator"></div>
          </section>
+
          <section class="item-5-12">
-            <!--    <div v-for="image in images" :key="image.path" class="aboutPage--image">
-          <img :src="image.path" :alt="image.title" />
-          <p><i>{{ image.title }}</i></p>
-        </div> -->
-            <Lottie
-               ref="castoroAnim"
-               :animation-data="castoroJSON"
-               :loop="true"
-               :auto-play="true"
-               :speed="0.75"
-               @loopComplete="loopComplete"
-               @complete="complete"
-               @enterFrame="enterFrame"
-               @segmentStart="segmentStart"
-               @stopped="stopped"
-            />
+         <!--    <div v-for="image in images" :key="image.path" class="aboutPage--image">
+            <img :src="image.path" :alt="image.title" />
+            <p><i>{{ image.title }}</i></p>
+         </div> -->
+         <Lottie
+            ref="castoroAnim"
+            :animation-data="castoroJSON"
+            :loop="true"
+            :auto-play="true"
+            :speed="0.75"
+            @loopComplete="loopComplete"
+            @complete="complete"
+            @enterFrame="enterFrame"
+            @segmentStart="segmentStart"
+            @stopped="stopped"
+         />
          </section>
-         <section class="item-12-12">
-            <hr />
-         </section>
+      </div>
+      
+      <div class="container aboutPage--secondPart">
          <section class="item-5-12">
             <Lottie
                ref="cricetoAnim"
