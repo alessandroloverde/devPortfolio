@@ -28,35 +28,13 @@
             <h2>A bit of me and myself</h2>
          </section>
          <section class="item-7-12">
-            <!-- <ContentDoc path="/about"></ContentDoc> -->
-            <div v-html="renderedContent.beforeSeparator"></div>
+            <ContentDoc path="/about"></ContentDoc>
          </section>
 
          <section class="item-5-12">
-         <!--    <div v-for="image in images" :key="image.path" class="aboutPage--image">
-            <img :src="image.path" :alt="image.title" />
-            <p><i>{{ image.title }}</i></p>
-         </div> -->
-         <Lottie
-            ref="castoroAnim"
-            :animation-data="castoroJSON"
-            :loop="true"
-            :auto-play="true"
-            :speed="0.75"
-            @loopComplete="loopComplete"
-            @complete="complete"
-            @enterFrame="enterFrame"
-            @segmentStart="segmentStart"
-            @stopped="stopped"
-         />
-         </section>
-      </div>
-      
-      <div class="container aboutPage--secondPart">
-         <section class="item-5-12">
             <Lottie
-               ref="cricetoAnim"
-               :animation-data="cricetoJSON"
+               ref="castoroAnim"
+               :animation-data="castoroJSON"
                :loop="true"
                :auto-play="true"
                :speed="0.75"
@@ -66,9 +44,6 @@
                @segmentStart="segmentStart"
                @stopped="stopped"
             />
-         </section>
-         <section class="item-7-12">
-            <div v-html="renderedContent.afterSeparator"></div>
          </section>
       </div>
    </div>

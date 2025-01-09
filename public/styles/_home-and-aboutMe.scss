@@ -136,10 +136,9 @@ $fontBreakpoints: (
   &--firstPart,
   &--secondPart {
     height: 100vh;
-    outline: 2px solid salmon;
   }
   &--headline {
-    margin-bottom: $standardMargin-X3;
+    margin-bottom: $standardMargin-X2;
 
     h2 {
       @include BodoniModa(500);
