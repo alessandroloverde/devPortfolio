@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'sass:string';
 
 $icons: (
     'arrow-down': url(/public/img/icons/fi-rr-angle-down.svg),
@@ -8,16 +9,14 @@ $icons: (
     'symbol-layer-plus': url(/public/img/icons/fi-rr-layer-plus.svg),
     'symbol-lockpad': url(/public/img/icons/fi-rr-lock.svg),
     'symbol-code-popup': url(/public/img/ifi-rr-message-code.svg),
-/*     'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
-    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
-    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
-    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
-    'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg), */
 );
 
 
 @each $key, $value in $icons {
-    i.inlineIcon--#{$key} {
+    $delimiter-position: string.index($key, '-');
+    $trimmed-key: string.slice($key, $delimiter-position + 1);
+
+    span.inlineIcon--#{$trimmed-key} {
         font-style: normal;
         font-weight: normal !important;
         font-variant: normal;
@@ -33,6 +32,11 @@ $icons: (
             width: 1em;
             height: 1em;
             line-height: 1;
+            -webkit-mask-image: $value;
+                    mask-image: $value;
+            mask-size: 100%;
+            mask-repeat: no-repeat;
+            background-color: $limeGreen;
         }
     }
 }
