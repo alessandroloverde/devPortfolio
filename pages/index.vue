@@ -27,23 +27,22 @@
             <h4>Introduction</h4>
             <h2>A bit of me and myself</h2>
          </section>
-         <section class="item-7-12">
+         <section class="item-12-12">
+            <div style="float: right; width: 30%; margin: 0 0 4rem 4rem">
+               <Lottie
+                  ref="cricetoAnim"
+                  :animation-data="cricetoJSON"
+                  :loop="true"
+                  :auto-play="true"
+                  :speed="0.75"
+                  @loopComplete="loopComplete"
+                  @complete="complete"
+                  @enterFrame="enterFrame"
+                  @segmentStart="segmentStart"
+                  @stopped="stopped"
+               />
+            </div>
             <ContentDoc path="/about"></ContentDoc>
-         </section>
-
-         <section class="item-5-12">
-            <Lottie
-               ref="castoroAnim"
-               :animation-data="castoroJSON"
-               :loop="true"
-               :auto-play="true"
-               :speed="0.75"
-               @loopComplete="loopComplete"
-               @complete="complete"
-               @enterFrame="enterFrame"
-               @segmentStart="segmentStart"
-               @stopped="stopped"
-            />
          </section>
       </div>
    </div>
@@ -106,8 +105,7 @@
    })
 
    const renderToHtml = (nodes) => {
-      return nodes
-         .map((node) => {
+      return nodes.map((node) => {
             if (node.type === "text") return node.value
             if (node.type === "element") {
                const children = node.children ? renderToHtml(node.children) : ""
@@ -115,8 +113,7 @@
                return `<${node.tag}>${children}</${node.tag}>`
             }
             return ""
-         })
-         .join("")
+         }).join("")
    }
 
    onMounted(() => {
