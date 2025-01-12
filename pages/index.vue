@@ -12,10 +12,11 @@
             <section class="homePage--background"></section>
             <section class="homePage--content">
                <ContentDoc></ContentDoc>
-
-               <a href="#aboutPage">
-                  <div class="homePage--arrow"></div>
-               </a>
+               <div class="homePage--arrow">
+                  <a href="#aboutPage">
+                     <span class="inlineIcon--arrow-down"></span>
+                  </a>
+               </div>
             </section>
          </div>
       </main>
@@ -28,7 +29,7 @@
             <h2>A bit of me and myself</h2>
          </section>
          <section class="item-12-12">
-            <div style="float: right; width: 30%; margin: 0 0 4rem 4rem">
+            <div style="float: right; width: 20%; margin: 0 0 4rem 4rem">
                <Lottie
                   ref="cricetoAnim"
                   :animation-data="cricetoJSON"
@@ -43,6 +44,11 @@
                />
             </div>
             <ContentDoc path="/about"></ContentDoc>
+            <div class="homePage--arrow">
+               <a href="#skillsPage">
+                  <span class="inlineIcon--arrow-down"></span>
+               </a>
+            </div>
          </section>
       </div>
    </div>
@@ -52,96 +58,56 @@
    import { onMounted, onBeforeUnmount, computed } from "vue"
    import { initializeParticleSystem } from "../public/scripts/particle-system.js"
    import { queryContent, useAsyncData } from "#imports"
-   import castoroJSON from "../public/img/castoroJSON.json"
    import cricetoJSON from "../public/img/cricetoJSON.json"
 
    const { data: aboutContent } = await useAsyncData("aboutContent", () => queryContent("/about").findOne())
 
-   console.log("aboutContent", aboutContent.value)
+   //console.log("aboutContent", aboutContent.value)
 
    // eslint-disable-next-line @typescript-eslint/no-unused-vars
    const images = aboutContent.value?.images || []
 
-   let cleanupParticleSystem
-
-   const renderedContent = computed(() => {
-      const children = aboutContent.value?.body?.children || []
-      const beforeSeparator = []
-      const afterSeparator = []
-      let isSeparatorFound = false
-
-      for (const child of children) {
-         if (!isSeparatorFound && child.tag === "p") {
-            const containsSeparator = (function searchChildren(nodes) {
-               for (const node of nodes) {
-                  if (node.tag === "span") {
-                     return true
-                  } else if (node.children) {
-                     if (searchChildren(node.children)) {
-                        return true
-                     }
-                  }
-               }
-               return false
-            })(child.children)
-
-            if (containsSeparator) {
-               isSeparatorFound = true
-               continue
-            }
-         }
-
-         if (!isSeparatorFound) {
-            beforeSeparator.push(child)
-         } else {
-            afterSeparator.push(child)
-         }
-      }
-
-      return {
-         beforeSeparator: renderToHtml(beforeSeparator),
-         afterSeparator: renderToHtml(afterSeparator),
-      }
-   })
-
-   const renderToHtml = (nodes) => {
-      return nodes.map((node) => {
-            if (node.type === "text") return node.value
-            if (node.type === "element") {
-               const children = node.children ? renderToHtml(node.children) : ""
-
-               return `<${node.tag}>${children}</${node.tag}>`
-            }
-            return ""
-         }).join("")
-   }
+   let cleanupParticleSystem;
 
    onMounted(() => {
       cleanupParticleSystem = initializeParticleSystem("heroCanvas")
+
+      let hiddenElements = document.querySelectorAll('h2');
+      let observer = new IntersectionObserver((entries) => {
+         entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+               entry.target.classList.add('active')
+            } else {
+               entry.target.classList.remove('active')
+            }
+         })
+      })
+
+      hiddenElements ? hiddenElements.forEach((el) => observer.observe(el)) : null
    })
 
    onBeforeUnmount(() => {
       if (cleanupParticleSystem) cleanupParticleSystem()
    })
 
-   console.log("topone", renderedContent.value)
 </script>
 
-<style scoped>
-   .hero {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      /*  pointer-events: none; */
-   }
+<style scoped lang="scss">
 
-   canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-   }
+.hero {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+
+canvas {
+   width: 100%;
+   height: 100%;
+   display: block;
+}
+
 </style>

@@ -19,7 +19,7 @@ $gap-settings: (
     display: flex;
     flex-wrap: wrap;
     column-gap: $breakpoint-gap; // Unified gap application
-    padding: 0 calc($breakpoint-gap * 2); // Padding correction for the gap
+    padding: 0 calc($breakpoint-gap * 4); // Padding correction for the gap
 }
 
 @mixin flex-column($span: 1, $columns: 12, $gap: 0, $items-per-row: $columns / $span) {
@@ -79,31 +79,26 @@ $gap-settings: (
     //outline: 1px solid rgba(255, 183, 77, 1); // Example color
 }
 
-span[class*="inlineIcon--"]::before {
-    width: 4em !important;
-    height: 4em !important;
-    position: relative;
-    top: 0;
+
+span.special[class*="inlineIcon--"] {
+    $circleSize: 30rem;
+
+    width: $circleSize !important;
+    height: $circleSize !important;
+    border-radius: 50%;
+    shape-outside: circle(50%);
     float: left;
-    margin-right: 1em;
-    z-index: 3;
-    margin-bottom: 3em;
-    transform: translate(-50%, 1em);
-    background-color: $limeGreen !important;
+    margin-right:  calc(-#{$circleSize} / 6);
+    background-color: $vueGreen;
+    position: relative;
+    left: calc(-#{$circleSize / 4});
+
+    &::before {
+        background-color: $limeGreen !important;
+        mask-size: 60% !important;
+    }
 }
 
-span[class*="inlineIcon--"]::after {
-    content: "";
-    background-color: #41b883;
-    width: 8em;
-    height: 8em;
-    border-radius: 100%;
-    display: block;
-    /* opacity: 0.5; */
-    position: absolute;
-    z-index: 2;
-    transform: translate(-50%, -1em);
-}
 hr {
     width: 70%;
     margin: 6rem auto;

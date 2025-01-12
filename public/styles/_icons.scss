@@ -2,7 +2,7 @@
 @use 'sass:string';
 
 $icons: (
-    'arrow-down': url(/public/img/icons/fi-rr-angle-down.svg),
+    'symbol-arrow-down': url(/public/img/icons/fi-rr-angle-down.svg),
     'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
     'symbol-layers': url(/public/img/icons/fi-rr-layers.svg),
     'symbol-layer-minus': url(/public/img/icons/fi-rr-layer-minus.svg),
@@ -24,19 +24,23 @@ $icons: (
         line-height: 1;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
 
         &::before {
             content: "";
-            background-image: $value;
+            //background-image: $value;
             display: inline-block;
-            width: 1em;
-            height: 1em;
+            width: 100%;
+            height: 100%;
             line-height: 1;
             -webkit-mask-image: $value;
                     mask-image: $value;
             mask-size: 100%;
             mask-repeat: no-repeat;
-            background-color: $vueGreen;
+            mask-position: center;
+            background-color: $limeGreen;
         }
     }
 }
