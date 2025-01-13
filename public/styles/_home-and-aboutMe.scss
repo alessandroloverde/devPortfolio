@@ -222,6 +222,58 @@ span.bigCircle[class*="inlineIcon--"] {
   }
 }
 
+.skillsPage {
+  height: 100vh;
+  position: relative;
+
+  $logos: (
+    "es6": url("../img/logos/es6.svg"),
+    "vue": url("../img/logos/vuejs.svg"),
+    "nuxt": url("../img/logos/nuxtjs.svg"),
+    "sass": url("../img/logos/sass.svg"),
+    "typescript": url("../img/logos/typescript.svg"),
+  );
+
+  &--navigation {
+    margin-top: $standardMargin-X3;
+
+    ul {
+      li {
+        background-color: cadetblue;
+        outline: 1px solid crimson;
+        width: 18%;
+        height: 0;
+        padding-bottom: 18% !important;
+        display: inline-block;
+        margin: 2%;
+        background-image: url("../img/logos/es6.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
+
+        @for $i from 1 through length(map.keys($logos)) {
+          $key: nth(map.keys($logos), $i);
+          $value: map.get($logos, $key);
+  
+          &:nth-child(#{$i}) {
+            background-image: $value;
+          }
+        }
+
+        & > a {
+          display: flex;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          outline: 1px solid lavender;
+        }
+
+      }
+    }
+  }
+
+}
+
 
 @media screen and (max-width: 600px) {
   .homePage {
