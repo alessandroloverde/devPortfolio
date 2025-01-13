@@ -1,9 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
    <div class="homePage">
-      <header>
-         <Navigation />
-      </header>
+      <header></header>
       <main>
          <div class="homePage--container">
             <div class="hero">
@@ -52,6 +50,16 @@
          </section>
       </div>
    </div>
+
+   <div id="skillsPage" class="skillsPage">
+      <div class="container">
+         <section class="aboutPage--headline item-12-12">
+            <h4>My skills</h4>
+            <h2>Languages, frameworks and tools</h2>
+            <Navigation :class="'skillsPage--navigation'" />
+         </section>
+      </div>
+   </div>
 </template>
 
 <script setup>
@@ -93,7 +101,6 @@
 </script>
 
 <style scoped lang="scss">
-
 .hero {
    position: absolute;
    width: 100%;
@@ -109,5 +116,4 @@ canvas {
    height: 100%;
    display: block;
 }
-
 </style>

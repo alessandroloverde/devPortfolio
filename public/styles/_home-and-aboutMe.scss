@@ -1,6 +1,7 @@
 @use "variables" as *;
 @use "sass:list";
 @use "sass:map";
+@use 'sass:math';
 
 
 $fontBreakpoints: (
@@ -137,9 +138,7 @@ $fontBreakpoints: (
   position: relative;
 
   &--firstPart,
-  &--secondPart {
-    height: 100vh;
-  }
+  &--secondPart { height: 100vh }
   &--headline {
     margin-bottom: $standardMargin-X2;
 
@@ -155,11 +154,11 @@ $fontBreakpoints: (
         content: "";
         display: block;
         height: 0.35em;
-        width: 100%;
+        width: 80%;
         transform: scaleX(0);
         background-color: $vividColor;
         position: absolute;
-        left: 0;
+        left: 20%;
         bottom: 0;
         z-index: -1;
         animation: none;
@@ -201,6 +200,25 @@ $fontBreakpoints: (
       opacity: 0.75;
       filter: drop-shadow(0px 0px 6px black)
     }
+  }
+}
+
+span.bigCircle[class*="inlineIcon--"] {
+  $circleSize: 30rem;
+
+  width: $circleSize !important;
+  height: $circleSize !important;
+  border-radius: 50%;
+  shape-outside: circle(50%);
+  float: left;
+  margin-right:  math.div(-$circleSize, 6);
+  background-color: $vueGreen;
+  position: relative;
+  left: math.div(-$circleSize, 4);
+
+  &::before {
+      background-color: $limeGreen !important;
+      mask-size: 60% !important;
   }
 }
 

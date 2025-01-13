@@ -78,29 +78,3 @@ $gap-settings: (
 [class^="item"] {
     //outline: 1px solid rgba(255, 183, 77, 1); // Example color
 }
-
-
-span.special[class*="inlineIcon--"] {
-    $circleSize: 30rem;
-
-    width: $circleSize !important;
-    height: $circleSize !important;
-    border-radius: 50%;
-    shape-outside: circle(50%);
-    float: left;
-    margin-right:  calc(-#{$circleSize} / 6);
-    background-color: $vueGreen;
-    position: relative;
-    left: calc(-#{$circleSize / 4});
-
-    &::before {
-        background-color: $limeGreen !important;
-        mask-size: 60% !important;
-    }
-}
-
-hr {
-    width: 70%;
-    margin: 6rem auto;
-    opacity: 0.5;
-}
