@@ -232,8 +232,7 @@ span.bigCircle[class*="inlineIcon--"] {
     ul {
       li {
         width: 18%;
-        height: 0;
-        padding-bottom: 18% !important;
+        height: 15vw;
         display: inline-block;
         margin: 2%;
         position: relative;
@@ -252,6 +251,56 @@ span.bigCircle[class*="inlineIcon--"] {
       }
     }
   }
+  &--otherSkills {
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+
+      & > li {
+        display: inline-block;
+        margin: 0 2rem;
+
+        outline: 1px solid cornflowerblue;
+
+        &::after {
+          content: attr(alt);
+          color: antiquewhite;
+          display: block;
+        }
+
+        & img {
+          width: 8vw;
+          height: 8vw;
+          object-fit: contain;
+        }
+        figure { color: red; }
+      }
+    }
+  }
+
+/*   .image-with-caption {
+    display: inline-block;
+    text-align: center;
+    margin: 1rem;
+  }
+  
+  .image-with-caption img {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .image-with-caption::after {
+    content: attr(data-caption);
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1.9rem;
+    color: #14d50d;
+  } */
+  
 
 }
 

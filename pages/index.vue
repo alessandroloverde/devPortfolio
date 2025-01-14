@@ -57,7 +57,16 @@
             <h4>My skills</h4>
             <h2>Languages, frameworks and tools</h2>
             <Navigation :isHomeNav="true" :class="'skillsPage--navigation'" />
-            <ContentDoc path="/skills"></ContentDoc>
+            <div class="skillsPage--otherSkills">
+               <ol>
+                  <li v-for="otherSkillLogo in images" :key="otherSkillLogo.title">
+                     <figure>
+                        <img :src="otherSkillLogo.path" :alt="otherSkillLogo.title" />
+                        <figcaption>{{ otherSkillLogo.title }}</figcaption>
+                     </figure>
+                  </li>
+               </ol>
+            </div>
          </section>
       </div>
    </div>
@@ -70,11 +79,11 @@
    import cricetoJSON from "../public/img/cricetoJSON.json"
 
    const { data: aboutContent } = await useAsyncData("aboutContent", () => queryContent("/about").findOne())
+   const { data: skillsContent } = await useAsyncData("skillsContent", () => queryContent("/skills").findOne())
 
-   //console.log("aboutContent", aboutContent.value)
 
    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-   const images = aboutContent.value?.images || []
+   const images = skillsContent.value?.images || []
 
    let cleanupParticleSystem;
 

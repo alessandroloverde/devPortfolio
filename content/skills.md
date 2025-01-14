@@ -1,21 +1,34 @@
 ---
-title: "About"
-description: "Descrizione per la pagina About"
+title: "Skills"
+description: "Descrizione per la pagina AbSkillsout"
 images: [
    {   
-      title: "me with MacBook",
-      path: "img/about--meWithMacbook.jpg"
+      title: "Webpack",
+      path: "img/logos/webpack.svg"
    },
-      {   
-      title: "Sharon Den Adel",
-      path: "img/SharonDenAdel.jpg"
+   {   
+      title: "Jest",
+      path: "img/logos/jest.svg"
+   },
+   {   
+      title: "GIT",
+      path: "img/logos/git.svg"
    }
 ]
 ---
 
-1. ![my image](img/logos/webpack.svg)
-2. ![my image](img/logos/jest.svg)
+<!-- <div class="skillsPage--otherSkills">
+   <div class="image-with-caption" data-caption="Webpack">
 
+   ![Webpack](img/logos/webpack.svg)
+
+   </div>
+   <div class="image-with-caption" data-caption="Jest">
+
+   ![Jest](img/logos/jest.svg)
+
+   </div>
+</div> -->
 
 
 
