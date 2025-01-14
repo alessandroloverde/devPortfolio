@@ -47,7 +47,7 @@
 <template>
    <div id="skills">
       <header>
-         <Navigation />
+         <Navigation :isHomeNav="false" />
          <div class="skill-info">
             <aside>
                <img :src="data?.logo" v-if="data?.logo" class="responsiveImg" />

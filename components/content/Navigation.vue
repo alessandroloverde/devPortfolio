@@ -1,16 +1,27 @@
 <template>
-   <nav class="nav">
-      <ContentNavigation v-slot="{ navigation }">
-         <ul>
-            <li v-for="link in getPortfolioPaths(navigation)" :key="link._path">
-               <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
-            </li>
-         </ul>
-      </ContentNavigation>
+  <nav ref="navRef" class="nav">
+   <ContentNavigation v-slot="{ navigation }" :isHomeNav="isHomeNav">
+       <ul>
+         <li v-for="link in getPortfolioPaths(navigation)" :key="link._path">
+           <NuxtLink :to="link._path">
+             <span v-if="!isHomeNav">{{ link.title }}</span>
+             <img v-if="link.icon && isHomeNav" :src="link.icon" :alt="link.title" />
+           </NuxtLink>
+         </li>
+       </ul>
+     </ContentNavigation>
    </nav>
-</template>
+ </template>
+ 
 
 <script setup>
+const props = defineProps({
+   isHomeNav: {
+     type: Boolean,
+     default: false,
+   },
+});
+
 const getPortfolioPaths = (navigation) => {
    if (!navigation || !Array.isArray(navigation)) return [];
 

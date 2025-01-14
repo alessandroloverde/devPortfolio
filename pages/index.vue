@@ -56,7 +56,8 @@
          <section class="aboutPage--headline item-12-12">
             <h4>My skills</h4>
             <h2>Languages, frameworks and tools</h2>
-            <Navigation :class="'skillsPage--navigation'" />
+            <Navigation :isHomeNav="true" :class="'skillsPage--navigation'" />
+            <ContentDoc path="/skills"></ContentDoc>
          </section>
       </div>
    </div>

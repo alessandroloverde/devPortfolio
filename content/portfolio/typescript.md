@@ -2,6 +2,9 @@
 title: "Astrocazzobase"
 description: "Descrizione per la pagina skills => TypeScript"
 logo: "/img/logos/typescript.svg"
+navigation:
+  title: "TypeScript"
+  icon: "/img/logos/typescript.svg"
 experience: 1
 features:
   - intro: "Starting with Vue 2 and transitioning to Vue 3, I’ve gained a deep understanding of Vue.js and its evolving ecosystem. My focus is on building performant, modular applications, leveraging Vue's reactivity and component-based architecture. I ensure seamless user experiences through dynamic data binding, efficient routing, and reusable components. With a strong foundation in integrating Vue with various tech stacks, I develop scalable, maintainable solutions that align with both user and business needs."

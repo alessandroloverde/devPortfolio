@@ -2,6 +2,9 @@
 title: "JS ES6"
 description: "Descrizione per la pagina skills => ES6"
 logo: "/img/logos/es6.svg"
+navigation:
+  title: "JavaScript ES6"
+  icon: "/img/logos/es6.svg"
 experience: 6
 features:
   - intro: "Intro text for JavaScript ES6"
