@@ -27,7 +27,7 @@
             <h2>A bit of me and myself</h2>
          </section>
          <section class="item-12-12">
-            <div style="float: right; width: 20%; margin: 0 0 4rem 4rem">
+            <div class="aboutPage--lottie">
                <Lottie
                   ref="cricetoAnim"
                   :animation-data="cricetoJSON"

@@ -44,7 +44,7 @@ $gap-settings: (
     }
 }
 
-// Utility Classes for Item Spans
+// Grid classes for Item Spans
 @mixin generate-item-classes($max: 12, $gap: 0) {
     @for $span from 1 through $max {
         @for $columns from $span through $max {
@@ -57,15 +57,27 @@ $gap-settings: (
     }
 }
 
-// Generate Classes
+
+@mixin generate-item-visibility($breakpoints-map) {
+    @each $breakpoint, $value in $breakpoints-map {
+        .hiddenFrom-#{$breakpoint} {
+            @media (max-width: #{$value}) {
+                display: none !important;
+            }
+        }
+    }
+}
+
+// Generate grid classes
 @include generate-item-classes(12, map.get($gap-settings, desktop)); // Use desktop gap by default
+@include generate-item-visibility($breakpoints);
 
 
 // Applying the mixins
 .container {
     width: 100%; 
     max-width: none; 
-    margin:auto;
+    margin: auto;
 
     @include flex-container(map.get($gap-settings, mobile)); // Default to mobile gap
     @include flex-responsive-gaps($gap-settings, $breakpoints);
@@ -73,8 +85,4 @@ $gap-settings: (
     @media screen and (min-width: map.get($breakpoints, desktop)) {
         & { max-width: 1440px } 
     }
-}
-
-[class^="item"] {
-    //outline: 1px solid rgba(255, 183, 77, 1); // Example color
 }

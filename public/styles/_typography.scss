@@ -1,5 +1,11 @@
 @use 'variables' as *;
 
+$h2fontSizes: (
+  mobile: 6rem,
+  tablet: 6.6rem,
+  desktop: 7.2rem,
+);
+
 h1,
 h2,
 h3,
@@ -10,8 +16,9 @@ p { margin: 0 }
 
 h2 {
   @include BodoniModa;
+  @include responsive-property('font-size', $h2fontSizes);
 
-  font-size: 7.2rem;
+  font-size: 6rem;
   color: $washedGrey;
   letter-spacing: 0.0125em;
   line-height: 1;

@@ -1,3 +1,7 @@
+<template>
+  <div ref="animation"></div>
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import Lottie, {
@@ -113,9 +117,3 @@ defineExpose({
   destroy,
 });
 </script>
-
-<template>
-  <div ref="animation"></div>
-</template>
-
-<style></style>
