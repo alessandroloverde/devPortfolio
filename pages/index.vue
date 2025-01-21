@@ -57,7 +57,7 @@
             <h4>My skills</h4>
             <h2>Languages, frameworks and tools</h2>
             <Navigation :isHomeNav="true" :class="'skillsPage--navigation'" />
-            <div class="skillsPage--otherSkills">
+            <div class="skillsPage--otherSkills mobile-item-12-12 item-10-12">
                <ol>
                   <li v-for="otherSkillLogo in images" :key="otherSkillLogo.title">
                      <figure>

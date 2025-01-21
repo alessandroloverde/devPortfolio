@@ -48,14 +48,38 @@ $gap-settings: (
 @mixin generate-item-classes($max: 12, $gap: 0) {
     @for $span from 1 through $max {
         @for $columns from $span through $max {
-            $items-per-row: math.div($columns, $span); // Dynamically calculate items per row
+            $items-per-row: math.div($columns, $span);
 
+            // Default class
             .item-#{$span}-#{$columns} {
+                margin: auto;
                 @include flex-column($span, $columns, $gap, $items-per-row);
+            }
+
+            // Responsive classes with max-width for mobile
+            @each $breakpoint, $min-width in $breakpoints {
+                @if $breakpoint == 'mobile' {
+                    @media (max-width: #{$min-width - 1px}) {
+                        .#{$breakpoint}-item-#{$span}-#{$columns} {
+                            margin: auto;
+                            @include flex-column($span, $columns, $gap, $items-per-row);
+                        }
+                    }
+                } @else {
+                    @media (min-width: #{$min-width}) {
+                        .#{$breakpoint}-item-#{$span}-#{$columns} {
+                            margin: auto;
+                            @include flex-column($span, $columns, $gap, $items-per-row);
+                        }
+                    }
+                }
             }
         }
     }
 }
+
+
+
 
 
 @mixin generate-item-visibility($breakpoints-map) {

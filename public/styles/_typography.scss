@@ -16,12 +16,13 @@ p { margin: 0 }
 
 h2 {
   @include BodoniModa;
-  @include responsive-property('font-size', $h2fontSizes);
 
   font-size: 6rem;
   color: $washedGrey;
   letter-spacing: 0.0125em;
   line-height: 1;
+
+  @include responsive-property('font-size', $h2fontSizes);
 }
 h4 {
   @include Barlow;
