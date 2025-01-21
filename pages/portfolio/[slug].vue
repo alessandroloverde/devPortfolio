@@ -45,7 +45,7 @@
 </script>
 
 <template>
-   <div id="skills">
+   <div id="skills" class="skill">
       <header>
          <Navigation :isHomeNav="false" />
          <div class="skill-info">

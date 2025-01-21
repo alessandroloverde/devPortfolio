@@ -6,20 +6,22 @@ navigation:
   icon: '🏡'
 ---
 
+<div id="temp">
 
-<AlessandroLoVerdeLogo></AlessandroLoVerdeLogo>
+  <AlessandroLoVerdeLogo></AlessandroLoVerdeLogo>
 
-<h2>
-  <span class="cursor-container">
-    <span class="cursor typewriter-animation-1">
-      <span class="vividColor">Frontend</span> Developer
+  <h2>
+    <span class="cursor-container">
+      <span class="cursor typewriter-animation-1">
+        <span class="vividColor">Frontend</span> Developer
+      </span>
     </span>
-  </span>
-  <br>
-  <span class="cursor-container">
-    <span class="cursor typewriter-animation-2">for web interfaces</span>
-  </span>
-</h2>
+    <br>
+    <span class="cursor-container">
+      <span class="cursor typewriter-animation-2">for web interfaces</span>
+    </span>
+  </h2>
+</div>
 
 
 
