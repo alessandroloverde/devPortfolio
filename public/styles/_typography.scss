@@ -1,3 +1,10 @@
+@use 'variables' as *;
+
+$h2fontSizes: (
+  mobile: 6rem,
+  tablet: 6.6rem,
+  desktop: 7.2rem,
+);
 
 h1,
 h2,
@@ -5,11 +12,40 @@ h3,
 h4,
 h5, 
 h6,
-p {
-  margin: 0;
+p { margin: 0 }
+
+h2 {
+  @include BodoniModa;
+
+  font-size: 6rem;
+  color: $washedGrey;
+  letter-spacing: 0.0125em;
+  line-height: 1;
+
+  @include responsive-property('font-size', $h2fontSizes);
+}
+h4 {
+  @include Barlow;
+  
+  font-size: 2.6rem;
+  color: $vividOrange;
+  letter-spacing: 0.0125em;
+  line-height: 1;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    background-color: $vueGreen;
+    width: 0.75em;
+    height: 0.75em;
+    margin-right: 0.5em;
+  }
 }
 h6 {
-  @include Barlow;
+  @include Barlow(500);
 
   font-size: 2.4rem;
   color: $lightGrey;
@@ -27,8 +63,17 @@ h6 {
 p {
   @include Barlow;
 
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: $lightGrey;
   letter-spacing: 0.0125em;
   line-height: 1.35;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  
+  & + p { margin-top: $standardMargin-X2 }
+  & > strong { 
+    color: $vueGreen;
+    font-weight: 500; 
+  }
+
 }

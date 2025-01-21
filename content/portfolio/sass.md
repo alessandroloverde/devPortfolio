@@ -1,7 +1,10 @@
 ---
 title: "SASS"
 description: "Descrizione per la pagina skills => SASS"
-logo: "/img/logos/sass-logo.svg"
+logo: "/img/logos/sass.svg"
+navigation:
+  title: "SASS"
+  icon: "/img/logos/sass.svg"
 experience: 10
 features:
   - intro: "I am an experienced developer with a deep understanding of SASS (Syntactically Awesome Style Sheets). My expertise spans a range of advanced techniques that enhance the efficiency and maintainability of stylesheets. Below, I highlight five key areas where my proficiency in SASS has made a significant impact on my development work."

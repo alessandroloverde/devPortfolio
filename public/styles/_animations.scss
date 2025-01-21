@@ -1,5 +1,7 @@
 @use 'sass:list';
-@use "sass:map"; 
+@use "sass:map";
+@use 'variables' as *;
+
 
 
  svg .svg-elem-1 {
@@ -115,14 +117,14 @@ $paths: (
 );
 $strokeStagger: 0.12s;
 $fillStagger: 0.1s;
-$totalPaths: length($paths);
+$totalPaths: list.length($paths);
 $totalStrokeDuration: 1s + ($strokeStagger * ($totalPaths - 1));
 $totalFillDuration: 0.7s + 0.8s + ($fillStagger * ($totalPaths - 1));
 $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
 
-@debug $totalStrokeDuration; // Total stroke duration
-@debug $totalFillDuration;   // Total fill duration
-@debug $totalAnimationDuration; // Total animation duration
+//@debug $totalStrokeDuration; // Total stroke duration
+//@debug $totalFillDuration;   // Total fill duration
+//@debug $totalAnimationDuration; // Total animation duration
 
 
 @each $path in $paths {

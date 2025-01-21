@@ -1,13 +1,43 @@
 @use "sass:color";
 @use "sass:map";
 
+$baseFontSizes: (
+  mobile: 8px,
+  tablet: 9px,
+  desktop: 10px,
+);
+$breakpoints: (
+    mobile: 640px,
+    tablet: 960px,
+    desktop: 1152px
+);
+
+/** ––– Responsive property mixin –––––––––––––––––––––––––––––––––– */
+// Talkes a quoted css property and a map of values and sets the value 
+//of the property at each breakpoint
+
+@mixin responsive-property($property, $map) {
+   @each $breakpoint, $value in $map {
+     @if map.has-key($breakpoints, $breakpoint) {
+       $media-query: map.get($breakpoints, $breakpoint);
+ 
+       @media (min-width: #{$media-query}) {
+         #{$property}: #{$value};
+       }
+     } @else {
+       @warn "Breakpoint `#{$breakpoint}` not found in `$breakpoints` map.";
+     }
+   }
+ }
+ /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 
 /** ––– Colors ––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 $limeGreen: #a6fc52;
 $vueGreen: #41b883;
 $vividOrange: #fd5b37;
 $darkGrey: #1f1f25;
-$deepBlack: #060105;
+$deepBlack: #060002;
 /* $medGrey: #282630; */
 $medGrey: oklch(27.5% 0.0185 294.32);
 $lightGrey: #b8b8b8;
@@ -46,4 +76,7 @@ $vividColor: $vividOrange;
 
 /** ––– Parameters ––––––––––––––––––––––––––––––––––––––––––––––––– */
 $standardMargin: 1.6rem;
+$standardMargin-X2: calc($standardMargin * 2);
+$standardMargin-X3: calc($standardMargin * 3);
+$standardMargin-X4: calc($standardMargin * 4);
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */

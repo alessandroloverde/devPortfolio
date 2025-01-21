@@ -8,47 +8,51 @@ export function initializeParticleSystem(canvasId) {
   const ctx = canvas.getContext("2d");
   let animationFrameId;
 
-  canvas.width = canvas.offsetWidth;
-  canvas.height = canvas.offsetHeight;
-
+  const PARTICLE_COUNT = 400; // Increased particle count
+  const MAX_DIST = 150; // Maximum distance for connections within cluster
+  const MOUSE_RADIUS = 200; // Radius of influence around the mouse (500px diameter)
+  const BLUE_COLOR = "rgba(15, 115, 144, 1)"; // Blue color for cluster
+  const RED_COLOR = "rgba(220, 15, 37, 1)"; // Red color for non-cluster particles
   const particles = [];
-  const PARTICLE_COUNT = 350;
-  const MAX_DIST = 70;
-  const MOUSE_RADIUS = canvas.width * 0.1;
-  const COLORS = ["rgba(15, 115, 144, 0.7)", "rgba(220, 15, 37, 0.7)"];
-
-  const mouse = { x: null, y: null };
+  const mouse = { x: null, y: null, active: false };
 
   function resizeCanvas() {
-    canvas.width = canvas.offsetWidth * 0.8;
-    canvas.height = canvas.offsetHeight * 0.8;
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
   }
 
   function handleMouseMove(e) {
     const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    mouse.x = (e.clientX - rect.left) * scaleX;
+    mouse.y = (e.clientY - rect.top) * scaleY;
+    mouse.active = true;
   }
 
   function handleMouseLeave() {
     mouse.x = null;
     mouse.y = null;
+    mouse.active = false;
   }
 
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 1.5;
-      this.vy = (Math.random() - 0.5) * 1.5;
+      this.vx = (Math.random() - 0.5) * 0.5; // Gentle velocity
+      this.vy = (Math.random() - 0.5) * 0.5;
       this.size = Math.random() * 1.5 + 0.5;
-      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.color = Math.random() > 0.5 ? RED_COLOR : BLUE_COLOR; // Assign red or blue
     }
 
     update() {
+      // Subtle movement
       this.x += this.vx;
       this.y += this.vy;
 
+      // Bounce off edges
       if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
       if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
     }
@@ -56,8 +60,6 @@ export function initializeParticleSystem(canvasId) {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = this.color;
       ctx.fillStyle = this.color;
       ctx.fill();
       ctx.closePath();
@@ -70,31 +72,45 @@ export function initializeParticleSystem(canvasId) {
     }
   }
 
-  function drawMesh() {
-    if (mouse.x === null || mouse.y === null) return;
+  function drawCluster() {
+    if (!mouse.active || !mouse.x || !mouse.y) return;
 
-    particles.forEach((particle) => {
-      const dx = mouse.x - particle.x;
-      const dy = mouse.y - particle.y;
+    particles.forEach((particle, i) => {
+      // Check distance from mouse
+      const dx = particle.x - mouse.x;
+      const dy = particle.y - mouse.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < MOUSE_RADIUS) {
-        particles.forEach((otherParticle) => {
-          const ox = otherParticle.x - particle.x;
-          const oy = otherParticle.y - particle.y;
-          const dist = Math.sqrt(ox * ox + oy * oy);
+        // Enhance particle glow and enforce blue color
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size * 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = BLUE_COLOR; // Override color to blue
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = BLUE_COLOR; // Glow in blue
+        ctx.fill();
+        ctx.closePath();
+        ctx.restore();
 
-          if (dist < MAX_DIST) {
-            const opacity = 0.65 + 0.25 * (1 - dist / MAX_DIST);
+        // Connect particles within the cluster
+        for (let j = i + 1; j < particles.length; j++) {
+          const otherParticle = particles[j];
+          const otherDx = otherParticle.x - particle.x;
+          const otherDy = otherParticle.y - particle.y;
+          const otherDistance = Math.sqrt(otherDx * otherDx + otherDy * otherDy);
+
+          if (otherDistance < MAX_DIST) {
+            const opacity = 0.8 * (1 - otherDistance / MAX_DIST) + 0.2; // Ensure minimum opacity
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(15, 115, 144, ${opacity})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = BLUE_COLOR.replace("1)", `${opacity})`); // Dynamic opacity
+            ctx.lineWidth = 1.2;
             ctx.stroke();
             ctx.closePath();
           }
-        });
+        }
       }
     });
   }
@@ -102,21 +118,27 @@ export function initializeParticleSystem(canvasId) {
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Update particles
     particles.forEach((particle) => {
       particle.update();
+    });
+
+    // Draw particles
+    particles.forEach((particle) => {
       particle.draw();
     });
 
-    drawMesh();
+    // Draw cluster effect around mouse
+    drawCluster();
 
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  // Initialize
+  resizeCanvas();
   createParticles();
   animate();
 
-  // Add event listeners
+  // Event listeners
   window.addEventListener("resize", resizeCanvas);
   canvas.addEventListener("mousemove", handleMouseMove);
   canvas.addEventListener("mouseleave", handleMouseLeave);

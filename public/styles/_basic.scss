@@ -1,3 +1,5 @@
+@use 'variables' as *;
+@use 'sass:map';
 
 /** ––– Reset –––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 main { display: block }
@@ -160,6 +162,9 @@ template { display: none }
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 
+
+
+
 /** ––– Basic setup –––––––––––––––––––––––––––––––––––––––––––––––– */
 *,
 *:before,
@@ -167,10 +172,12 @@ template { display: none }
 
 html {
    height: 100vh;
-   font-size: 10px;
    scroll-behavior: smooth;
    line-height: 1.15;
+   font-size: 8px;
    -webkit-text-size-adjust: 100%;
+
+   @include responsive-property('font-size', $baseFontSizes);
 }
 
 body {
@@ -181,7 +188,7 @@ body {
    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
    background-color: $mainBkgColor;
    scroll-behavior: smooth;
-   overflow: hidden; // *** Must be set not to interfere with the scrolling of main
+   overflow: auto; // *** Must be set not to interfere with the scrolling of main
 
    -webkit-hyphens: auto;
        -ms-hyphens: auto;
@@ -211,5 +218,5 @@ img {
         height: 100%;
         object-fit: cover;
     }
-    }
+}
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
