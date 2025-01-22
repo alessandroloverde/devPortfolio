@@ -2,18 +2,11 @@
 @use "sass:map";
 @use "sass:math";
 
-
-$breakpoints: (
-    mobile: 640px,
-    tablet: 768px,
-    desktop: 1152px
-);
 $gap-settings: (
     mobile: 1rem,
     tablet: 1.5rem,
     desktop: 2rem
 );
-
 
 @mixin flex-container($breakpoint-gap: 1rem) {
     display: flex;
@@ -77,8 +70,6 @@ $gap-settings: (
         }
     }
 }
-
-
 
 
 
