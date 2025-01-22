@@ -11,6 +11,11 @@ $breakpoints: (
     tablet: 960px,
     desktop: 1152px
 );
+$pageMargin: (
+  mobile: 4rem,
+  tablet: 5rem,
+  desktop: 8rem
+);
 
 /** ––– Responsive property mixin –––––––––––––––––––––––––––––––––– */
 // Talkes a quoted css property and a map of values and sets the value 
