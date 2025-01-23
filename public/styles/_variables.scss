@@ -26,48 +26,28 @@ $h2fontSizes: (
 /** ––– Responsive property mixin –––––––––––––––––––––––––––––––––– */
 // Talkes a quoted css property and a map of values and sets the value 
 //of the property at each breakpoint
-
-
-@function nextMediaQuery($index) {
-  $breakpointsKeysList: map.keys($breakpoints);
-  $breakpointsValuesList: map.values($breakpoints);
-  
-  @if ($index < list.length($breakpointsKeysList)) {
-    @return list.nth($breakpointsValuesList, $index + 1)
-  } @else {
-    @return null
-  }
-};
-@function lastMediaQuery($index) {
-  $breakpointsKeysList: map.keys($breakpoints);
-  $breakpointsValuesList: map.values($breakpoints);
-  
-  @if ($index > 1) {
-    @return list.nth($breakpointsValuesList, $index - 1)
-  } @else {
-    @return null
-  }
-};
-
-
 @mixin responsive-property($property, $map) {
   @each $breakpoint, $value in $map {
     @if map.has-key($breakpoints, $breakpoint) {
       $media-query: map.get($breakpoints, $breakpoint);
       $index: list.index(map.keys($breakpoints), $breakpoint);
-      $nextMedia-query: nextMediaQuery($index);
-      $lastMedia-query: lastMediaQuery($index);
 
-      @if $lastMedia-query and $nextMedia-query {
-        @media screen and (min-width: #{$lastMedia-query + 1}) and (max-width: #{$media-query}) {
+      // Only calculate $prev-query if $index > 1
+      $prev-query: if($index > 1, list.nth(map.values($breakpoints), $index - 1), null);
+
+      // Only calculate $next-query if $index is not the last in the list
+      $next-query: if($index < list.length(map.keys($breakpoints)), list.nth(map.values($breakpoints), $index + 1), null);
+
+      @if $prev-query and $next-query {
+        @media screen and (min-width: #{$prev-query + 1}) and (max-width: #{$media-query}) {
           #{$property}: #{$value};
         }
-      } @else if $nextMedia-query {
+      } @else if $next-query {
         @media screen and (max-width: #{$media-query}) {
           #{$property}: #{$value};
         }
-      } @else if $lastMedia-query {
-        @media screen and (min-width: #{$lastMedia-query + 1}) {
+      } @else if $prev-query {
+        @media screen and (min-width: #{$prev-query + 1}) {
           #{$property}: #{$value};
         }
       }
@@ -76,7 +56,6 @@ $h2fontSizes: (
     }
   }
 }
-
  /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 
