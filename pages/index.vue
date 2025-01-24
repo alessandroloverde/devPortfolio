@@ -10,11 +10,7 @@
             <section class="homePage--background"></section>
             <section class="homePage--content">
                <ContentDoc></ContentDoc>
-               <div class="homePage--arrow">
-                  <a href="#aboutPage">
-                     <span class="inlineIcon--arrow-down"></span>
-                  </a>
-               </div>
+               <NavigationArrow target="aboutPage"></NavigationArrow>
             </section>
          </div>
       </main>
@@ -46,11 +42,6 @@
             </div>
             <ContentDoc path="/about"></ContentDoc>
             <NavigationArrow target="skillsPage"></NavigationArrow>
-<!--             <div class="homePage--arrow">
-               <a href="#skillsPage">
-                  <span class="inlineIcon--arrow-down"></span>
-               </a>
-            </div> -->
          </section>
       </div>
    </div>
@@ -84,7 +75,6 @@
 
    const { data: aboutContent } = await useAsyncData("aboutContent", () => queryContent("/about").findOne())
    const { data: skillsContent } = await useAsyncData("skillsContent", () => queryContent("/skills").findOne())
-
 
    // eslint-disable-next-line @typescript-eslint/no-unused-vars
    const images = skillsContent.value?.images || []

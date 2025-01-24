@@ -82,9 +82,7 @@
                <div class="skill-features--imageWrapper">
                   <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
                </div>
-               <div class="scroll-down">
-                  <SVGarrowDown />
-               </div>
+               <NavigationArrow :target="`topo-${data.features.indexOf(feature) +1}`"></NavigationArrow>
             </section>
          </article>
       </main>
