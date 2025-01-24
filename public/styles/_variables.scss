@@ -14,9 +14,9 @@ $breakpoints: (
     desktop: 1152px,
 );
 $pageMargin: (
-  mobile: 4rem,
-  tablet: 5rem,
-  desktop: 8rem
+  mobile: 0 4rem,
+  tablet: 0 5rem,
+  desktop: 0 8rem
 );
 $h2fontSizes: (
   mobile: 6rem,

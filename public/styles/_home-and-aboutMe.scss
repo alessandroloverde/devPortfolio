@@ -49,7 +49,7 @@ $fontBreakpoints: (
 
 .aboutPage,
 .skillsPage {
-  @include responsive-property("padding", 0 $pageMargin);
+  @include responsive-property("padding", $pageMargin);
 }
 .homePage {
   background-color: $deepBlack;

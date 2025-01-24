@@ -10,6 +10,18 @@
    console.log("data", data.value)
    let selectedIndex = ref(0)
 
+   const scrollToSection = (index: number) => {
+      const sections = document.querySelectorAll(".section")
+      const section = sections[index]
+
+      console.log("section", section)
+      console.log("index", index)
+
+      if (section) {
+         section.scrollIntoView({ behavior: "smooth" })
+      }
+   }
+
    onMounted(() => {
       const sections = document.querySelectorAll(".section")
       const references = document.querySelectorAll(".reference")
@@ -48,11 +60,11 @@
    <div id="skills" class="skill">
       <header>
          <Navigation :isHomeNav="false" />
-         <div class="skill-info">
-            <aside>
+         <div class="skill--info">
+            <aside class="skill--info--logo">
                <img :src="data?.logo" v-if="data?.logo" class="responsiveImg" />
             </aside>
-            <div class="skill-info--content">
+            <div class="skill--info--description">
                <div>
                   <h1>{{ data?.title }}</h1>
                   <h3 v-if="data?.experience">
@@ -60,13 +72,13 @@
                   </h3>
                </div>
             </div>
-            <div class="skill-info--toBeDefined">
-               <ul class="referenceUL">
-                  <li v-for="(feature, index) of data?.features.slice(1)" :key="index + 1" class="reference">
-                     <div class="reference--number">
+            <div class="skill--info--refNavigation">
+               <ul>
+                  <li v-for="(feature, index) of data?.features.slice(1)" :key="index + 1" class="skill--info--refNavigation--reference reference">
+                     <div class="skill--info--refNavigation--reference--number">
                         <AnimatedNumber :numberIndex="index + 1" />
                      </div>
-                     <h3 class="shuffle-text">{{ feature.name }}</h3>
+                     <h3 class="shuffle-text"><a @click="scrollToSection(index + 1)">{{ feature.name }}</a></h3>
                   </li>
                </ul>
             </div>
