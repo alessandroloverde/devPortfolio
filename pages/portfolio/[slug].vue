@@ -55,9 +55,9 @@
             <div class="skill-info--content">
                <div>
                   <h1>{{ data?.title }}</h1>
-                  <h4 v-if="data?.experience">
+                  <h3 v-if="data?.experience">
                      <span>since</span><i>{{ data?.experience }}</i> years
-                  </h4>
+                  </h3>
                </div>
             </div>
             <div class="skill-info--toBeDefined">

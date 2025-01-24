@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "sass:list";
 
+
 $baseFontSizes: (
   mobile: 8px,
   tablet: 9px,
@@ -23,9 +24,9 @@ $h2fontSizes: (
   desktop: 7.2rem,
 );
 
+
 /** ––– Responsive property mixin –––––––––––––––––––––––––––––––––– */
-// Talkes a quoted css property and a map of values and sets the value 
-//of the property at each breakpoint
+// Talkes a quoted css property and a map of values and sets the value of the property at each breakpoint
 @mixin responsive-property($property, $map) {
   @each $breakpoint, $value in $map {
     @if map.has-key($breakpoints, $breakpoint) {

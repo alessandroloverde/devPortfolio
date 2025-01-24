@@ -45,11 +45,12 @@
                />
             </div>
             <ContentDoc path="/about"></ContentDoc>
-            <div class="homePage--arrow">
+            <NavigationArrow target="skillsPage"></NavigationArrow>
+<!--             <div class="homePage--arrow">
                <a href="#skillsPage">
                   <span class="inlineIcon--arrow-down"></span>
                </a>
-            </div>
+            </div> -->
          </section>
       </div>
    </div>
