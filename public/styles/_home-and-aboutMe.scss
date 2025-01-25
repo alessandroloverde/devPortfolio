@@ -127,21 +127,6 @@ $fontBreakpoints: (
       padding: 4rem;
     }
   }
-
-  &--arrow {
-    cursor: pointer;
-    bottom: $standardMargin; 
-    z-index: 10;
-    height: 8rem;
-    width: 12rem;
-    margin: 0 auto;
-
-    & > a {
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
-  }
 }
 
 .aboutPage {

@@ -44,7 +44,8 @@ $gap-settings: (
 
             // Default class
             .item-#{$span}-#{$columns} {
-                margin: auto;
+                margin: 0 auto;
+                
                 @include flex-column($span, $columns, $gap, $items-per-row);
             }
 

@@ -1,6 +1,5 @@
 @use 'variables' as *;
-
-
+@use "sass:map";
 
 #skills {
   header {
@@ -219,5 +218,60 @@
     padding: 0.2em 0.5em;
     transition: all 0.3s ease-in-out;
     display: inline-block;
+  }
+}
+
+@media screen and (max-width: map.get($breakpoints, tablet)) {
+  #skills {
+    header {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      height: auto;
+      position: relative;
+    }
+    
+    main {
+      display: flex;
+      width: auto;
+      height: auto;
+      margin-left: auto;
+      overflow: auto;
+    }
+
+    .nav {
+      margin: 0 3.5rem;
+
+      ul {
+        justify-content: space-between;
+
+        li {
+          width: auto;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .skill {
+    &--info {
+      aside { 
+        width: 25%;
+        position: absolute;
+        right: 3.5rem;
+      }
+
+      &--refNavigation { display: none; }
+      &--description {
+        padding-left: 0;
+        width: 75%;
+
+        h1 { font-size: 8rem }
+        h3 { font-size: 2.8rem }
+      }
+    }
+    &-features {
+     section.section { padding: 3rem 3.5rem 0 3.5rem }
+    }
   }
 }
