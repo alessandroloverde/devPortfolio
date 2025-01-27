@@ -1,5 +1,7 @@
 @use "sass:color";
 @use "sass:map";
+@use "sass:list";
+
 
 $baseFontSizes: (
   mobile: 8px,
@@ -9,26 +11,52 @@ $baseFontSizes: (
 $breakpoints: (
     mobile: 640px,
     tablet: 960px,
-    desktop: 1152px
+    desktop: 1152px,
+);
+$pageMargin: (
+  mobile: 0 4rem,
+  tablet: 0 5rem,
+  desktop: 0 8rem
+);
+$h2fontSizes: (
+  mobile: 6rem,
+  tablet: 6.6rem,
+  desktop: 7.2rem,
 );
 
-/** ––– Responsive property mixin –––––––––––––––––––––––––––––––––– */
-// Talkes a quoted css property and a map of values and sets the value 
-//of the property at each breakpoint
 
+/** ––– Responsive property mixin –––––––––––––––––––––––––––––––––– */
+// Talkes a quoted css property and a map of values and sets the value of the property at each breakpoint
 @mixin responsive-property($property, $map) {
-   @each $breakpoint, $value in $map {
-     @if map.has-key($breakpoints, $breakpoint) {
-       $media-query: map.get($breakpoints, $breakpoint);
- 
-       @media (min-width: #{$media-query}) {
-         #{$property}: #{$value};
-       }
-     } @else {
-       @warn "Breakpoint `#{$breakpoint}` not found in `$breakpoints` map.";
-     }
-   }
- }
+  @each $breakpoint, $value in $map {
+    @if map.has-key($breakpoints, $breakpoint) {
+      $media-query: map.get($breakpoints, $breakpoint);
+      $index: list.index(map.keys($breakpoints), $breakpoint);
+
+      // Only calculate $prev-query if $index > 1
+      $prev-query: if($index > 1, list.nth(map.values($breakpoints), $index - 1), null);
+
+      // Only calculate $next-query if $index is not the last in the list
+      $next-query: if($index < list.length(map.keys($breakpoints)), list.nth(map.values($breakpoints), $index + 1), null);
+
+      @if $prev-query and $next-query {
+        @media screen and (min-width: #{$prev-query + 1}) and (max-width: #{$media-query}) {
+          #{$property}: #{$value};
+        }
+      } @else if $next-query {
+        @media screen and (max-width: #{$media-query}) {
+          #{$property}: #{$value};
+        }
+      } @else if $prev-query {
+        @media screen and (min-width: #{$prev-query + 1}) {
+          #{$property}: #{$value};
+        }
+      }
+    } @else {
+      @warn "Breakpoint `#{$breakpoint}` not found in `$breakpoints` map.";
+    }
+  }
+}
  /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 

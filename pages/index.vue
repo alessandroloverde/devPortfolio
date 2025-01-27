@@ -10,11 +10,7 @@
             <section class="homePage--background"></section>
             <section class="homePage--content">
                <ContentDoc></ContentDoc>
-               <div class="homePage--arrow">
-                  <a href="#aboutPage">
-                     <span class="inlineIcon--arrow-down"></span>
-                  </a>
-               </div>
+               <NavigationArrow target="aboutPage"></NavigationArrow>
             </section>
          </div>
       </main>
@@ -22,6 +18,9 @@
 
    <div id="aboutPage" class="aboutPage">
       <div class="container aboutPage--firstPart">
+<!--          <div class="test item-3-12">3-12</div>
+         <div class="test item-3-12">3-12</div>
+         <div class="test item-6-12">6-12</div> -->
          <section class="aboutPage--headline item-12-12">
             <h4>Introduction</h4>
             <h2>A bit of me and myself</h2>
@@ -42,11 +41,7 @@
                />
             </div>
             <ContentDoc path="/about"></ContentDoc>
-            <div class="homePage--arrow">
-               <a href="#skillsPage">
-                  <span class="inlineIcon--arrow-down"></span>
-               </a>
-            </div>
+            <NavigationArrow target="skillsPage"></NavigationArrow>
          </section>
       </div>
    </div>
@@ -80,7 +75,6 @@
 
    const { data: aboutContent } = await useAsyncData("aboutContent", () => queryContent("/about").findOne())
    const { data: skillsContent } = await useAsyncData("skillsContent", () => queryContent("/skills").findOne())
-
 
    // eslint-disable-next-line @typescript-eslint/no-unused-vars
    const images = skillsContent.value?.images || []

@@ -162,9 +162,6 @@ template { display: none }
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 
-
-
-
 /** ––– Basic setup –––––––––––––––––––––––––––––––––––––––––––––––– */
 *,
 *:before,
@@ -174,7 +171,6 @@ html {
    height: 100vh;
    scroll-behavior: smooth;
    line-height: 1.15;
-   font-size: 8px;
    -webkit-text-size-adjust: 100%;
 
    @include responsive-property('font-size', $baseFontSizes);

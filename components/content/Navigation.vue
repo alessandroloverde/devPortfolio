@@ -4,7 +4,8 @@
        <ul>
          <li v-for="link in getPortfolioPaths(navigation)" :key="link._path">
            <NuxtLink :to="link._path">
-             <span v-if="!isHomeNav">{{ link.title }}</span>
+            <span v-if="!isHomeNav && link.title === 'Home'">{{ link.icon }}</span>
+             <span v-if="!isHomeNav && link.title !== 'Home'">{{ link.title }}</span>
              <img v-if="link.icon && isHomeNav" :src="link.icon" :alt="link.title" />
            </NuxtLink>
          </li>
@@ -21,6 +22,8 @@ const props = defineProps({
      default: false,
    },
 });
+
+console.log("navigation", navigation)
 
 const getPortfolioPaths = (navigation) => {
    if (!navigation || !Array.isArray(navigation)) return [];

@@ -47,7 +47,10 @@ $fontBreakpoints: (
   }
 }
 
-
+.aboutPage,
+.skillsPage {
+  @include responsive-property("padding", $pageMargin);
+}
 .homePage {
   background-color: $deepBlack;
   height: 100vh;
@@ -57,10 +60,11 @@ $fontBreakpoints: (
     position: absolute;
     z-index: 10;
   }
+  main { height: 100% }
 
   &--container {
     display: flex;
-    height: 100vh;
+    height: 100%;
   }
 
   &--background {
@@ -73,7 +77,6 @@ $fontBreakpoints: (
 
   &--content {
     width: 50%;
-    padding: $standardMargin-X2;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -119,20 +122,9 @@ $fontBreakpoints: (
       width: 100%;
       height: auto;
     }
-  }
 
-  &--arrow {
-    cursor: pointer;
-    bottom: $standardMargin; 
-    z-index: 10;
-    height: 8rem;
-    width: 12rem;
-    margin: 0 auto;
-
-    & > a {
-      display: block;
-      height: 100%;
-      width: 100%;
+    @media screen and (max-width: map.get($breakpoints, tablet)) {
+      padding: 4rem;
     }
   }
 }
@@ -392,11 +384,12 @@ span.bigCircle[class*="inlineIcon--"] {
       width: 100%;
       height: 100vh;
       position: absolute;
+      left: 0;
       background-position: bottom center;
     }
     &--content {
       width: 100%;
-      height: 100vh;
+      height: 100%;
       position: relative;
       align-items: flex-start;
     }

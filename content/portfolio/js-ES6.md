@@ -3,7 +3,7 @@ title: "JS ES6"
 description: "Descrizione per la pagina skills => ES6"
 logo: "/img/logos/es6.svg"
 navigation:
-  title: "JavaScript ES6"
+  title: "JS ES6"
   icon: "/img/logos/es6.svg"
 experience: 6
 features:
@@ -13,7 +13,7 @@ features:
     image: "/img/snippets/js-dataManipulation.jpg"
   - name: "JS 2"
     description: ""
-    image: "/img/snippets/js-.jpg"
+    image: "/img/snippets/js-mobileTest.png"
   - name: "JS 3"
     description: ""
     image: "/img/snippets/js-.jpg"

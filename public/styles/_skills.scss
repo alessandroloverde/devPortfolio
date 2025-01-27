@@ -1,6 +1,5 @@
 @use 'variables' as *;
-
-
+@use "sass:map";
 
 #skills {
   header {
@@ -46,14 +45,15 @@
     height: 100%;
     max-width: 100%;
   }
-  &-info {
+
+  &--info {
     display: flex;
     flex-wrap: wrap;
     padding: 30px;
 
     aside { width: 30% }
 
-    &--content {
+    &--description {
       width: 70%;
       padding-left: 30px;
 
@@ -80,7 +80,7 @@
           margin-bottom: 0.1em
         }
       }
-      h4 {
+      h3 {
         @include Barlow(500);
 
         font-size: 3.5rem;
@@ -105,8 +105,40 @@
         }
       }
     }
-  }
 
+    &--refNavigation {
+      ul {
+        margin-top: 5em;
+  
+        a {
+          text-decoration: none;
+          color: $washedGrey;
+      
+          &:hover { color: $limeGreen }
+        }
+      }
+      &--reference { 
+        display: flex;
+        align-items: center;
+        height: 80px;
+    
+        &--number {
+          display: inline-block;
+          height: 100%;
+          margin-right: 1em;
+          padding: 1.25em 1.25em 1.25em 0;
+        }
+      }
+    
+      h3 {
+        @include Barlow(500);
+    
+        font-size: 3.6rem;
+        color: $lightGrey;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
 
   &-features {
     margin: 0;
@@ -126,36 +158,15 @@
     }
     section.section {
       height: 100vh;
-      position: sticky;
+      //position: sticky;
       top: 0;
-      padding: 6.4rem;
+      padding: 6.4rem 6.4rem 0 6.4rem;
       background-color: $medGrey;
       transition: transform 0.5s;
       border-top: 1px solid $limeGreen;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
-
-      .scroll-down {
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        bottom: 0;
-        left: 2em;
-        --svg-color: #a6fc52; /* Define the color for the SVG path */
-      
-        & img {
-          width: 100%;
-          height: auto;
-        }
-      }
-      &:last-child {
-        scroll-snap-type: none;
-      
-        .scroll-down {
-          transform: rotate(180deg);
-        }
-      }
     }
     
     &--image.responsiveImg {
@@ -197,40 +208,6 @@
     }
   }
 }
-ul.referenceUL {
-  //counter-reset: item;
-  margin-top: 5em;
-  
-  a {
-    text-decoration: none;
-    color: $washedGrey;
-
-    &:hover {
-      color: $limeGreen;
-    }
-  }
-  .reference { 
-    display: flex;
-    align-items: center;
-    height: 80px;
-
-    &--number {
-      display: inline-block;
-      height: 100%;
-      margin-right: 1em;
-      padding: 1.25em 1.25em 1.25em 0;
-    }
-  }
-
-  h3 {
-    @include Barlow(500);
-
-    font-size: 3.6rem;
-    color: $lightGrey;
-    transition: all 0.3s ease-in-out;
-  }
-}
-
 
 .highlighted {
   display: flex;
@@ -244,5 +221,81 @@ ul.referenceUL {
   }
 }
 
+@media screen and (max-width: map.get($breakpoints, tablet)) {
+  #skills {
+    header {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      height: auto;
+      position: relative;
+    }
+    
+    main {
+      display: flex;
+      width: auto;
+      height: auto;
+      margin-left: auto;
+      overflow: auto;
+    }
 
+    .nav {
+      width: 100%;
+      margin: 0;
+      padding: 0 3.5rem;
+      position: fixed;
+      background-color: $mainBkgColor;
+      z-index: 11;
 
+      ul {
+        justify-content: space-between;
+
+        li {
+          width: auto;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .skill {
+    &--info {
+      margin-top: 1rem;
+      
+      aside { 
+        width: calc(25% - 3.5rem);
+        position: absolute;
+        right: 3.5rem;
+      }
+
+      &--refNavigation { display: none; }
+      &--description {
+        padding-left: 0;
+        width: 75%;
+
+        h1 { 
+          font-size: 7rem;
+          width: 100%; 
+        }
+        h3 { font-size: 2.8rem }
+        & > div { width: 100% }
+      }
+    }
+    &-features {
+      section.section { padding: 3rem 3.5rem 0 3.5rem }
+
+      h2 {
+        margin-left: 1.5em;
+        text-indent: -1.25em;
+
+        &::before { margin-left: 0 }
+        &::after { 
+          margin-left: calc(-1em - 1rem);
+          margin-right: 2em; 
+          width: calc(100% + 1em);
+
+        }
+      }
+    }
+  }
+}

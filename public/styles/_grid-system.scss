@@ -2,24 +2,16 @@
 @use "sass:map";
 @use "sass:math";
 
-
-$breakpoints: (
-    mobile: 640px,
-    tablet: 768px,
-    desktop: 1152px
-);
 $gap-settings: (
     mobile: 1rem,
     tablet: 1.5rem,
     desktop: 2rem
 );
 
-
 @mixin flex-container($breakpoint-gap: 1rem) {
     display: flex;
     flex-wrap: wrap;
     column-gap: $breakpoint-gap; // Unified gap application
-    padding: 0 calc($breakpoint-gap * 4); // Padding correction for the gap
 }
 
 @mixin flex-column($span: 1, $columns: 12, $gap: 0, $items-per-row: $columns / $span) {
@@ -52,7 +44,8 @@ $gap-settings: (
 
             // Default class
             .item-#{$span}-#{$columns} {
-                margin: auto;
+                margin: 0 auto;
+                
                 @include flex-column($span, $columns, $gap, $items-per-row);
             }
 
@@ -77,8 +70,6 @@ $gap-settings: (
         }
     }
 }
-
-
 
 
 
@@ -109,4 +100,11 @@ $gap-settings: (
     @media screen and (min-width: map.get($breakpoints, desktop)) {
         & { max-width: 1440px } 
     }
+}
+
+
+.test {
+    outline: 1px solid magenta;
+    color: salmon;
+    font-size: 2rem;
 }
