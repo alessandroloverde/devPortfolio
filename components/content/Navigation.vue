@@ -23,8 +23,6 @@ const props = defineProps({
    },
 });
 
-console.log("navigation", navigation)
-
 const getPortfolioPaths = (navigation) => {
    if (!navigation || !Array.isArray(navigation)) return [];
 

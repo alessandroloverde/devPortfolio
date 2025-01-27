@@ -167,6 +167,16 @@
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
+
+      &:first-child { 
+        & > p:first-child::first-letter {
+          color: $limeGreen;
+          margin-right: 0.1em;
+          font-size: 265%;
+          float: left;
+          line-height: 1;
+         }
+       }
     }
     
     &--image.responsiveImg {
