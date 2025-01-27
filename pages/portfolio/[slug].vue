@@ -18,7 +18,8 @@
       console.log("index", index)
 
       if (section) {
-         section.scrollIntoView({ behavior: "smooth" })
+         section.scrollIntoView({ behavior: "smooth" });
+         (section as HTMLElement).style.position = "relative";
       }
    }
 
@@ -66,7 +67,7 @@
             </aside>
             <div class="skill--info--description">
                <div>
-                  <h1>{{ data?.title }}</h1>
+                  <h1>{{ data?.title?.replace(' | ', '&shy;')}}</h1>
                   <h3 v-if="data?.experience">
                      <span>since</span><i>{{ data?.experience }}</i> years
                   </h3>
@@ -88,7 +89,7 @@
       <main>
          <article v-if="data" class="skill-features">
             <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)" :key="feature.name">
-               <h6 v-if="feature.intro">{{ feature.intro }}</h6>
+               <p v-if="feature.intro">{{ feature.intro }}</p>
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
                <div class="skill-features--imageWrapper">

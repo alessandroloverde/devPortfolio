@@ -13,7 +13,7 @@ features:
     image: "/img/snippets/js-dataManipulation.jpg"
   - name: "JS 2"
     description: ""
-    image: "/img/snippets/js-.jpg"
+    image: "/img/snippets/js-mobileTest.png"
   - name: "JS 3"
     description: ""
     image: "/img/snippets/js-.jpg"

@@ -1,5 +1,5 @@
 ---
-title: "Astrocazzobase"
+title: "Type | Script"
 description: "Descrizione per la pagina skills => TypeScript"
 logo: "/img/logos/typescript.svg"
 navigation:

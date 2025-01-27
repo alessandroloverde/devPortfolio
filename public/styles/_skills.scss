@@ -240,7 +240,12 @@
     }
 
     .nav {
-      margin: 0 3.5rem;
+      width: 100%;
+      margin: 0;
+      padding: 0 3.5rem;
+      position: fixed;
+      background-color: $mainBkgColor;
+      z-index: 11;
 
       ul {
         justify-content: space-between;
@@ -255,8 +260,10 @@
 
   .skill {
     &--info {
+      margin-top: 1rem;
+      
       aside { 
-        width: 25%;
+        width: calc(25% - 3.5rem);
         position: absolute;
         right: 3.5rem;
       }
@@ -266,8 +273,12 @@
         padding-left: 0;
         width: 75%;
 
-        h1 { font-size: 8rem }
+        h1 { 
+          font-size: 7rem;
+          width: 100%; 
+        }
         h3 { font-size: 2.8rem }
+        & > div { width: 100% }
       }
     }
     &-features {
