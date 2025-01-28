@@ -172,10 +172,11 @@
         & > p:first-child::first-letter {
           color: $limeGreen;
           margin-right: 0.1em;
-          font-size: 265%;
+          font-size: 350%;
           float: left;
-          line-height: 1;
+          line-height: 0.5;
          }
+        & > p::first-line { line-height: 100% } 
        }
     }
     
