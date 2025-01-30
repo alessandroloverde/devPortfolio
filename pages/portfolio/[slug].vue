@@ -1,9 +1,10 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-   import { onMounted, ref } from "vue"
-   import SVGarrowDown from "~/public/img/icons/fi-rr-angle-down.svg"
+   import { onMounted, ref } from "vue";
+   import SVGarrowDown from "~/public/img/icons/fi-rr-angle-down.svg";
+   import rattoJSON from "~/public/img/rattoJSON.json";
    import { queryContent, useAsyncData } from '#imports';
-   import { useRoute } from 'vue-router'
+   import { useRoute } from 'vue-router';
 
    const route = useRoute()
    const { data } = await useAsyncData("portfolio", () => queryContent(`/portfolio/${route.params.slug}`).findOne())
@@ -89,7 +90,30 @@
       <main>
          <article v-if="data" class="skill-features">
             <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)" :key="feature.name">
-               <p v-if="feature.intro">{{ feature.intro }}</p>
+               <p v-if="feature.intro">{{ feature.intro }}
+                  <span>
+                     <div class="atom">
+                        <div class="atom--center"></div>
+                        <div class="atom--orbit orbit1">
+                           <div class="atom--orbit--electron electron1"></div>
+                        </div>
+                        <div class="atom--orbit orbit2">
+                           <div class="atom--orbit--electron electron2"></div>
+                        </div>
+                        <div class="atom--orbit orbit3">
+                           <div class="atom--orbit--electron electron3"></div>
+                        </div>
+                     </div>
+                  </span>
+
+<!--                   <Lottie
+                     ref="cricetoAnim"
+                     :animation-data="rattoJSON"
+                     :loop="true"
+                     :auto-play="true"
+                     :speed="0.75"
+                  /> -->
+               </p>
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
                <div class="skill-features--imageWrapper">

@@ -174,7 +174,7 @@
           margin-right: 0.1em;
           font-size: 350%;
           float: left;
-          line-height: 0.5;
+          line-height: 0.5; // FF does not support first-letter line-height
          }
         & > p::first-line { line-height: 100% } 
        }
