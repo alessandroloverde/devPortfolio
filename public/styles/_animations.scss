@@ -151,7 +151,7 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
 
 
 .atom {
-  $colors: ($limeGreen, $vueGreen, cyan);
+  $colors: ($limeGreen, $vueGreen, $vividOrange);
 
 	position: relative;
 	width: 50%;
@@ -166,20 +166,18 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
   }
 
   &--center {
-    width: 30px;
     width: 20%;
-    height: 30px;
     height: 20%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: 1px solid $vividOrange;
+    outline: 1px solid $washedGrey;
     overflow: hidden;
-
-    //background: $vividOrange;
     border-radius: 50%;
-    box-shadow: 0 0 20px $vividOrange, 0 0 50px $vividOrange;
+    box-shadow: 0 0 20px $washedGrey, 0 0 60px $washedGrey;
+
+    animation: cycleColors 6s linear infinite;
+
   }
   &--orbit {
     position: absolute;
@@ -189,14 +187,14 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
     animation: rotate 3s linear infinite;
 
     &--electron {
-      width: 15px;
-      height: 15px;
+      width: 15%;
+      height: 0;
+      padding-bottom: 15%;
       border-radius: 50%;
       position: absolute;
       top: 0;
       left: 50%;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 10px cyan, 0 0 30px cyan;
       background: list.nth($colors, 3);          
     }
 
@@ -208,7 +206,11 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
         box-shadow: 0 0 16px color.scale(list.nth($colors, $i), $alpha: -70%), 0 0 1px list.nth($colors, $i);
         animation-duration: calc(2.5s * $i);
 
-        & > div { background: list.nth($colors, $i) }
+        & > div { 
+          background: list.nth($colors, $i);
+          box-shadow: 0 0 10px list.nth($colors, $i), 0 0 30px list.nth($colors, $i);
+ 
+        }
       }
     }
   }
@@ -217,5 +219,29 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
     0% { transform: rotate(0deg) }
     100% { transform: rotate(360deg) }
   }
+
+  @keyframes cycleColors {
+    0% {
+      background: color.scale(list.nth($colors, 1), $alpha: -40%);
+      box-shadow: 0 0 20px list.nth($colors, 1), 0 0 50px list.nth($colors, 1);
+      outline: 1px solid color.scale(list.nth($colors, 1), $alpha: -20%);;
+    }
+    33.33% {
+      background: color.scale(list.nth($colors, 2), $alpha: -40%);
+      box-shadow: 0 0 20px list.nth($colors, 2), 0 0 50px list.nth($colors, 2);
+      outline: 1px solid color.scale(list.nth($colors, 2), $alpha: -20%);;
+    }
+    66.66% {
+      background: color.scale(list.nth($colors, 3), $alpha: -40%);
+      box-shadow: 0 0 20px list.nth($colors, 3), 0 0 50px list.nth($colors, 3);
+      outline: 1px solid color.scale(list.nth($colors, 3), $alpha: -20%);;
+    }
+    100% {
+      background: color.scale(list.nth($colors, 1), $alpha: -40%);
+      box-shadow: 0 0 20px list.nth($colors, 1), 0 0 50px list.nth($colors, 1);
+      outline: 1px solid color.scale(list.nth($colors, 1), $alpha: -20%);;
+    }
+  }
+  
 }
 
