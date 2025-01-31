@@ -1,5 +1,6 @@
 @use 'sass:list';
 @use "sass:map";
+@use "sass:color"; 
 @use 'variables' as *;
 
 
@@ -148,4 +149,73 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 
+
+.atom {
+  $colors: ($limeGreen, $vueGreen, cyan);
+
+	position: relative;
+	width: 50%;
+  margin:auto;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: map.get($breakpoints, 'tablet')) {
+    width: 100%;
+  }
+
+  &--center {
+    width: 30px;
+    width: 20%;
+    height: 30px;
+    height: 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid $vividOrange;
+    overflow: hidden;
+
+    //background: $vividOrange;
+    border-radius: 50%;
+    box-shadow: 0 0 20px $vividOrange, 0 0 50px $vividOrange;
+  }
+  &--orbit {
+    position: absolute;
+    translate: -50%, -50%;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    animation: rotate 3s linear infinite;
+
+    &--electron {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px cyan, 0 0 30px cyan;
+      background: list.nth($colors, 3);          
+    }
+
+    @for $i from 1 through 3 {
+      &:nth-of-type(#{$i + 1}) {
+        width: 50%;
+        height: 100%;
+        border: 1px solid color.scale(list.nth($colors, $i), $alpha: -70%);
+        box-shadow: 0 0 16px color.scale(list.nth($colors, $i), $alpha: -70%), 0 0 1px list.nth($colors, $i);
+        animation-duration: calc(2.5s * $i);
+
+        & > div { background: list.nth($colors, $i) }
+      }
+    }
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+  }
+}
 

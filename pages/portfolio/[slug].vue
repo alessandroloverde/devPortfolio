@@ -91,21 +91,6 @@
          <article v-if="data" class="skill-features">
             <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)" :key="feature.name">
                <p v-if="feature.intro">{{ feature.intro }}
-                  <span>
-                     <div class="atom">
-                        <div class="atom--center"></div>
-                        <div class="atom--orbit orbit1">
-                           <div class="atom--orbit--electron electron1"></div>
-                        </div>
-                        <div class="atom--orbit orbit2">
-                           <div class="atom--orbit--electron electron2"></div>
-                        </div>
-                        <div class="atom--orbit orbit3">
-                           <div class="atom--orbit--electron electron3"></div>
-                        </div>
-                     </div>
-                  </span>
-
 <!--                   <Lottie
                      ref="cricetoAnim"
                      :animation-data="rattoJSON"
@@ -117,6 +102,20 @@
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
                <div class="skill-features--imageWrapper">
+                  <div class="atom" v-if="feature.intro && data?.logo">
+                     <div class="atom--center">
+                        <img :src="data?.logo" class="responsiveImg" />
+                     </div>
+                     <div class="atom--orbit orbit1">
+                        <div class="atom--orbit--electron"></div>
+                     </div>
+                     <div class="atom--orbit orbit2">
+                        <div class="atom--orbit--electron"></div>
+                     </div>
+                     <div class="atom--orbit orbit3">
+                        <div class="atom--orbit--electron"></div>
+                     </div>
+                  </div>
                   <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
                </div>
                <NavigationArrow :target="`topo-${data.features.indexOf(feature) +1}`"></NavigationArrow>
