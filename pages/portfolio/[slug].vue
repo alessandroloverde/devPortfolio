@@ -118,7 +118,14 @@
                   </div>
                   <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
                </div>
-               <NavigationArrow :target="`topo-${data.features.indexOf(feature) +1}`"></NavigationArrow>
+               <NavigationArrow 
+                  :direction="data.features.indexOf(feature) === data.features.length - 1 ? 'up' : 'down'"
+                  :target="
+                     data.features.indexOf(feature) === data.features.length - 1
+                     ? `topo-0`
+                     : `topo-${data.features.indexOf(feature) +1}`
+               ">
+               </NavigationArrow>
             </section>
          </article>
       </main>

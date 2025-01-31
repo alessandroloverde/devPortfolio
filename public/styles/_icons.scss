@@ -2,6 +2,7 @@
 @use 'sass:string';
 
 $icons: (
+    'symbol-arrow-up': url(/public/img/icons/fi-rr-angle-up.svg),
     'symbol-arrow-down': url(/public/img/icons/fi-rr-angle-down.svg),
     'symbol-code': url(/public/img/icons/fi-rr-code-simple.svg),
     'symbol-layers': url(/public/img/icons/fi-rr-layers.svg),
