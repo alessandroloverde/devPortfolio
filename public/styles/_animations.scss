@@ -224,22 +224,22 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
     0% {
       background: color.scale(list.nth($colors, 1), $alpha: -40%);
       box-shadow: 0 0 20px list.nth($colors, 1), 0 0 50px list.nth($colors, 1);
-      outline: 1px solid color.scale(list.nth($colors, 1), $alpha: -20%);;
+      outline: 1px solid color.scale(list.nth($colors, 1), $alpha: -20%);
     }
     33.33% {
       background: color.scale(list.nth($colors, 2), $alpha: -40%);
       box-shadow: 0 0 20px list.nth($colors, 2), 0 0 50px list.nth($colors, 2);
-      outline: 1px solid color.scale(list.nth($colors, 2), $alpha: -20%);;
+      outline: 1px solid color.scale(list.nth($colors, 2), $alpha: -20%);
     }
     66.66% {
       background: color.scale(list.nth($colors, 3), $alpha: -40%);
       box-shadow: 0 0 20px list.nth($colors, 3), 0 0 50px list.nth($colors, 3);
-      outline: 1px solid color.scale(list.nth($colors, 3), $alpha: -20%);;
+      outline: 1px solid color.scale(list.nth($colors, 3), $alpha: -20%);
     }
     100% {
       background: color.scale(list.nth($colors, 1), $alpha: -40%);
       box-shadow: 0 0 20px list.nth($colors, 1), 0 0 50px list.nth($colors, 1);
-      outline: 1px solid color.scale(list.nth($colors, 1), $alpha: -20%);;
+      outline: 1px solid color.scale(list.nth($colors, 1), $alpha: -20%);
     }
   }
   
