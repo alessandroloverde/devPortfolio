@@ -2,6 +2,7 @@
 import svgLoader from 'vite-svg-loader';
 
 export default defineNuxtConfig({
+
   app: {
     head: {
       htmlAttrs: {
@@ -10,7 +11,7 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: false },
-  modules: ["@nuxt/content", "@nuxtjs/google-fonts"],
+  modules:  ["@nuxt/content", "@nuxtjs/google-fonts" ],
   ssr: false,
   compatibilityDate: "2024-10-25",
   googleFonts: {
@@ -21,6 +22,10 @@ export default defineNuxtConfig({
   },
   css: [
     '~/public/styles/main.scss',
+    'highlight.js/styles/monokai.css',
+  ],
+  plugins: [
+    '~/plugins/highlightjs.client.ts'
   ],
   vite: {
     plugins: [svgLoader()],
@@ -40,4 +45,5 @@ export default defineNuxtConfig({
       anchorLinks: false, // Disable heading anchors
     },
   },
-});
+
+})

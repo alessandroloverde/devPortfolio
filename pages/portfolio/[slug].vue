@@ -90,16 +90,18 @@
       <main>
          <article v-if="data" class="skill-features">
             <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)" :key="feature.name">
-               <p v-if="feature.intro">{{ feature.intro }}
-<!--                   <Lottie
-                     ref="cricetoAnim"
-                     :animation-data="rattoJSON"
-                     :loop="true"
-                     :auto-play="true"
-                     :speed="0.75"
-                  /> -->
-               </p>
+               <p v-if="feature.intro">{{ feature.intro }}</p>
                <h2 v-else>{{ feature.name }}</h2>
+
+               <pre v-highlight class="language-javascript">
+                  <code class="language-javascript" v-highlight> 
+                     console.log('Hello World') 
+                  </code>
+                  <code v-highlight class="language-javascript">
+                     console.log('Hello World')
+                  </code>
+               </pre>
+
                <p>{{ feature.description }}</p>
                <div class="skill-features--imageWrapper">
                   <div class="atom" v-if="feature.intro && data?.logo">
