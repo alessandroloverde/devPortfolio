@@ -94,7 +94,7 @@
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
                <pre v-highlight v-if="feature.code" class="language-javascript">
-                  <code><ContentDoc></ContentDoc></code>
+                  <code>{{ feature.code }}</code>
                </pre>
 
                <div class="skill-features--imageWrapper">

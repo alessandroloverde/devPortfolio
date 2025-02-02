@@ -13,10 +13,38 @@ features:
     image: "/img/snippets/js-dataManipulation.jpg"
   - name: "JS 2"
     description: ""
-    image: "/img/snippets/js-mobileTest.png"
+    code: |
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update particles
+        particles.forEach((particle) => {
+          particle.update();
+        });
+
+        // Draw particles
+        particles.forEach((particle) => {
+          particle.draw();
+        });
+
+        // Draw cluster effect around mouse
+        drawCluster();
+
+        animationFrameId = requestAnimationFrame(animate);
+      }
   - name: "JS 3"
     description: ""
-    code: "export default defineNuxtPlugin((nuxtApp) => {"
+    code: |
+      export default defineNuxtPlugin((nuxtApp) => {
+        nuxtApp.vueApp.directive('highlight', {
+          mounted(el) {
+            // ...
+          },
+          updated(el) {
+            // ...
+          },
+        })
+      })
   - name: "JS 4"
     description: ""
     image: "/img/snippets/js-.jpg"
@@ -24,7 +52,7 @@ features:
     description: ""
     image: "/img/snippets/js-.jpg"
 ---
-<pre v-highlight class="language-javascript">
+<pre v-highlight  class="feature1">
   <code> 
 export default defineNuxtPlugin((nuxtApp) => {
    nuxtApp.vueApp.directive('highlight', {
@@ -36,5 +64,28 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
    })
 })
+  </code>
+</pre>
+
+<pre v-highlight  class="feature2">
+  <code> 
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Update particles
+  particles.forEach((particle) => {
+    particle.update();
+  });
+
+  // Draw particles
+  particles.forEach((particle) => {
+    particle.draw();
+  });
+
+  // Draw cluster effect around mouse
+  drawCluster();
+
+  animationFrameId = requestAnimationFrame(animate);
+}
   </code>
 </pre>
