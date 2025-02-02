@@ -92,17 +92,11 @@
             <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)" :key="feature.name">
                <p v-if="feature.intro">{{ feature.intro }}</p>
                <h2 v-else>{{ feature.name }}</h2>
-
-               <pre v-highlight class="language-javascript">
-                  <code class="language-javascript" v-highlight> 
-                     console.log('Hello World') 
-                  </code>
-                  <code v-highlight class="language-javascript">
-                     console.log('Hello World')
-                  </code>
+               <p>{{ feature.description }}</p>
+               <pre v-highlight v-if="feature.code" class="language-javascript">
+                  <code><ContentDoc></ContentDoc></code>
                </pre>
 
-               <p>{{ feature.description }}</p>
                <div class="skill-features--imageWrapper">
                   <div class="atom" v-if="feature.intro && data?.logo">
                      <div class="atom--center">

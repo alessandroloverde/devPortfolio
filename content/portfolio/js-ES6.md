@@ -16,7 +16,7 @@ features:
     image: "/img/snippets/js-mobileTest.png"
   - name: "JS 3"
     description: ""
-    image: "/img/snippets/js-.jpg"
+    code: "export default defineNuxtPlugin((nuxtApp) => {"
   - name: "JS 4"
     description: ""
     image: "/img/snippets/js-.jpg"
@@ -24,4 +24,17 @@ features:
     description: ""
     image: "/img/snippets/js-.jpg"
 ---
-
+<pre v-highlight class="language-javascript">
+  <code> 
+export default defineNuxtPlugin((nuxtApp) => {
+   nuxtApp.vueApp.directive('highlight', {
+    mounted(el) {
+        highlightAllCodeBlocks(el)
+    },
+    updated(el) {
+        highlightAllCodeBlocks(el)
+    },
+   })
+})
+  </code>
+</pre>

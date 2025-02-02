@@ -110,6 +110,16 @@ $standardMargin-X4: calc($standardMargin * 4);
 /** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 
+code.hljs {
+  font-size: 1.6rem;
+  line-height: 1.5;
+
+  @media screen and (max-width: map.get($breakpoints, 'mobile')) {
+    font-size: 1.3rem;
+    font-weight: 400 !important;
+  }
+}
+
 
 
 

@@ -21,8 +21,8 @@ export default defineNuxtConfig({
     },
   },
   css: [
+    'highlight.js/styles/monokai-sublime.css',
     '~/public/styles/main.scss',
-    'highlight.js/styles/monokai.css',
   ],
   plugins: [
     '~/plugins/highlightjs.client.ts'
