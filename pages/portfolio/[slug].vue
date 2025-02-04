@@ -89,37 +89,27 @@
 
       <main>
          <article v-if="data" class="skill-features">
-            <section v-for="feature of data.features" class="section" :id="'topo-' + data.features.indexOf(feature)" :key="feature.name">
+            <section v-for="feature of data.features" 
+            class="section" 
+            :id="'topo-' + data.features.indexOf(feature)" 
+            :key="feature.name">
                <p v-if="feature.intro">{{ feature.intro }}</p>
+               <ElectronAnim :data="data" v-if="feature.intro && data?.logo" />
+
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
-               <pre v-highlight v-if="feature.code" class="language-javascript">
+               <pre v-highlight v-if="feature.code" class="language-scss">
                   <code>{{ feature.code }}</code>
                </pre>
-
-               <div class="skill-features--imageWrapper">
-                  <div class="atom" v-if="feature.intro && data?.logo">
-                     <div class="atom--center">
-                        <img :src="data?.logo" class="responsiveImg" />
-                     </div>
-                     <div class="atom--orbit orbit1">
-                        <div class="atom--orbit--electron"></div>
-                     </div>
-                     <div class="atom--orbit orbit2">
-                        <div class="atom--orbit--electron"></div>
-                     </div>
-                     <div class="atom--orbit orbit3">
-                        <div class="atom--orbit--electron"></div>
-                     </div>
-                  </div>
+               <div v-if="feature.image" class="skill-features--imageWrapper">
                   <img :src="feature.image" v-if="feature.image" class="responsiveImg skill-features--image" />
                </div>
                <NavigationArrow 
-                  :direction="data.features.indexOf(feature) === data.features.length - 1 ? 'up' : 'down'"
-                  :target="
-                     data.features.indexOf(feature) === data.features.length - 1
-                     ? `topo-0`
-                     : `topo-${data.features.indexOf(feature) +1}`
+               :direction="data.features.indexOf(feature) === data.features.length - 1 ? 'up' : 'down'"
+               :target="
+                  data.features.indexOf(feature) === data.features.length - 1
+                  ? `topo-0`
+                  : `topo-${data.features.indexOf(feature) +1}`
                ">
                </NavigationArrow>
             </section>
