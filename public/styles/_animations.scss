@@ -130,15 +130,19 @@ $totalAnimationDuration: max($totalStrokeDuration, $totalFillDuration);
 
 @each $path in $paths {
   $index: list.index($paths, $path);
+  $stroke-delay: $strokeStagger * ($index - 1);
+  $fill-delay: 0.8s + ($fillStagger * ($index - 1));
 
   svg .alessandro-#{$index} {
     stroke-dashoffset: $path;
     stroke-dasharray: $path;
     fill: transparent;
-    -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) ($strokeStagger * calc($index - 1)),
-                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) (0.8s + $fillStagger * calc($index - 1));
-            transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) ($strokeStagger * calc($index - 1)),
-                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) (0.8s + $fillStagger * calc($index - 1));
+    transition-property: stroke-dashoffset, fill;
+    transition-duration: 1s, 0.7s;
+    transition-timing-function: 
+      cubic-bezier(0.47, 0, 0.745, 0.715), 
+      cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition-delay: #{$stroke-delay}, #{$fill-delay};
   }
 
   svg.active .alessandro-#{$index} {

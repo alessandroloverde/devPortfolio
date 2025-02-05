@@ -114,7 +114,10 @@
           text-decoration: none;
           color: $washedGrey;
       
-          &:hover { color: $limeGreen }
+          &:hover { 
+            color: $limeGreen; 
+            cursor: pointer; 
+          }
         }
       }
       &--reference { 
@@ -167,6 +170,7 @@
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
+      justify-content: space-around;
 
       &:first-child { 
         & > p:first-child::first-letter {
