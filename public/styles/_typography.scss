@@ -46,13 +46,13 @@ h6 {
   letter-spacing: 0.0125em;
   line-height: 1.35;
 
-  &::first-letter {
+/*   &::first-letter {
     text-transform: uppercase;
     color: $washedGrey;
     font-weight: 500;
     font-size: 2em;
     line-height: 0;
-  }
+  } */
 }
 p {
   @include Barlow;

@@ -8,8 +8,12 @@
 
    const route = useRoute()
    const { data } = await useAsyncData("portfolio", () => queryContent(`/portfolio/${route.params.slug}`).findOne())
-   console.log("data", data.value)
+   //console.log("data", data.value)
    let selectedIndex = ref(0)
+
+   function normalizeString(input: string): string {
+      return input.toLowerCase().replace(/\s+/g, '');
+   }
 
    const scrollToSection = (index: number) => {
       const sections = document.querySelectorAll(".section")
@@ -76,7 +80,9 @@
             </div>
             <div class="skill--info--refNavigation">
                <ul>
-                  <li v-for="(feature, index) of data?.features.slice(1)" :key="index + 1" class="skill--info--refNavigation--reference reference">
+                  <li v-for="(feature, index) of data?.features.slice(1)" 
+                      :key="index + 1"   
+                      class="skill--info--refNavigation--reference reference">
                      <div class="skill--info--refNavigation--reference--number">
                         <AnimatedNumber :numberIndex="index + 1" />
                      </div>
@@ -88,13 +94,16 @@
       </header>
 
       <main>
-         <article v-if="data" class="skill-features">
+         <article v-if="data" 
+                  class="skill-features" 
+                  :class="data?.navigation.title && normalizeString(data?.navigation.title)">
             <section v-for="feature of data.features" 
             class="section" 
             :id="'topo-' + data.features.indexOf(feature)" 
             :key="feature.name">
                <p v-if="feature.intro">{{ feature.intro }}</p>
-               <ElectronAnim :data="data" v-if="feature.intro && data?.logo" />
+               <!-- <ElectronAnim :data="data" v-if="feature.intro && data?.logo" /> -->
+                <LanguageWave :title="data?.title?.replace(' | ', '&shy;')" v-if="feature.intro" />
 
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
