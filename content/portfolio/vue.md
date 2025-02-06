@@ -84,7 +84,6 @@ features:
     code: |
       const message = ref('');
       const emit = defineEmits(['updateMessage']);
-
       const updateParent = () => {
         emit('updateMessage', message.value);
       };
@@ -98,7 +97,6 @@ features:
       import ChildInput from './ChildInput.vue';
 
       const parentMessage = ref('');
-
       const handleUpdate = (newMessage) => {
         parentMessage.value = newMessage;
       };

@@ -170,7 +170,7 @@
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: flex-start;
 
       &:first-child { 
         & > p:first-child::first-letter {
@@ -181,15 +181,14 @@
           line-height: 0.5; // FF does not support first-letter line-height
          }
         & > p::first-line { line-height: 100% } 
-       }
+      }
     }
     
     &--image.responsiveImg {
-      $imgMargin: 3.2rem;
-
       width: auto;
       border-radius: 1rem;
-      object-fit: contain
+      object-fit: contain;
+      margin-top: auto
     }
     h2 {
       @include BodoniModa;
@@ -221,6 +220,7 @@
         margin: 0.25em 0 1em;
       }
     }
+    pre[class*="language-"] { margin-top: auto }
   }
 }
 
