@@ -2,7 +2,7 @@
 
 import { defineNuxtPlugin } from '#app'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/srcery.css'
+import 'highlight.js/styles/atom-one-dark.css'
 
 
 export default defineNuxtPlugin((nuxtApp) => {

@@ -21,8 +21,8 @@ export default defineNuxtConfig({
     },
   },
   css: [
-/*     'highlight.js/styles/base16/zenburn.css',*/  
-    'highlight.js/styles/srcery.css',
+     'highlight.js/styles/base16/onedark.css',
+    /* 'highlight.js/styles/srcery.css', */
     '~/public/styles/main.scss',
   ],
   plugins: [

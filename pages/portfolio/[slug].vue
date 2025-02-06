@@ -98,7 +98,7 @@
 
                <h2 v-else>{{ feature.name }}</h2>
                <p>{{ feature.description }}</p>
-               <pre v-highlight v-if="feature.code" class="language-scss">
+               <pre v-highlight v-if="feature.code" :class="`language-${data?.language}`">
                   <code>{{ feature.code }}</code>
                </pre>
                <div v-if="feature.image" class="skill-features--imageWrapper">
