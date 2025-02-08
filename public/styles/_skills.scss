@@ -138,7 +138,7 @@
     
         font-size: 3.6rem;
         color: $lightGrey;
-        transition: all 0.3s ease-in-out;
+        transition: color 0.3s ease-in-out;
       }
     }
   }
@@ -150,6 +150,8 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
+    scroll-padding-top: 6.4rem;
+    -webkit-overflow-scrolling: touch;
 
     $medGrey: oklch(27.5% 0.0185 294.32);
 
@@ -171,6 +173,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      scroll-snap-stop: always;
 
       &:first-child { 
         & > p:first-child::first-letter {
