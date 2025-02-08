@@ -1,15 +1,85 @@
 <template>
-   <h6 class="wave">{{ title }}</h6>
-</template>
-
-<script setup>
-   const props = defineProps({
-      title: {
-         type: String,
-         required: false,
-      },
-   })
-</script>
+   <h6 ref="waveRef" class="wave">{{ title }}</h6>
+ </template>
+ 
+ <script setup>
+ import { ref, onMounted, onBeforeUnmount, nextTick, watch } from "vue";
+ 
+ const props = defineProps({
+   title: {
+     type: String,
+     required: false,
+   },
+ });
+ 
+ const waveRef = ref(null);
+ 
+ function adjustFontSize() {
+   requestAnimationFrame(() => {
+     const element = waveRef.value;
+     if (!element) return;
+ 
+     const parent = element.parentElement;
+     if (!parent) return;
+ 
+     // Get available width (excluding padding)
+     let containerWidth = parent.clientWidth - 64;
+     if (containerWidth <= 0) return;
+ 
+     const charCount = props.title.length || 1; // Avoid division by 0
+ 
+     // **Empirical reference values at containerWidth = 753px**
+     const empiricalData = {
+       5: 296,  // Vue 3
+       11: 264, // TypeScript
+       4: 298,  // Sass
+       6: 236,  // JS ES6
+     };
+ 
+     // **Fine-tuned empirical factor based on testing**
+     let empiricalFactor = empiricalData[charCount]
+       ? (empiricalData[charCount] / (753 / charCount)) * 0.97 // Adjusted for accuracy
+       : 0.85; // Default factor if unknown case
+ 
+     let fontSize = (containerWidth / charCount) * empiricalFactor;
+ 
+     // Apply safety reduction (5-10% smaller)
+     fontSize *= 0.90;
+ 
+     // Prevent extreme font sizes
+     fontSize = Math.max(10, fontSize);
+ 
+     element.style.fontSize = `${fontSize}px`;
+ 
+     console.log(
+       `Container: ${containerWidth}px | Chars: ${charCount} | Font: ${fontSize}px (with safety margin)`
+     );
+   });
+ }
+ 
+ let resizeObserver;
+ 
+ onMounted(() => {
+   nextTick(() => {
+     adjustFontSize(); // Initial adjustment
+ 
+     resizeObserver = new ResizeObserver(() => {
+       adjustFontSize();
+     });
+ 
+     if (waveRef.value?.parentElement) {
+       resizeObserver.observe(waveRef.value.parentElement);
+     }
+   });
+ });
+ 
+ // Recalculate if the title changes dynamically
+ watch(() => props.title, () => adjustFontSize());
+ 
+ onBeforeUnmount(() => {
+   if (resizeObserver) resizeObserver.disconnect(); // Cleanup observer
+ });
+ </script>
 
 <style lang="scss" scoped>
    @use "/public/styles/variables" as *;
@@ -28,10 +98,7 @@
       font-size: 10vw;
       line-height: 1;
       color: $vueGreen;
-      //position: relative;
-      //background-clip: text;
       overflow: clip;
-      //background-color: #fefcef;
       will-change: transform; // Optimizes rendering
 
       &:before,

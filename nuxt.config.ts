@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-10-25",
   googleFonts: {
     families: {
+      "Fira Mono": [400, 500, 700],
       Barlow: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       "Bodoni Moda": [400, 500, 600, 700, 800, 900],
     },
