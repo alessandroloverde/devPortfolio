@@ -50,7 +50,7 @@ features:
         }
       }
     ##image: "/img/snippets/sass-mixins.jpg"
-  - name: "Variables for Theme Management"
+  - name: "Theme Management"
     description: "I leverage SASS variables to manage colors, fonts, and spacing, making it easy to adjust themes and maintain consistency across a project. My experience includes setting up dark and light themes for applications using variables, allowing for quick adjustments with minimal effort."
     code: |
       $themes: (
