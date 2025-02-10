@@ -8,7 +8,7 @@ navigation:
 experience: 7
 language: "javascript"
 features:
-  - intro: "Intro text for JavaScript ES6"
+  - intro: "I have a good command of JavaScript, from core concepts like closures, event handling, and the event loop to modern ES6+ features like async/await, destructuring, and template literals. I write clean, maintainable code using functional programming, higher-order functions, and error handling for robust applications. I love using JavaScript to enrich interfaces and enhance user experience, integrating it seamlessly with CSS, SASS, and APIs to create dynamic, interactive, and scalable applications."
   - name: "Data manipulation"
     description: "JavaScript’s .reduce() and .sort() methods are powerful for transforming and summarizing data from APIs. This example calculates the total salary of individuals over a certain age and sorts the data by salary for better insights. Such techniques are indispensable for building dashboards, reports, or analytics-driven applications."
     code: |
@@ -59,47 +59,58 @@ features:
 
       loadData(); // Fetching... (waits 1.5s) Data loaded!
 
-  - name: "JS 4"
-    description: ""
-    image: "/img/snippets/js-.jpg"
-  - name: "JS 5"
-    description: ""
-    image: "/img/snippets/js-.jpg"
+  - name: "CSS Manipulation & SASS Integration"
+    description: "JavaScript can dynamically interact with SASS-generated CSS by modifying CSS variables at runtime. This is useful for theme switching, user preferences, and UI customization while keeping styles maintainable. This approach leverages CSS variables and localStorage to persist user settings without modifying stylesheets."
+    code: |
+      const root = document.documentElement;
+
+      const themes = {
+        light: { "--primary-color": "#3498db", "--text-color": "#333" },
+        dark: { "--primary-color": "#e74c3c", "--text-color": "#fff" }
+      };
+
+      function setTheme(theme) {
+        if (!themes[theme]) return;
+        Object.entries(themes[theme]).forEach(([key, value]) => {
+          root.style.setProperty(key, value);
+        });
+        localStorage.setItem("theme", theme);
+      }
+
+      function loadTheme() {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        setTheme(savedTheme);
+      }
+
+      function toggleTheme() {
+        const currentTheme = localStorage.getItem("theme") === "light" ? "dark" : "light";
+        setTheme(currentTheme);
+      }
+
+      loadTheme();
+
+      document.getElementById("toggle").addEventListener("click", toggleTheme);
+  - name: "Error Handling & Try/Catch"
+    description: "JavaScript doesn’t stop execution when an error occurs, but without proper handling, it can break functionality. The try/catch block ensures graceful error recovery, preventing the entire app from crashing. You can also use finally for cleanup and throw to generate custom errors. For asynchronous operations, try/catch works well with async/await, ensuring robust network requests and API calls"
+    code: |
+        async function fetchData() {
+          try {
+            console.log("Fetching data...");
+            const res = await fetch("https://jsonplaceholder.typicode.com/users");
+            
+            if (!res.ok) {
+              throw new Error(`HTTP Error! Status: ${res.status}`);
+            }
+            
+            const data = await res.json();
+            console.log("Fetched users:", data.map(user => user.name));
+          } catch (error) {
+            console.error("❌ Error fetching data:", error.message);
+          } finally {
+            console.log("✅ Fetch attempt completed.");
+          }
+        }
+
+        fetchData();
+
 ---
-<pre v-highlight  class="feature1">
-  <code> 
-export default defineNuxtPlugin((nuxtApp) => {
-   nuxtApp.vueApp.directive('highlight', {
-    mounted(el) {
-        highlightAllCodeBlocks(el)
-    },
-    updated(el) {
-        highlightAllCodeBlocks(el)
-    },
-   })
-})
-  </code>
-</pre>
-
-<pre v-highlight  class="feature2">
-  <code> 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Update particles
-  particles.forEach((particle) => {
-    particle.update();
-  });
-
-  // Draw particles
-  particles.forEach((particle) => {
-    particle.draw();
-  });
-
-  // Draw cluster effect around mouse
-  drawCluster();
-
-  animationFrameId = requestAnimationFrame(animate);
-}
-  </code>
-</pre>
