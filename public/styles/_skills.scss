@@ -152,7 +152,7 @@
   &-features {
     margin: 0;
     padding: 0;
-    height: calc(100vh - 4.5rem);
+    height: 100vh;
     overflow-y: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
@@ -289,15 +289,15 @@
       margin-top: 1rem;
       
       aside { 
-        width: calc(25% - 3.5rem);
-        position: absolute;
-        right: 3.5rem;
+        width: 25%;
+        order: 2;
+        margin-left: 3.5rem;
       }
 
       &--refNavigation { display: none; }
       &--description {
         padding-left: 0;
-        width: 75%;
+        width: calc(75% - 3.5rem);
 
         h1 { 
           font-size: 7rem;
