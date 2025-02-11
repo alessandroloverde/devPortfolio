@@ -1,6 +1,6 @@
 [build]
   command = "npm run netlify-build"
-  publish = ".output/public"
+  publish = "dist"
   functions = ".output/server"
 
 [[redirects]]
