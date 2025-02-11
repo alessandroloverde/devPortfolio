@@ -9,7 +9,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "jest"
+    "test": "jest",
+    "netlify-build": "NITRO_PRESET=netlify-edge nuxt build"
   },
   "dependencies": {
     "@nuxt/content": "^2.13.4",

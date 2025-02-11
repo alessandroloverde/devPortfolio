@@ -1,12 +1,6 @@
 @use 'variables' as *;
 @use "sass:map";
 
-
-:root {
-  --header-height: clamp(17vh, 17vw, 31vh); /* Dynamically adjusts */
-}
-
-
 #skills {
   header {
     display: flex;
@@ -144,7 +138,7 @@
     
         font-size: 3.6rem;
         color: $lightGrey;
-        transition: color 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
     }
   }
@@ -156,8 +150,6 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
-    //scroll-padding-top: 4.5rem;
-    -webkit-overflow-scrolling: touch;
 
     $medGrey: oklch(27.5% 0.0185 294.32);
 
@@ -179,7 +171,6 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      scroll-snap-stop: always;
 
       &:first-child { 
         & > p:first-child::first-letter {
@@ -247,26 +238,24 @@
 
 @media screen and (max-width: map.get($breakpoints, tablet)) {
   #skills {
+    
     header {
       display: flex;
       flex-direction: column;
       width: auto;
-    // height: var(--header-height);
-     // min-height: 17vh;
+      height: auto;
       position: relative;
     }
     
     main {
-      display: flex;
-      width: auto;
-      height: auto;
-      margin-left: auto;
-      overflow: auto;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100dvh;
+      padding-top: 5rem; // Height of fixed nav - adjust this value
     }
 
     .nav {
       width: 100%;
-      height: 4.5rem;
       margin: 0;
       padding: 0 3.5rem;
       position: fixed;
@@ -289,15 +278,15 @@
       margin-top: 1rem;
       
       aside { 
-        width: 25%;
-        order: 2;
-        margin-left: 3.5rem;
+        width: calc(25% - 3.5rem);
+        position: absolute;
+        right: 3.5rem;
       }
 
       &--refNavigation { display: none; }
       &--description {
         padding-left: 0;
-        width: calc(75% - 3.5rem);
+        width: 75%;
 
         h1 { 
           font-size: 7rem;
@@ -310,10 +299,8 @@
     &-features {
       section.section { 
         padding: 3rem 3.5rem 0 3.5rem;
-        scroll-snap-stop: normal;
-        height: auto;
-
-        .wave { margin: 2rem auto 1rem }
+        min-height: 100dvh; // dynamic viewport height
+        height: auto; 
       }
 
       h2 {
@@ -323,9 +310,9 @@
         &::before { margin-left: 0 }
         &::after { 
           margin-left: calc(-1em - 1rem);
-          margin-right: 2em;
-          margin-bottom: 2rem;
+          margin-right: 2em; 
           width: calc(100% + 1em);
+
         }
       }
     }
