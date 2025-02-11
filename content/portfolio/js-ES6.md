@@ -59,11 +59,10 @@ features:
 
       loadData(); // Fetching... (waits 1.5s) Data loaded!
 
-  - name: "CSS Manipulation & SASS Integration"
-    description: "JavaScript can dynamically interact with SASS-generated CSS by modifying CSS variables at runtime. This is useful for theme switching, user preferences, and UI customization while keeping styles maintainable. This approach leverages CSS variables and localStorage to persist user settings without modifying stylesheets."
+  - name: "CSS Manipulation"
+    description: "JavaScript can dynamically interact with CSS by modifying variables at runtime; useful for theme switching, and UI customization while keeping styles maintainable. This approach leverages CSS variables and localStorage to persist user settings without modifying the css."
     code: |
       const root = document.documentElement;
-
       const themes = {
         light: { "--primary-color": "#3498db", "--text-color": "#333" },
         dark: { "--primary-color": "#e74c3c", "--text-color": "#fff" }
@@ -76,20 +75,19 @@ features:
         });
         localStorage.setItem("theme", theme);
       }
-
       function loadTheme() {
         const savedTheme = localStorage.getItem("theme") || "light";
         setTheme(savedTheme);
       }
-
       function toggleTheme() {
-        const currentTheme = localStorage.getItem("theme") === "light" ? "dark" : "light";
+        const currentTheme = localStorage.getItem("theme") === 
+                             "light" ? "dark" : "light";
         setTheme(currentTheme);
       }
-
       loadTheme();
 
       document.getElementById("toggle").addEventListener("click", toggleTheme);
+
   - name: "Error Handling & Try/Catch"
     description: "JavaScript doesn’t stop execution when an error occurs, but without proper handling, it can break functionality. The try/catch block ensures graceful error recovery, preventing the entire app from crashing. You can also use finally for cleanup and throw to generate custom errors. For asynchronous operations, try/catch works well with async/await, ensuring robust network requests and API calls"
     code: |
