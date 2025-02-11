@@ -178,9 +178,9 @@
           margin-right: 0.1em;
           font-size: 350%;
           float: left;
-          line-height: 0.5; // FF does not support first-letter line-height
+          line-height: 0.75; // FF does not support first-letter line-height
          }
-        & > p::first-line { line-height: 100% } 
+        & > p::first-line { line-height: inherit } 
       }
     }
     
@@ -299,7 +299,7 @@
     }
     &-features {
       scroll-snap-type: none;
-      
+
       section.section { 
         padding: 3rem 3.5rem 0 3.5rem;
         scroll-snap-stop: normal;
