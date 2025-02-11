@@ -238,7 +238,6 @@
 
 @media screen and (max-width: map.get($breakpoints, tablet)) {
   #skills {
-    
     header {
       display: flex;
       flex-direction: column;
@@ -248,14 +247,16 @@
     }
     
     main {
-      display: grid;
-      grid-template-rows: auto 1fr;
-      min-height: 100dvh;
-      padding-top: 5rem; // Height of fixed nav - adjust this value
+      display: flex;
+      width: auto;
+      height: auto;
+      margin-left: auto;
+      overflow: auto;
     }
 
     .nav {
       width: 100%;
+      height: 4.5rem;
       margin: 0;
       padding: 0 3.5rem;
       position: fixed;
@@ -278,15 +279,15 @@
       margin-top: 1rem;
       
       aside { 
-        width: calc(25% - 3.5rem);
-        position: absolute;
-        right: 3.5rem;
+        width: 25%;
+        order: 2;
+        margin-left: 3.5rem;
       }
 
       &--refNavigation { display: none; }
       &--description {
         padding-left: 0;
-        width: 75%;
+        width: calc(75% - 3.5rem);
 
         h1 { 
           font-size: 7rem;
@@ -297,10 +298,14 @@
       }
     }
     &-features {
+      scroll-snap-type: none;
+      
       section.section { 
         padding: 3rem 3.5rem 0 3.5rem;
-        min-height: 100dvh; // dynamic viewport height
-        height: auto; 
+        scroll-snap-stop: normal;
+        height: auto;
+
+        .wave { margin: 2rem auto 1rem }
       }
 
       h2 {
@@ -310,7 +315,8 @@
         &::before { margin-left: 0 }
         &::after { 
           margin-left: calc(-1em - 1rem);
-          margin-right: 2em; 
+          margin-right: 2em;
+          margin-bottom: 2rem;
           width: calc(100% + 1em);
 
         }
