@@ -137,6 +137,7 @@
         @include Barlow(500);
     
         font-size: 3.6rem;
+        line-height: 1;
         color: $lightGrey;
         transition: all 0.3s ease-in-out;
       }
@@ -163,7 +164,7 @@
       height: 100vh;
       //position: sticky;
       top: 0;
-      padding: 6.4rem 6.4rem 0 6.4rem;
+      padding: 3.2rem 6.4rem 0 6.4rem;
       background-color: $medGrey;
       transition: transform 0.5s;
       border-top: 1px solid $limeGreen;
@@ -217,7 +218,7 @@
         height: 3px;
         width: 100%;
         background-color: $limeGreen;
-        margin: 0.25em 0 1em;
+        margin: 1rem 0 2rem;
       }
     }
     pre[class*="language-"] { margin-top: auto }
