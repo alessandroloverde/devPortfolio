@@ -21,11 +21,15 @@
 </script>
 
 <style lang="scss" scoped>
+@use "/public/styles/variables" as *;
+
+$arrowDimension: 6vh;
+
 .navigationArrow {
    cursor: pointer;
-   height: 8vh;
-   min-height: 8vh;
-   width: 12rem;
+   height: $arrowDimension;
+   min-height: $arrowDimension;
+   width: calc(#{$arrowDimension} * 1.5);
    margin: 0 auto 1vh auto;
    align-self: flex-end;
 
