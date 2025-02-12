@@ -24,12 +24,14 @@ features:
       </script>
 
       <template>
-        <button @click="count++">Count: {{ count }} (Double: {{ double }})</button>
+        <button @click="count++">
+          Count: {{ count }} (Double: {{ double }})
+        </button>
       </template>
 
     ##image: "/img/snippets/vue-ReactiveDataBindings.jpg"
   - name: "Computed Properties"
-    description: "Computed properties are reactive values that update automatically when dependencies change. Unlike methods, they cache their results, making them ideal for derived state. They’re perfect for things like formatted values, real-time calculations, and filtering data. You can even create getters and setters for two-way transformations."
+    description: "Computed properties are reactive values that update automatically when dependencies change. Unlike methods, they cache their results, making them ideal for derived state; perfect for formatted values, real-time calculations, and filtering data. You can even create getters and setters for two-way transformations."
     code: |
       <script setup>
         const price = ref(100);
@@ -41,8 +43,7 @@ features:
           get: () => `$${finalPrice.value.toFixed(2)}`,
           set: (newValue) => {
             price.value = parseFloat(newValue.replace('$', '')) / 
-                          (1 + taxRate.value) + discount.value;
-          }
+                          (1 + taxRate.value) + discount.value;}
         });
       </script>
 

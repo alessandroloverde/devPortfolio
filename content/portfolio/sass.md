@@ -75,14 +75,13 @@ features:
         }
       }
 
-      .light-theme { @include theme() }
-      .dark-theme { @include theme() }
+      .light-theme { @include theme() };
+      .dark-theme { @include theme() };
 
     ##image: "/img/snippets/sass-themeManagement.jpg"
   - name: "SVG Animations"
     description: "Surely there are some very good libraries around for animating SVGs but if you want to hand-craft them for a better control and less headaches with your existing codebase, SASS is surely a must for handling interval-staggering and color morph without bloating and cluttering your code"
     code: |
-      `...``
       @each $path in $paths {
         $index: list.index($paths, $path);
         $stroke-delay: $strokeStagger * ($index - 1);
@@ -108,8 +107,6 @@ features:
   - name: "Responsive Design"
     description: "SASS is very handy when it comes to generate fully responsive classes. It seamlessly adapts layout rules at predefined breakpoints, ensuring a consistent, maintainable, and scalable design framework"
     code: |
-      `...`
-
       @each $breakpoint, $min-width in $breakpoints {
         @if $breakpoint == 'mobile' {
           @media (max-width: #{$min-width - 1px}) {

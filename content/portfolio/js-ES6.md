@@ -64,9 +64,8 @@ features:
       loadData(); // Fetching... (waits 1.5s) Data loaded!
 
   - name: "CSS Manipulation"
-    description: "JavaScript can dynamically interact with CSS by modifying variables at runtime; useful for theme switching, and UI customization while keeping styles maintainable. This approach leverages CSS variables and localStorage to persist user settings without modifying the css."
+    description: "JavaScript can dynamically interact with CSS by modifying variables at runtime; useful for theme switching, and UI customization while keeping styles maintainable, especially with localStorage."
     code: |
-      const root = document.documentElement;
       const themes = {
         light: { "--primary-color": "#3498db", "--text-color": "#333" },
         dark: { "--primary-color": "#e74c3c", "--text-color": "#fff" }
@@ -75,7 +74,7 @@ features:
       function setTheme(theme) {
         if (!themes[theme]) return;
         Object.entries(themes[theme]).forEach(([key, value]) => {
-          root.style.setProperty(key, value);
+          document.documentElement.style.setProperty(key, value);
         });
         localStorage.setItem("theme", theme);
       }
@@ -92,7 +91,7 @@ features:
       document.getElementById("toggle").addEventListener("click", toggleTheme);
 
   - name: "Error Handling & Try/Catch"
-    description: "JavaScript doesn’t stop execution when an error occurs, but without proper handling, it can break functionality. The try/catch block ensures graceful error recovery, preventing the entire app from crashing. You can also use finally for cleanup and throw to generate custom errors. For asynchronous operations, try/catch works well with async/await, ensuring robust network requests and API calls"
+    description: "JavaScript doesn’t stop execution when an error occurs; the try/catch block ensures graceful error recovery, preventing the entire app from crashing. You can also use finally for cleanup and throw to generate custom errors. For asynchronous operations, try/catch works well with async/await, ensuring robust network requests and API calls"
     code: |
         async function fetchData() {
           try {
