@@ -23,6 +23,11 @@ $h2-fontSizes: (
   tablet: 6.6rem,
   desktop: 7.2rem,
 );
+$p-fontSizes: (
+  mobile: 2rem,
+  tablet: 2rem,
+  desktop: clamp(2rem, 1.4rem + 0.625vw, 2.3rem),
+);
 
 
 

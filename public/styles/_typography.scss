@@ -57,17 +57,18 @@ h6 {
 p {
   @include Barlow;
 
-  font-size: clamp(1.8rem, 1.121rem + 0.749vw, 2.2rem);
   color: $lightGrey;
   letter-spacing: 0.0125em;
   line-height: 1.4;
   hyphens: auto;
   overflow-wrap: break-word;
+
+  @include responsive-property('font-size', $p-fontSizes);
+
   
   & + p { margin-top: $standardMargin-X2 }
   & > strong { 
     color: $vueGreen;
     font-weight: 500; 
   }
-
 }
