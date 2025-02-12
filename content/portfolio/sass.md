@@ -41,7 +41,9 @@ features:
         $itemsPerRow: $columns / $span) {
         $percentage: math.div(100%, $columns);
         $totalGapsPerRow: $itemsPerRow - 1;
-        $gapCorrection: $gap * math.div($totalGapsPerRow, $itemsPerRow);
+        $gapCorrection: $gap * math.div(
+                            $totalGapsPerRow, 
+                            $itemsPerRow);
         $width: calc((#{$percentage * $span}) - #{$gapCorrection});
 
         & {
@@ -55,12 +57,10 @@ features:
     code: |
       $themes: (
         light: (
-          primary-color: darkcyan,
-          secondary-color: darkred,
+          primaryColor: darkcyan, secondaryColor: darkred,
         ),
         dark: (
-          primary-color: cyan,
-          secondary-color: salmon,
+          primaryColor: cyan, secondaryColor: salmon,
         ),
       );
 
@@ -70,8 +70,8 @@ features:
         $theme: map.get($themes, $theme-name);
 
         .button {
-          background: map.get($theme, primary-color);
-          color: map.get($theme, secondary-color);
+          background: map.get($theme, primaryColor);
+          color: map.get($theme, secondaryColor);
         }
       }
 
@@ -91,7 +91,6 @@ features:
         svg .alessandro-#{$index} {
           stroke-dashoffset: $path;
           stroke-dasharray: $path;
-          fill: transparent;
           transition-property: stroke-dashoffset, fill;
           transition-duration: 1s, 0.7s;
           transition-timing-function: 
@@ -106,7 +105,7 @@ features:
         }
       }
     ##image: "/img/snippets/sass-svgAnimations.jpg"
-  - name: "Responsive Design and Media Queries"
+  - name: "Responsive Design"
     description: "SASS is very handy when it comes to generate fully responsive classes. It seamlessly adapts layout rules at predefined breakpoints, ensuring a consistent, maintainable, and scalable design framework"
     code: |
       `...`
@@ -116,14 +115,18 @@ features:
           @media (max-width: #{$min-width - 1px}) {
             .#{$breakpoint}-item-#{$span}-#{$columns} {
               margin: auto;
-              @include flex-column($span, $columns, $gap, $items-per-row);
+              @include flex-column(
+                $span, $columns, $gap, $items-per-row
+              );
             }
           }
         } @else {
             @media (min-width: #{$min-width}) {
               .#{$breakpoint}-item-#{$span}-#{$columns} {
                 margin: auto;
-                @include flex-column($span, $columns, $gap, $items-per-row);
+                @include flex-column(
+                  $span, $columns, $gap, $items-per-row
+                );
               }
             }
         }

@@ -17,30 +17,34 @@ features:
         { id: 2, name: "Edoardo", age: 25, salary: 2500 },
         { id: 3, name: "Maria", age: 35, salary: 4000 },
         { id: 4, name: "Sophia", age: 40, salary: 4500 },
-        { id: 5, name: "Luca", age: 28, salary: 2800 }
       ];
 
       // Filter people over 30 and calculate total salary
-      const totalSalaryOver30 = apiData
+      const totSalaryOver30 = apiData
         .filter(person => person.age > 30)
         .reduce((sum, person) => sum + person.salary, 0);
 
-      // Sort people by salary in descending order
-      const sortedBySalary = apiData.sort((a, b) => b.salary - a.salary);
+      const sortedBySalary = apiData.sort((a, b) => 
+                                  b.salary - a.salary);
 
-      console.log(`Total Salary of people over 30: ${totalSalaryOver30}`);
+      console.log(`Tot. Salary of people > 30: ${totSalaryOver30}`);
       console.log(sortedBySalary);
 
   - name: "Destructuring & Spread/Rest Operators"
     description: "Destructuring lets you extract values from objects and arrays effortlessly. The spread operator expands elements, while the rest operator groups multiple values into one. These features simplify data handling and improve readability when working with function parameters or merging objects."
     code: |
-      const user = { name: "SteLaLauraurafano", age: 30, country: "Italy" };
+      const user = { 
+        name: "SteLaLauraurafano", 
+        age: 30, 
+        country: "Italy" 
+      };
       const { name, age } = user;
-      console.log(`${name} is ${age} years old.`); // Laura is 30 years old.
+      console.log(`${name} is ${age} years old.`); 
+      // Laura is 30 years old.
 
       const numbers = [1, 2, 3];
       const allNumbers = [...numbers, 4, 5];
-      console.log(allNumbers); // [1, 2, 3, 4, 5]
+      console.log(allNumbers);  // [1, 2, 3, 4, 5]
 
   - name: "Promises & Async/Await"
     description: "JavaScript uses promises to handle asynchronous tasks without callback hell. Instead of chaining .then(), async/await makes the code more readable, executing like synchronous code. It’s useful for fetching data, handling timeouts, and running async operations sequentially."
@@ -80,8 +84,7 @@ features:
         setTheme(savedTheme);
       }
       function toggleTheme() {
-        const currentTheme = localStorage.getItem("theme") === 
-                             "light" ? "dark" : "light";
+        const currentTheme = localStorage.getItem("theme") === "light" ? "dark" : "light";
         setTheme(currentTheme);
       }
       loadTheme();
