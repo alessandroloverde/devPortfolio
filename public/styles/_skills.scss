@@ -247,6 +247,7 @@
 }
 
 
+/** ––– Mobile Version ––––––––––––––––––––––––––––––––––––––––––––– */
 @media screen and (max-width: map.get($breakpoints, tablet)) {
   #skills {
     header {
@@ -263,6 +264,7 @@
       height: auto;
       margin-left: auto;
       overflow: auto;
+      pointer-events: all;
     }
 
     .nav {
@@ -335,3 +337,4 @@
     }
   }
 }
+/** –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
