@@ -5,7 +5,7 @@
   header {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 45%;
     height: 100%;
     position: fixed;
     left: 0;
@@ -13,10 +13,11 @@
   
   main {
     display: flex;
-    width: 50%;
+    width: 55%;
     height: 100%;
-    margin-left: 50%;
+    margin-left: 45%;
     overflow: hidden;
+    pointer-events: none;
   }
 
   .nav {
@@ -136,7 +137,7 @@
       h3 {
         @include Barlow(500);
     
-        font-size: 3.6rem;
+        font-size: 3.2rem;
         line-height: 1;
         color: $lightGrey;
         transition: all 0.3s ease-in-out;
@@ -172,6 +173,8 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      overflow-y: hidden;
+      pointer-events: all;
 
       &:first-child { 
         & > p:first-child::first-letter {
@@ -221,7 +224,13 @@
         margin: 1rem 0 2rem;
       }
     }
-    pre[class*="language-"] { margin-top: auto }
+    pre[class*="language-"] { 
+      margin-top: auto;
+      margin-bottom: auto;
+      overflow: auto;
+
+      & > code { overflow: hidden; }
+    }
   }
 }
 
@@ -236,6 +245,7 @@
     display: inline-block;
   }
 }
+
 
 @media screen and (max-width: map.get($breakpoints, tablet)) {
   #skills {
