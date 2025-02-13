@@ -263,7 +263,7 @@ span.bigCircle[class*="inlineIcon--"] {
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
         &:hover { 
-          background-color: color.adjust($medGrey, $alpha: -0.0);
+          background: color.adjust($vueGreen, $alpha: -0.8), color.adjust($medGrey, $alpha: -0.8);
           
           &::before {
             content: "";
