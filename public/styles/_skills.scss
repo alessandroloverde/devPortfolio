@@ -34,7 +34,32 @@
   
         a {
           color: $vividOrange;
-          text-decoration: none;}
+          text-decoration: none;
+
+          &.router-link-active,
+          &.router-link-exact-active { 
+            color: $vueGreen;
+            
+            &::after {
+              $barHeight: 0.4rem;
+
+              content: "";
+              background-color: $limeGreen;
+              display: inline-block;
+              height: 4px;
+              width: 100%;
+              position: relative;
+              top: - calc(($barHeight * 2));
+              border-radius: $barHeight;
+            }
+          }
+          &:hover:not(.router-link-active),
+          &:hover:not(.router-link-exact-active) { 
+            cursor: pointer;
+            color: $limeGreen;
+            transition: color .3s ease-in-out;
+          }
+        }
       }
     }
   }
