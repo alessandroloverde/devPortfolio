@@ -12,7 +12,7 @@
             </div>
             <section class="homePage--background"></section>
             <section class="homePage--content">
-               <div style="outline: 1px solid magenta; height: 100%">
+               <div style="height: 100%">
                   <ContentDoc></ContentDoc>
 
                </div>
