@@ -9,7 +9,10 @@
             </div>
             <section class="homePage--background"></section>
             <section class="homePage--content">
-               <ContentDoc></ContentDoc>
+               <div style="outline: 1px solid magenta; height: 100%">
+                  <ContentDoc></ContentDoc>
+
+               </div>
                <NavigationArrow target="aboutPage"></NavigationArrow>
             </section>
          </div>
