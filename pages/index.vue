@@ -1,5 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
+   <Head>
+      <!-- Remove the Umami script from here -->
+   </Head>
    <div class="homePage">
       <header></header>
       <main>
