@@ -8,8 +8,11 @@
 
    const route = useRoute()
    const { data } = await useAsyncData("portfolio", () => queryContent(`/portfolio/${route.params.slug}`).findOne())
-   //console.log("data", data.value)
    let selectedIndex = ref(0)
+
+   useHead({
+      title: `${data?.value?.title}`,
+   })
 
    function normalizeString(input: string): string {
       return input.toLowerCase().replace(/\s+/g, '');
