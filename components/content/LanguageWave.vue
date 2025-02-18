@@ -50,10 +50,6 @@
      fontSize = Math.max(10, fontSize);
  
      element.style.fontSize = `${fontSize}px`;
- 
-     console.log(
-       `Container: ${containerWidth}px | Chars: ${charCount} | Font: ${fontSize}px (with safety margin)`
-     );
    });
  }
  

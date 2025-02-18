@@ -8,7 +8,6 @@
 
    const route = useRoute()
    const { data } = await useAsyncData("portfolio", () => queryContent(`/portfolio/${route.params.slug}`).findOne())
-   //console.log("data", data.value)
    let selectedIndex = ref(0)
 
    function normalizeString(input: string): string {
@@ -31,6 +30,7 @@
    onMounted(() => {
       const sections = document.querySelectorAll(".section")
       const references = document.querySelectorAll(".reference")
+      const headerToHide = document.querySelector(".skill--info")
 
       const observer = new IntersectionObserver(
          (entries) => {
@@ -41,18 +41,26 @@
                   if (entry.isIntersecting) {
                      selectedIndex.value = index + 1
 
-                     entry.target.classList.add("visible")
-                     references[index].classList.add("highlighted")
+                     entry.target.classList.add("visible");
+
+                     references[index].classList.add("highlighted");                     
                   } else {
                      selectedIndex.value = index
 
-                     entry.target.classList.remove("visible")
-                     references[index].classList.remove("highlighted")
+                     entry.target.classList.remove("visible");
+
+                     references[index].classList.remove("highlighted");
                   }
+               }
+
+               if (entry.isIntersecting && index === 1) {
+                  (headerToHide as HTMLElement).style.display = "none"
+               } else if (entry.isIntersecting && index === 0) {
+                  (headerToHide as HTMLElement).style.display = "flex"
                }
             })
          },
-         { threshold: 0.1 }
+         { threshold: 0.0 }
       )
 
       // Observe each section
