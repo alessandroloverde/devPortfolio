@@ -274,6 +274,9 @@
 
 /** ––– Mobile Version ––––––––––––––––––––––––––––––––––––––––––––– */
 @media screen and (max-width: map.get($breakpoints, tablet)) {
+  .mobileFlex { display: fle;}
+  .mobileHidden { display: none; }
+  
   #skills {
     header {
       display: flex;

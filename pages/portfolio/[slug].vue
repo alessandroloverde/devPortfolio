@@ -54,9 +54,13 @@
                }
 
                if (entry.isIntersecting && index === 1) {
-                  (headerToHide as HTMLElement).style.display = "none"
+                  (headerToHide as HTMLElement).classList.remove("mobileFlex");
+
+                  (headerToHide as HTMLElement).classList.add("mobileHidden")
                } else if (entry.isIntersecting && index === 0) {
-                  (headerToHide as HTMLElement).style.display = "flex"
+                  (headerToHide as HTMLElement).classList.remove("mobileHidden");
+
+                  (headerToHide as HTMLElement).classList.add("mobileFlex");
                }
             })
          },
