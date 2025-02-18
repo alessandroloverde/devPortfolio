@@ -64,7 +64,7 @@
                }
             })
          },
-         { threshold: 0.0 }
+         { threshold: 0.1 }
       )
 
       // Observe each section
