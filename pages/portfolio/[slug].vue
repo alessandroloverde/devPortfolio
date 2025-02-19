@@ -84,7 +84,7 @@
          <Navigation :isHomeNav="false" />
          <div class="skill--info">
             <aside class="skill--info--logo">
-               <img :src="data?.logo" v-if="data?.logo" class="responsiveImg" />
+               <img :src="data?.logo" v-if="data?.logo" class="responsiveImg" :alt="data?.title" />
             </aside>
             <div class="skill--info--description">
                <div>
