@@ -8,6 +8,13 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       },
+      link: [
+        {
+          rel: 'preload',
+          as: 'image',
+          href: '/img/Bkg-Alessandro.jpg'
+        }
+      ],
       script: [
         {
           src: 'https://cloud.umami.is/script.js',
@@ -18,7 +25,7 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: false },
-  modules:  ["@nuxt/content", "@nuxtjs/google-fonts" ],
+  modules:  ["@nuxt/content", "@nuxtjs/google-fonts"],
   ssr: false,
   compatibilityDate: "2024-10-25",
   googleFonts: {
@@ -38,6 +45,14 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [svgLoader()],
+    build: {
+      minify: true,
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    },
     css: {
       preprocessorOptions: {
         scss: {
@@ -54,5 +69,4 @@ export default defineNuxtConfig({
       anchorLinks: false, // Disable heading anchors
     },
   },
-
 })
