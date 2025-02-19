@@ -1,6 +1,6 @@
 <template>
    <div class="navigationArrow">
-      <a :href="`#${target}`">
+      <a :href="`#${target}`" :aria-label="`Go to ${target}`">
          <span :class="`inlineIcon--arrow-${direction}`"></span>
       </a>
    </div>
