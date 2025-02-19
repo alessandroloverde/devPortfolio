@@ -274,12 +274,16 @@
 
 /** ––– Mobile Version ––––––––––––––––––––––––––––––––––––––––––––– */
 @media screen and (max-width: map.get($breakpoints, tablet)) {
+  .mobileFlex { display: fle;}
+  .mobileHidden { display: none; }
+  
   #skills {
     header {
       display: flex;
       flex-direction: column;
       width: auto;
       height: auto;
+      min-height: 4.5rem;
       position: relative;
     }
     
@@ -314,7 +318,7 @@
 
   .skill {
     &--info {
-      margin-top: 1rem;
+      margin-top: 2rem;
       
       aside { 
         width: 25%;
@@ -337,6 +341,7 @@
     }
     &-features {
       scroll-snap-type: none;
+      height: calc(100vh - 4.5rem);
 
       section.section { 
         padding: 3rem 3.5rem 0 3.5rem;

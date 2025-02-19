@@ -34,6 +34,7 @@
    onMounted(() => {
       const sections = document.querySelectorAll(".section")
       const references = document.querySelectorAll(".reference")
+      const headerToHide = document.querySelector(".skill--info")
 
       const observer = new IntersectionObserver(
          (entries) => {
@@ -44,14 +45,26 @@
                   if (entry.isIntersecting) {
                      selectedIndex.value = index + 1
 
-                     entry.target.classList.add("visible")
-                     references[index].classList.add("highlighted")
+                     entry.target.classList.add("visible");
+
+                     references[index].classList.add("highlighted");                     
                   } else {
                      selectedIndex.value = index
 
-                     entry.target.classList.remove("visible")
-                     references[index].classList.remove("highlighted")
+                     entry.target.classList.remove("visible");
+
+                     references[index].classList.remove("highlighted");
                   }
+               }
+
+               if (entry.isIntersecting && index === 1) {
+                  (headerToHide as HTMLElement).classList.remove("mobileFlex");
+
+                  (headerToHide as HTMLElement).classList.add("mobileHidden")
+               } else if (entry.isIntersecting && index === 0) {
+                  (headerToHide as HTMLElement).classList.remove("mobileHidden");
+
+                  (headerToHide as HTMLElement).classList.add("mobileFlex");
                }
             })
          },
