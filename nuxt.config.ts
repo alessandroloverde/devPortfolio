@@ -15,11 +15,11 @@ export default defineNuxtConfig({
           href: '/img/Bkg-Alessandro.jpg'
         }
       ],
-      script: [
-        {
+      script: [{
           src: 'https://cloud.umami.is/script.js',
           'data-website-id': '9735da4a-8aae-4a0a-8082-314268897477',
-          defer: true
+          defer: true,
+          'data-domains': 'alessandroloverde.dev'
         }
       ]
     }
@@ -30,9 +30,8 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-10-25",
   googleFonts: {
     families: {
-      "Fira Mono": [400, 500, 700],
-      Barlow: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-      "Bodoni Moda": [400, 500, 600, 700, 800, 900],
+      Barlow: [400, 500, 600],
+      "Bodoni Moda": [400, 500, 600],
     },
   },
   css: [
