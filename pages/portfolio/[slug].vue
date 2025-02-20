@@ -2,8 +2,7 @@
 <script setup lang="ts">
    import { onMounted, ref } from "vue";
    import SVGarrowDown from "~/public/img/icons/fi-rr-angle-down.svg";
-   import rattoJSON from "~/public/img/rattoJSON.json";
-   import { queryContent, useAsyncData } from '#imports';
+   import { queryContent, useAsyncData, useHead } from '#imports';
    import { useRoute } from 'vue-router';
 
    const route = useRoute()
@@ -11,7 +10,13 @@
    let selectedIndex = ref(0)
 
    useHead({
-      title: `${data?.value?.title}`,
+      title: data.value?.title ? `Skills – ${data.value.title} - Alessandro Lo Verde` : 'Portfolio - Alessandro Lo Verde',
+      meta: [
+         {
+            name: 'description',
+            content: data.value?.description || '`Alessandro Lo Verde – ${data.value?.title}`'
+         }
+      ]
    })
 
    function normalizeString(input: string): string {

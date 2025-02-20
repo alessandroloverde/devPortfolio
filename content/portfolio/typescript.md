@@ -1,6 +1,6 @@
 ---
 title: "Type | Script"
-description: "Descrizione per la pagina skills => TypeScript"
+description: "Skills & code samples: TypeScript"
 logo: "/img/logos/typescript.svg"
 navigation:
   title: "TypeScript"

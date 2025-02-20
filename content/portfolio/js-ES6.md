@@ -1,6 +1,6 @@
 ---
 title: "JS ES6"
-description: "Descrizione per la pagina skills => ES6"
+description: "Skills & code samples: ES6"
 logo: "/img/logos/es6.svg"
 navigation:
   title: "JS ES6"

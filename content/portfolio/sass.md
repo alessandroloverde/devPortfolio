@@ -1,6 +1,6 @@
 ---
 title: "SASS"
-description: "Descrizione per la pagina skills => SASS"
+description: "Skills & code samples: SASS"
 logo: "/img/logos/sass.svg"
 navigation:
   title: "SASS"

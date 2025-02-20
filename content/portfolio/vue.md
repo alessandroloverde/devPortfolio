@@ -1,6 +1,6 @@
 ---
 title: "Vue 3"
-description: "Descrizione per la pagina skills => vue"
+description: "Skills & code samples: Vue"
 logo: "/img/logos/vuejs.svg"
 navigation:
   title: "Vue 3"

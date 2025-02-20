@@ -18,8 +18,17 @@ export default defineNuxtConfig({
       script: [{
           src: 'https://cloud.umami.is/script.js',
           'data-website-id': '9735da4a-8aae-4a0a-8082-314268897477',
-          defer: true,
-          'data-domains': 'alessandroloverde.dev'
+          'data-domains': 'alessandroloverde.dev',
+          'data-auto-track': 'false',
+          defer: true
+        },
+        {
+          innerHTML: `
+            if (!navigator.userAgent.includes('Chrome-Lighthouse')) {
+              umami.track()
+            }
+          `,
+          type: 'text/javascript'
         }
       ]
     }
@@ -30,7 +39,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-10-25",
   googleFonts: {
     families: {
-      Barlow: [400, 500, 600],
+      Barlow: [400, 500, 600, 900],
       "Bodoni Moda": [400, 500, 600],
     },
   },
