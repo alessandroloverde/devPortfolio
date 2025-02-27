@@ -19,7 +19,7 @@ export default defineNuxtConfig({
           src: 'https://cloud.umami.is/script.js',
           'data-website-id': '9735da4a-8aae-4a0a-8082-314268897477',
           'data-domains': 'alessandroloverde.dev',
-          'data-auto-track': 'false',
+          'data-auto-track': 'true',
           defer: true
         },
         {
