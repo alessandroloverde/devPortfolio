@@ -3,6 +3,7 @@
    <ContentNavigation v-slot="{ navigation }" :isHomeNav="isHomeNav">
        <ul>
          <li v-for="link in getPortfolioPaths(navigation)" :key="link._path">
+          <div class="glow"></div>
            <NuxtLink :to="link._path">
             <span v-if="!isHomeNav && link.title === 'Home'">{{ link.icon }}</span>
              <span v-if="!isHomeNav && link.title !== 'Home'">{{ link.title }}</span>

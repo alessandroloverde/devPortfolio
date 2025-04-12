@@ -263,6 +263,12 @@ span.bigCircle[class*="inlineIcon--"] {
     #1f1f25 52%
   );
 
+  @keyframes rotate {
+    100% {
+      transform: translate(-50%, -50%) rotate(1turn);
+    }
+  }
+
   &--navigation {
     margin-top: $standardMargin-X3;
 
@@ -272,7 +278,41 @@ span.bigCircle[class*="inlineIcon--"] {
       justify-content: center;
       margin-bottom: 4rem;
 
+
+      .glow {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 12px;
+        top: calc(2% - 4px);
+        left: calc(2% - 4px);
+        transform: scale(0.96);
+        background-color: $medGrey;
+      }
+      li:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-image: 
+          conic-gradient(rgba(0,0,0,0), 
+          $vueGreen, 
+          rgba(0,0,0,0) 25%);
+        animation: rotate 4s linear infinite;
+        filter: blur(14px);
+      }
       li {
+        position: relative;
+        overflow: hidden;
+
         width: 18%;
         display: inline-block;
         margin: 2%;
