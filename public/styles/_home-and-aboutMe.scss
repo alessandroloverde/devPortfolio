@@ -278,18 +278,31 @@ span.bigCircle[class*="inlineIcon--"] {
       justify-content: center;
       margin-bottom: 4rem;
 
-
       .glow {
-        width: 100%;
-        height: 100%;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
         position: absolute;
         border-radius: 12px;
-        top: calc(2% - 4px);
-        left: calc(2% - 4px);
-        transform: scale(0.96);
+        top: calc(2% - 3px);
+        left: calc(2% - 3px);
         background-color: $medGrey;
       }
       li:after {
+        filter: blur(34px);
+        background-image: 
+          conic-gradient(rgba(0,0,0,0), 
+          $vueGreen, 
+          rgba(0,0,0,0) 25%);
+      }
+      li:before {
+        filter: blur(14px);
+        background-image: 
+          conic-gradient(rgba(0,0,0,0), 
+          $vueGreen, 
+          rgba(0,0,0,0) 25%);
+      }
+      li:after,
+      li:before {
         content: "";
         width: 100%;
         height: 100%;
@@ -299,15 +312,9 @@ span.bigCircle[class*="inlineIcon--"] {
         top: 0;
         left: 0;
         transform: translate(-50%, -50%) rotate(0deg);
-
         background-repeat: no-repeat;
         background-position: 0 0;
-        background-image: 
-          conic-gradient(rgba(0,0,0,0), 
-          $vueGreen, 
-          rgba(0,0,0,0) 25%);
         animation: rotate 4s linear infinite;
-        filter: blur(14px);
       }
       li {
         position: relative;
@@ -321,43 +328,10 @@ span.bigCircle[class*="inlineIcon--"] {
         -webkit-backdrop-filter: blur(12px);
         background-color: color.adjust($medGrey, $alpha: -0.8);
         border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.125);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
         &:hover { 
-          background: color.adjust($vueGreen, $alpha: -0.8), 
-                      color.adjust($medGrey, $alpha: -0.8);
-          
-          &::before {
-            content: "";
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: linear-gradient(
-              -45deg, 
-              color.adjust($limeGreen, $alpha: -0.2) 5%, 
-              color.adjust($vueGreen, $alpha: -0.2) 100% 
-            );
-            transform: translate3d(0px, 20px, 0) scale(0.95);
-            filter: blur(48px);
-            opacity: var(0.7);
-            transition: opacity 0.3s;
-            border-radius: inherit;
-          }
-          &::after {
-            content: "";
-            z-index: -1;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: inherit;
-            border-radius: inherit;
-          }
+
         }
         &:first-child { display: none }
         & > a {
@@ -371,8 +345,8 @@ span.bigCircle[class*="inlineIcon--"] {
             transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
             &:hover { 
-              opacity: 1;
-              transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+       /*        opacity: 1;
+              transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
             }
           }
         }
