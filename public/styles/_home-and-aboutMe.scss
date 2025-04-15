@@ -277,51 +277,20 @@ span.bigCircle[class*="inlineIcon--"] {
       flex-wrap: wrap;
       justify-content: center;
       margin-bottom: 4rem;
+      list-style: none;
+      padding: 0;
 
-      .glow {
-        width: calc(100% - 4px);
-        height: calc(100% - 4px);
-        position: absolute;
-        border-radius: 12px;
-        top: calc(2% - 3px);
-        left: calc(2% - 3px);
-        background-color: $medGrey;
-      }
-      li:after {
-        filter: blur(34px);
-        background-image: 
-          conic-gradient(rgba(0,0,0,0), 
-          $vueGreen, 
-          rgba(0,0,0,0) 25%);
-      }
-      li:before {
-        filter: blur(14px);
-        background-image: 
-          conic-gradient(rgba(0,0,0,0), 
-          $vueGreen, 
-          rgba(0,0,0,0) 25%);
-      }
-      li:after,
-      li:before {
-        content: "";
-        width: 100%;
-        height: 100%;
-        display: inline-block;
-        z-index: -1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%) rotate(0deg);
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        animation: rotate 4s linear infinite;
+      @for $i from 2 through 5 {
+        li:nth-child(#{$i}) {
+          &::after,
+          &::before { animation-delay: #{$i}s }
+        }
       }
       li {
-        position: relative;
-        overflow: hidden;
-
         width: 18%;
         display: inline-block;
+        position: relative;
+        overflow: hidden;
         margin: 2%;
         padding: 3rem;
         backdrop-filter: blur(12px) ;
@@ -329,6 +298,47 @@ span.bigCircle[class*="inlineIcon--"] {
         background-color: color.adjust($medGrey, $alpha: -0.8);
         border-radius: 12px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+        & > .glow {
+          width: calc(100% - 4px);
+          height: calc(100% - 4px);
+          position: absolute;
+          border-radius: 12px;
+          top: calc(2% - 3px);
+          left: calc(2% - 3px);
+          background-color: $medGrey;
+        }
+
+        &::after,
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          display: inline-block;
+          z-index: -1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: translate(-50%, -50%) rotate(0deg);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          animation: rotate 4s linear infinite;
+        }
+
+        &::before {
+          filter: blur(14px);
+          background-image: 
+            conic-gradient(rgba(0,0,0,0), 
+            $vueGreen, 
+            rgba(0,0,0,0) 25%);
+        }
+        &::after {
+          filter: blur(34px);
+          background-image: 
+            conic-gradient(rgba(0,0,0,0), 
+            $vueGreen, 
+            rgba(0,0,0,0) 25%);
+        }
 
         &:hover { 
 
