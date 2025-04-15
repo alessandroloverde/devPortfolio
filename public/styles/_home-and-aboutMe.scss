@@ -295,7 +295,6 @@ span.bigCircle[class*="inlineIcon--"] {
         padding: 3rem;
         backdrop-filter: blur(12px) ;
         -webkit-backdrop-filter: blur(12px);
-        background-color: color.adjust($medGrey, $alpha: -0.8);
         border-radius: 12px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
@@ -306,7 +305,14 @@ span.bigCircle[class*="inlineIcon--"] {
           border-radius: 12px;
           top: calc(2% - 3px);
           left: calc(2% - 3px);
-          background-color: $medGrey;
+          background-color: color.adjust($medGrey, $alpha: -0.1);
+
+          @media screen and (max-width: map.get($breakpoints, desktop)) {
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            top: calc(2% - 2px);
+            left: calc(2% - 2px);
+          }
         }
 
         &::after,
@@ -339,9 +345,17 @@ span.bigCircle[class*="inlineIcon--"] {
             $vueGreen, 
             rgba(0,0,0,0) 25%);
         }
+        &:hover {
+          cursor: pointer;
+          background-image: 
+          conic-gradient(rgba(0,0,0,0), 
+          $vueGreen, 
+          rgba(0,0,0,0) 20%);
 
-        &:hover { 
-
+          img {
+            opacity: 0.9;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          }
         }
         &:first-child { display: none }
         & > a {
@@ -352,12 +366,6 @@ span.bigCircle[class*="inlineIcon--"] {
           & > img { 
             object-fit: contain;
             opacity: 0.6;
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-
-            &:hover { 
-       /*        opacity: 1;
-              transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); */
-            }
           }
         }
 
